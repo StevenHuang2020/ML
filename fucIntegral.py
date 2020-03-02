@@ -7,13 +7,12 @@ def fun(x):
 
 def main():
     """calculate area y=x^2  form x = 0 to 1
-    divide 0~1 to N times,  erevy part 
+    divide 0~1 to N shares,  erevy part considered as a rectangle.
     """
     N = 1000
 
     s = 0
     for i in range(N):
-        #print(i)
         x = 1/N
         y = fun(i/N)
         s += x*y
