@@ -7,3 +7,4 @@ Algorithm based on Monte Carlo method which demonstrated in this image.
 
 Result:
 <img src="images/Calculate_Pi.png" width="320" height="240">
+
