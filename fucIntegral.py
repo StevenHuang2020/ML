@@ -5,11 +5,11 @@ def fun(x):
     #return x 
     return x**2
 
-def main():
+def IntegralFuc():
     """calculate area y=x^2  form x = 0 to 1
     divide 0~1 to N shares,  erevy part considered as a rectangle.
     """
-    N = 1000
+    N = 10000
 
     s = 0
     for i in range(N):
@@ -18,6 +18,9 @@ def main():
         s += x*y
     
     print(s)
+	
+def main():
+   IntegralFuc()
 
 if __name__ == '__main__':
     main()
