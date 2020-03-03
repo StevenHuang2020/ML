@@ -8,3 +8,25 @@ Algorithm based on Monte Carlo method which demonstrated in this image.
 Result:
 <img src="images/Calculate_Pi.png" width="320" height="240">
 
+2)coinDistrbution.py
+<br/>
+<img src="images/Coins_Distribution.png" width="320" height="240">
+
+Result:
+prob= 0.5 max frequency: 0.05622666666666667
+
+3)diceDistrbution.py
+<br/>
+<img src="images/Dice_Distribution.png" width="320" height="240">
+
+Result:
+prob= 0.17 max frequency: 0.10772
+
+
+4)fucIntegral.py
+<br/>
+<img src="images/Figure_1.png" width="320" height="240">
+<br/>
+Integral alogrithm, which can calculate the area enclosed by any curve and x-axis.
+
+
