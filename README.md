@@ -5,7 +5,6 @@
 (https://en.wikipedia.org/wiki/Monte_Carlo_method)
 Algorithm based on Monte Carlo method which demonstrated in this image.
 
-Result:
 <img src="images/Calculate_Pi.png" width="320" height="240">
 
 2)coinDistrbution.py
