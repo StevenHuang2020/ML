@@ -7,12 +7,8 @@ from coinDistrbution import calculateDistribution
 def randomSeriesInt(N):
     """generate series dice number """
     return np.random.randint(1,7,N)
-   
-def plotDiceDistribution(x,y):
-    plt.figure(num='Coins Distribution')
-    plt.plot(x,y)
 
-def test():
+def main():
     #experment start
 
     #test 1
@@ -35,7 +31,7 @@ def test():
         #print(x)
 
     #print(distributions)
-    return calculateDistribution(distributions)
+    return calculateDistribution(distributions,'Dice Distribution')
 
 if __name__ == "__main__":
-    test()
+    main()

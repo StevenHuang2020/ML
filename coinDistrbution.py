@@ -1,3 +1,4 @@
+#python3
 #steven 01/03/2020
 #coin distribution testing
 import numpy as np 
@@ -13,11 +14,11 @@ def plotNormalDistribution():
     y = 1/np.sqrt(2*np.pi) * np.exp(-0.5*x**2)
     plt.plot(x,y)
     
-def plotCoinsDistribution(x,y):
-    plt.figure(num='Coins Distribution')
+def plotCoinsDistribution(x,y,name):
+    plt.figure(num=name)
     plt.plot(x,y)
 
-def calculateDistribution(distributions):
+def calculateDistribution(distributions,name):
     #print(distributions)
     distributions_set = list(set(distributions)) #remove repeat prob 
     distributions_set.sort()
@@ -34,14 +35,14 @@ def calculateDistribution(distributions):
         distributions_setProb.append(i/sum)
     print(distributions_setProb)
 
-    plotCoinsDistribution(distributions_set,distributions_setProb)
+    plotCoinsDistribution(distributions_set,distributions_setProb,name)
 
     maxFrequency = np.max(distributions_setProb)
     index = distributions_setProb.index(maxFrequency)
     print('index=',index,'prob=',distributions_set[index],'max frequency:',maxFrequency)
     plt.show()
 
-def test():
+def main():
     #plotNormalDistribution()
 
     #experment start
@@ -55,7 +56,7 @@ def test():
         prob = np.sum(res)/len(res)
         distributions.append(prob)
     
-    return calculateDistribution(distributions)
+    return calculateDistribution(distributions,'Coins Distribution')
 
 if __name__ == "__main__":
-    test()
+    main()
