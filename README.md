@@ -28,4 +28,9 @@ prob= 0.17 max frequency: 0.10772
 <br/>
 Integral alogrithm, which can calculate the area enclosed by any curve and x-axis.
 
+5)matplotTree.py
+<br/>
+<img src="images/tree.png" width="320" height="240">
+<br/>
+
 
