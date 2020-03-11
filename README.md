@@ -33,4 +33,7 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <img src="images/tree.png" width="320" height="240">
 <br/>
 
-
+6)gradientTest.py
+<br/>
+<img src="images/gradient.png" width="320" height="240">
+<br/>
