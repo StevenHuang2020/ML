@@ -1,6 +1,9 @@
 #gradient descent learning
-#steven 29/02/2020
+#steven 29/02/2020 Initial
+#11/03/2020  add plotSeekPoint to plot the seek process
 import random
+import matplotlib.pyplot as plt
+import numpy as np
 
 def difference_derivative(f,x,h): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
@@ -8,7 +11,7 @@ def difference_derivative(f,x,h): #one parameter fuction derivate
 def question_linearFuc(x):
     a = 6.5   #must a > 0
     b = 1.88 #the final optimum x
-    c = 8.8  #the final minimum value
+    c = -8.8  #the final minimum value
     return a*(x - b)**2 + c
 
 def question_linearFucMin():
@@ -20,8 +23,9 @@ def question_linearFucMin():
     max_iter = 10000
     iter = 0
     alpha = 0.001 #0.01 #learning rate
+    seekList=[]
 
-    x = -10000  #random.random()
+    x = -10  #random.random()
     stepInter = 0
     while True:
         gradient = difference_derivative(question_linearFuc,x,h=0.0001)
@@ -30,6 +34,7 @@ def question_linearFucMin():
 
         if iter % 20 == 0:
             print(iter," :",x,gradient,x_next,question_linearFuc(x),stepInter)
+            seekList.append(x)
 
         #stepInter = (question_linearFuc(x) - question_linearFuc(x_next))**2
         stepInter = abs(question_linearFuc(x) - question_linearFuc(x_next))
@@ -43,6 +48,21 @@ def question_linearFucMin():
         iter += 1
         
     print (iter,'result: x=',x, 'minValue:',question_linearFuc(x))
+
+    plotSeekPoint(seekList)
+
+def plotSeekPoint(seekList):
+    _, ax = plt.subplots()
+
+    x = np.linspace(-10,10,20)
+    y = question_linearFuc(x)
+    ax.plot(x,y) #plot function curve
+
+    print(len(seekList))
+    x = np.array(seekList)
+    y = question_linearFuc(x)
+    ax.scatter(x, y, s=10, color='r', alpha=0.75) #plot seekpoint in the seeking process
+    plt.show()
 
 def main():
     question_linearFucMin()
