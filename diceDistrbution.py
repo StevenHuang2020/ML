@@ -1,7 +1,6 @@
 #steven 01/03/2020
 #dice distribution testing
 import numpy as np 
-import matplotlib.pyplot as plt
 from coinDistrbution import calculateDistribution
 
 def randomSeriesInt(N):
@@ -23,7 +22,7 @@ def main():
     N = 100    #coin test times erery batch
     
     distributions = []
-    for i in range(T):
+    for _ in range(T):
         x = randomSeriesInt(N)
         res = np.where(x == 1, 1, 0) #stand for number 1 of dice throwing
         prob = np.sum(res)*1.0/len(res)

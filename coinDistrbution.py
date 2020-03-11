@@ -14,33 +14,34 @@ def plotNormalDistribution():
     y = 1/np.sqrt(2*np.pi) * np.exp(-0.5*x**2)
     plt.plot(x,y)
     
-def plotCoinsDistribution(x,y,name):
+def plotDistribution(x,y,name):
     plt.figure(num=name)
     plt.plot(x,y)
+    plt.show()
 
 def calculateDistribution(distributions,name):
     #print(distributions)
     distributions_set = list(set(distributions)) #remove repeat prob 
     distributions_set.sort()
-    print(distributions_set)
+    #print(distributions_set)
 
     distributions_setCount=[]  #calculate repeat times for erery prob
     for i in distributions_set:
         distributions_setCount.append(distributions.count(i))
-    print(distributions_setCount)
+    #print(distributions_setCount)
 
     distributions_setProb = []  #calculate prob frequency
     sum = np.sum(distributions_setCount)
     for i in distributions_setCount:
         distributions_setProb.append(i/sum)
-    print(distributions_setProb)
-
-    plotCoinsDistribution(distributions_set,distributions_setProb,name)
+    #print(distributions_setProb)
 
     maxFrequency = np.max(distributions_setProb)
     index = distributions_setProb.index(maxFrequency)
     print('index=',index,'prob=',distributions_set[index],'max frequency:',maxFrequency)
-    plt.show()
+
+    plotDistribution(distributions_set,distributions_setProb,name)
+
 
 def main():
     #plotNormalDistribution()
@@ -50,7 +51,7 @@ def main():
     N = 200    #coin test times erery batch
     
     distributions = []
-    for i in range(T):
+    for _ in range(T):
         x = randomSeries(N)
         res = np.where(x > 0.5, 1, 0) #x>0.5 stand for upper side of coin throwing
         prob = np.sum(res)/len(res)
