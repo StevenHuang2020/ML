@@ -2,7 +2,8 @@
 1)piCalculate.py
 <br/>
 ![](images/220px-Pi_30K.gif)
-(https://en.wikipedia.org/wiki/Monte_Carlo_method)
+<br/>
+(https://en.wikipedia.org/wiki/Monte_Carlo_method)<br/>
 Algorithm based on Monte Carlo method which demonstrated in this image.
 
 <img src="images/Calculate_Pi.png" width="320" height="240">
