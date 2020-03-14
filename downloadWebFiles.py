@@ -6,7 +6,15 @@ import argparse
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 #usgae:
-#python .\downloadFiles.py --ft ./examples/tt.txt --dst ./doc/
+#python .\downloadWebFiles.py --ft ./examples/tt.txt --dst ./doc/
+
+#tt.txt contents 
+https://s3.us-east-2.amazonaws.com/hkg-website-assets/static/pages/files/DeepLearning.pdf
+https://pdfs.semanticscholar.org/751f/aab15cbb955b07537fc38901bc96d4e70f57.pdf
+http://xxxxxx/x.zip
+http://xxxxxx/x.jpg
+...
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
 FILESTXT = ''   #files list file
