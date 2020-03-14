@@ -41,7 +41,7 @@ def get_command_line_args():
 
 def downloadFile(url,dstPath):
     #print('Beginning file download with wget module')
-    fileName = filename = url[url.rfind("/")+1:]
+    fileName = url[url.rfind("/")+1:]
     if dstPath == DSTPATH:
         dst = fileName
     else:
