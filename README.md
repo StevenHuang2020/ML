@@ -38,3 +38,13 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <br/>
 <img src="images/gradient.png" width="320" height="240">
 <br/>
+
+7)plotFunction.py
+<br/>
+<img src="images/plotFuc.png" width="320" height="240">
+<br/>
+
+8)plotLogisticMap.py
+<br/>
+<img src="images/logisticMap.png" width="320" height="240">
+<br/>
