@@ -33,6 +33,17 @@ def heart(x): #heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = 1
     a = np.sqrt(1-x**2)*randomSymbol(len(x)) + np.sqrt(abs(x))
     return a*4/5 
 
+def logisticMap2(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
+    maps=[]
+    a = x0
+    while N>0:
+        #print(a,' ',end='')
+        maps.append(a)
+        a = r*a*(1-a)**3
+        N -= 1
+
+    return maps
+
 def logisticMap(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
     maps=[]
     a = x0
@@ -82,8 +93,26 @@ def testLogisticMap():
     xMax = 100
     ax.set_xticks(np.linspace(0,xMax,10))
     ax.set_xlim(0, xMax)
-    ax.set_title("An iota causes a long distance")
+    ax.set_title("An iota causes a big difference(butterfly effects)")
     ax.legend(loc='lower left')
+    plt.show()
+
+def testLogisticMap2():
+    #rValue = 9
+    #ls1 = logisticMap2(r=rValue,x0=0.2,N=100)
+    #plot(ls1)
+    #ls2 = logisticMap(r=rValue,x0=0.20000000001,N=100)
+    #plot(ls2)
+
+    N=9
+    for i in range(N):
+        print('*'*50,i)
+        rValue = i+1
+        ls1 = logisticMap2(r=rValue,x0=0.2,N=100)
+        
+        ax = plt.subplot(3, 3, i+1)
+        ax.plot(ls1,label='x0=0.2')
+        ax.set_title('r='+str(rValue))
     plt.show()
 
 def plotCircle():
@@ -104,7 +133,7 @@ def plotHeart():
     plt.show()
 
 def main():
-    #return testLogisticMap()
+    return testLogisticMap2()
 
     #x = np.linspace(-1,1, 10000)
     #scatter(x,circle(x))
