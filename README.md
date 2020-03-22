@@ -51,5 +51,5 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 
 9)plotMandelBrotSet.py
 <br/>
-<img src="images/MandelBrot.png" width="320" height="240">
+<img src="images/MandelBrot.png" width="640" height="311">
 <br/>
