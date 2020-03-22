@@ -48,3 +48,8 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <br/>
 <img src="images/logisticMap.png" width="320" height="240">
 <br/>
+
+9)plotMandelBrotSet.py
+<br/>
+<img src="images/MandelBrot.png" width="320" height="240">
+<br/>
