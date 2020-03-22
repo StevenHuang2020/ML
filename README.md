@@ -53,7 +53,7 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
 
-9)plotLogisticMap.py
+9)plotLogisticMap2.py
 <br/>
 <img src="images/logisticMap_iter_n2.png" width="320" height="240">
 <img src="images/logisticMap_iter_n3.png" width="320" height="240">
