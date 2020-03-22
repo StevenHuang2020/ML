@@ -53,12 +53,7 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
 
-9)plotMandelBrotSet.py
-<br/>
-<img src="images/MandelBrot.png" width="640" height="311">
-<br/>
-
-10)plotLogisticMap.py
+9)plotLogisticMap.py
 <br/>
 <img src="images/logisticMap_iter_n2.png" width="320" height="240">
 <img src="images/logisticMap_iter_n3.png" width="320" height="240">
@@ -71,3 +66,9 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap_n32.png" width="320" height="240">
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
+
+10)plotMandelBrotSet.py
+<br/>
+<img src="images/MandelBrot.png" width="640" height="311">
+<br/>
+
