@@ -50,7 +50,7 @@ testLogisticMap
 
 8)plotLogisticMap.py
 <br/>
-<img src="images/logisticMap.png" width="320" height="240">
+<img src="images/logisticMap2.png" width="320" height="240">
 <br/>
 
 9)plotMandelBrotSet.py
