@@ -45,7 +45,7 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <br/>
 testLogisticMap
 <br/>
-<img src="images/logisticMap.png" width="320" height="240">
+<img src="images/logisticMap1.png" width="320" height="240">
 <br/>
 
 8)plotLogisticMap.py
