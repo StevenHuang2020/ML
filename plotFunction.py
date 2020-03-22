@@ -26,7 +26,6 @@ def circle(x):
     return np.sqrt(1-x**2)*randomSymbol(len(x))
 
 def heart(x): #heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = 1
-    #return 4/5*np.sqrt((1-x**2)*abs(x))*randomSymbol(len(x))
     a = np.sqrt(1-x**2)*randomSymbol(len(x)) + np.sqrt(abs(x))
     return a*4/5 
 
@@ -39,7 +38,6 @@ def logisticMap(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
         a = r*a*(1-a)
         N -= 1
 
-    maps.reverse()
     return maps
 
 def plot(x,y=None):
@@ -56,7 +54,7 @@ def plotSub(x,y,ax=None,name=''):
     #ax.set_aspect(1)
 
 def scatterSub(x,y,ax=None,name=''):
-    ax.scatter(x,y,linewidths=.5)
+    ax.scatter(x,y,linewidths=.1,color='r',marker=',')
     ax.set_aspect(1)
 
 def scatter(x,y,ratio=True):
@@ -66,13 +64,38 @@ def scatter(x,y,ratio=True):
         ax.set_aspect(1)
     plt.show()
 
+def testLogisticMap():
+    ls = logisticMap(r=3,x0=0.2,N=100)
+    plot(ls)
+
+def plotCircle():
+    x = np.linspace(-1.0, 1.0, 100)
+    y = np.linspace(-1.0, 1.0, 100)
+    X, Y = np.meshgrid(x, y)
+    F = X ** 2 + Y ** 2 - 1
+    plt.contour(X, Y, F, [0])
+    plt.show()
+
+def plotHeart():
+    x = np.linspace(-1.0, 1.0, 100)
+    y = np.linspace(-1.0, 1.5, 100)
+    X, Y = np.meshgrid(x, y)
+    # x**2+ (5*y/4 - sqrt(abs(x)))**2 = 1
+    F = X ** 2 + (5*Y/4 - np.sqrt(abs(x)))** 2 - 1
+    plt.contour(X, Y, F, [0])
+    plt.show()
+
 def main():
-    x = np.linspace(-1,1, 10000)
+    #testLogisticMap()
+    #x = np.linspace(-1,1, 10000)
     #scatter(x,circle(x))
     #scatter(x,heart(x))
     Num=100
     #scatter(np.arange(Num),logisticMap(r=.5,x0=0.4,N=Num),False)
     #plot(logisticMap(r=.5,x0=0.4,N=30))
+
+    #return plotCircle()
+    #return plotHeart()
 
     ax = plt.subplot(2, 2, 1)
     x = np.linspace(-5,5, 10)
@@ -83,7 +106,7 @@ def main():
     plotSub(x,exp(x), ax,name='exp')
 
     ax = plt.subplot(2, 2, 3)
-    x = np.linspace(-1,1, 10000)
+    x = np.linspace(-1,1, 1000)
     scatterSub(x,circle(x), ax,name='circle')
 
     ax = plt.subplot(2, 2, 4)
