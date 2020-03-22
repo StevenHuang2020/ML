@@ -1,7 +1,11 @@
 #steven 21/03/2020
 #common and interesting math fuction 
+from __future__ import unicode_literals
+
 import numpy as np 
 import matplotlib.pyplot as plt
+import matplotlib
+
 
 def softmaxFuc(x):
     softmax = np.exp(x)/np.sum(np.exp(x))
@@ -65,8 +69,22 @@ def scatter(x,y,ratio=True):
     plt.show()
 
 def testLogisticMap():
-    ls = logisticMap(r=3,x0=0.2,N=100)
-    plot(ls)
+    rValue = 3.9
+    ls1 = logisticMap(r=rValue,x0=0.2,N=100)
+    #plot(ls1)
+    ls2 = logisticMap(r=rValue,x0=0.20000000001,N=100)
+    #plot(ls2)
+
+    ax = plt.subplot(1, 1, 1)
+    ax.plot(ls1,label='x0=0.2')
+    ax.plot(ls2,label='x0=0.20000000001')
+
+    xMax = 100
+    ax.set_xticks(np.linspace(0,xMax,10))
+    ax.set_xlim(0, xMax)
+    ax.set_title("An iota causes a long distance")
+    ax.legend(loc='lower left')
+    plt.show()
 
 def plotCircle():
     x = np.linspace(-1.0, 1.0, 100)
@@ -86,11 +104,12 @@ def plotHeart():
     plt.show()
 
 def main():
-    #testLogisticMap()
+    #return testLogisticMap()
+
     #x = np.linspace(-1,1, 10000)
     #scatter(x,circle(x))
     #scatter(x,heart(x))
-    Num=100
+    #Num=100
     #scatter(np.arange(Num),logisticMap(r=.5,x0=0.4,N=Num),False)
     #plot(logisticMap(r=.5,x0=0.4,N=30))
 
