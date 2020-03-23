@@ -7,6 +7,8 @@
 Algorithm based on Monte Carlo method which demonstrated in this image.
 
 <img src="images/Calculate_Pi.png" width="320" height="240">
+<br/>
+<img src="images/Calculate_Pi2.png" width="320" height="240">
 
 2)coinDistrbution.py
 <br/>
