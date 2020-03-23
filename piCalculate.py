@@ -25,20 +25,58 @@ def plotXY(x,y):
 
     plt.show()
 
-def main():
-    N = 30000  #samples
+def menteCarloMethod():
+    N = 10000  #samples
     x = randomSeries(N)
     y = randomSeries(N)
 
     #print(x)
     #print(y)
-    print(distance(x,y))
+    #print(distance(x,y))
     res = np.where(distance(x,y) > 1, 0, 1)
     #print(res)
-    pi = np.sum(res)*4.0/len(res)
-    print(pi)
+    
+    pi = np.sum(res)/len(res)*4.0
+    #pi = np.mean(res == 1)*4.0
+    print('pi = ',pi)
     
     plotXY(x,y)
+
+def circleFun(x):
+    return np.sqrt(1-x**2)
+
+def IntegralCalculatePi():
+    """calculate area form x = 0 to 1
+    divide 0~1 to N shares,  erevy part considered as a rectangle.
+    """
+    N = 100000
+    s = 0
+    for i in range(N):
+        x = 1/N
+        y = circleFun(i/N)
+        s += x*y
+    
+    pi = s*4 
+    print('s = ',s,'pi = ',pi)
+    fillColor()
+
+def fillColor():
+    x = np.linspace(0,1, 100)
+    
+    y1 = np.zeros(len(x))
+    y2 = circleFun(x)
+
+    plt.plot(x,y1,c='b',alpha=0.5)
+    plt.plot(x,y2,c='b',alpha=0.5)
+    
+    plt.fill_between(x,y1,y2,where=x<=1,facecolor='green')
+    plt.axes().set_aspect('equal')
+    #plt.grid(True)
+    plt.show()
+
+def main():
+    #menteCarloMethod()
+    IntegralCalculatePi()
 
 if __name__ == "__main__":
     main()
