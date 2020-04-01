@@ -1,10 +1,10 @@
 #steven 21/03/2020
+#01/04/2020  add derivative2
 #common and interesting math fuction 
-from __future__ import unicode_literals
 
 import numpy as np 
 import matplotlib.pyplot as plt
-import matplotlib
+
 
 def derivative(f,x,h=0.0001): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
