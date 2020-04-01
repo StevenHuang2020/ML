@@ -35,6 +35,7 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 5)matplotTree.py
 <br/>
 <img src="images/tree.png" width="320" height="240">
+<img src="images/tree2.png" width="320" height="240">
 <br/>
 
 6)gradientTest.py
