@@ -44,7 +44,8 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 
 7)plotFunction.py
 <br/>
-<img src="images/plotFuc.png" width="320" height="240">
+<img src="images/plotFuc2.png" width="320" height="240">
+<img src="images/plotFuc3.png" width="320" height="240">
 <br/>
 testLogisticMap(butterfly effect)
 <br/>
