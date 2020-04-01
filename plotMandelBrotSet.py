@@ -2,6 +2,19 @@
 #https://en.wikipedia.org/wiki/Mandelbrot_set
 import numpy as np
 import matplotlib.pyplot as plt
+# MandelBrot eqaution： z:=z**2 + c
+
+def mandelBrot(N=10): 
+    sets=[]
+    c = complex(.1, .2)
+    a = c
+    while N>0:
+        print(abs(a),' ',end='')
+        sets.append(abs(a))
+        a = a**2 + c
+
+        N -= 1
+    return sets
 
 def genMandelBrot(N=1000):
     M = np.zeros([N, N], int)
@@ -20,8 +33,9 @@ def genMandelBrot(N=1000):
     return M
 
 def main():
-    plt.imshow(genMandelBrot())
+    #mandelBrot()
+    plt.imshow(genMandelBrot(),cmap='gray')
     plt.show()
-
+    
 if __name__=='__main__':
     main()
