@@ -171,6 +171,49 @@ def plotHeart(ax):
     F = X ** 2 + (5*Y/4 - np.sqrt(abs(x)))** 2 - 1
     ax.contour(X, Y, F, [0])
     ax.set_aspect(1)
+
+def plotPowerX():
+    x = np.linspace(0,1.5, 100)
+    ax = plt.subplot(1,1,1)
+    plotSub(x, powerX(x), ax,label='powerX')
+    #plotSub(x, derivative(powerX, x), ax, label='powerX\'', aspect=True)
+    
+    de = derivative(powerX, x)
+    de[x<0.1]= np.nan
+    plotSub(x, de, ax, label='powerX\'', aspect=False)
+    
+    #plotSub(x, derivative2(powerX, x), ax, label='powerX\'\'', aspect=True)
+    plotSub(x, x, ax,label='y=x')
+    plotSub(x, np.ones((len(x))), ax,label='y=1')
+    plt.show()
+    
+def plotSoftmax():
+    x = np.linspace(-2,-1, 100)
+    ax = plt.subplot(1,1,1)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-2,-1]')
+    
+    x = np.linspace(-1,0, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-1,0]')
+    
+    x = np.linspace(-0.5,0.5, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-0.5,0.5]')
+    
+    x = np.linspace(0,1, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[0,1]')
+    
+    x = np.linspace(1,3, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[1,3]')
+    
+    x = np.linspace(3,5, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[3,5]')
+    
+    x = np.linspace(-1,3, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-1,3]')
+    
+    x = np.linspace(-2,5, 100)
+    plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-2,5]')
+    
+    plt.show()
     
 def main():
     #return testLogisticMap2()
@@ -210,16 +253,17 @@ def main():
     plotSub(x, derivative(powerX, x), ax, label='X^x\'', aspect=False)
     '''
     
+    '''
     x = np.linspace(-2,2, 50)
     ax = plt.subplot(1,1,1)
-
-    plotSub(x, normalDistribution(x), ax,label='normalDistribution')
-    plotSub(x, derivative(normalDistribution, x), ax, label='normalDistribution\'', aspect=False)
-    plotSub(x, derivative2(normalDistribution, x), ax, label='normalDistribution\'\'', aspect=False)
     
     plotSub(x, sigmoid(x), ax,label='sigmoid')
     plotSub(x, derivative(sigmoid, x), ax, label='sigmoid\'', aspect=False)
     plotSub(x, derivative2(sigmoid, x), ax, label='sigmoid\'\'', aspect=False)
+    
+    plotSub(x, normalDistribution(x), ax,label='normalDistribution')
+    plotSub(x, derivative(normalDistribution, x), ax, label='normalDistribution\'', aspect=False)
+    plotSub(x, derivative2(normalDistribution, x), ax, label='normalDistribution\'\'', aspect=False)
     
     #plotSub(x, exp(x), ax,name='exp', label='exp')
     #plotSub(x, derivative(exp, x), ax, label='exp\'', aspect=False)
@@ -227,13 +271,22 @@ def main():
     plotSub(x, softmaxFuc(x), ax,label='softmaxFuc')
     plotSub(x, derivative(softmaxFuc, x), ax, label='softmaxFuc\'', aspect=False)
     
-    #plotSub(x, log(x), ax,label='log')
+    #plotSub(x, log(x), ax,label='log') #log(x)' = 1/x
     #plotSub(x, derivative(log, x), ax,label='log\'')
-
     
     plotHeart(ax)
     plotCircle(ax)
+    
+    #x = np.linspace(0,2, 100)
+    #plotSub(x, powerX(x), ax,label='powerX')
+    #plotSub(x, derivative(powerX, x), ax, label='powerX\'', aspect=False)
     plt.show()
+    '''
+    
+    #plotPowerX()
+    plotSoftmax()
+    
+    pass
 
 if __name__ == '__main__':
     main()
