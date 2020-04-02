@@ -76,6 +76,9 @@ testLogisticMap(butterfly effect)
 
 10)plotMandelbrotSet.py
 <br/>
-<img src="images/MandelBrot.png" width="640" height="480">
+<img src="images/MandelBrot.png" width="320" height="240">
+<img src="images/Mandelbrot2.png" width="320" height="240">
+<img src="images/Mandelbrot3.png" width="320" height="240">
+<img src="images/Mandelbrot4.png" width="320" height="240">
 <br/>
 
