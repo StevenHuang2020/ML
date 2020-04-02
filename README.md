@@ -1,8 +1,6 @@
 # Python examples
 1)piCalculate.py
 <br/>
-![](images/220px-Pi_30K.gif)
-<br/>
 (https://en.wikipedia.org/wiki/Monte_Carlo_method)<br/>
 Algorithm based on Monte Carlo method which demonstrated in this image.
 
