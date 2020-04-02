@@ -214,10 +214,18 @@ def plotSoftmax():
     plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[-2,5]')
     
     plt.show()
+
+def plotSoftmax2():
+    ax = plt.subplot(1,1,1)
+    Ns=[10,20,50,100,1000]    
+    for i in Ns:
+        x = np.linspace(0,1, i)
+        plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[0,1]-'+str(i))
+    plt.show()
     
 def main():
     #return testLogisticMap2()
-
+    
     #x = np.linspace(-1,1, 10000)
     #scatter(x,circle(x))
     #scatter(x,heart(x))
@@ -284,8 +292,8 @@ def main():
     '''
     
     #plotPowerX()
-    plotSoftmax()
-    
+    #plotSoftmax()
+    plotSoftmax2()
     pass
 
 if __name__ == '__main__':
