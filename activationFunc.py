@@ -122,7 +122,7 @@ def SQ_RBF(x):
         
     l = np.where(abs(x) > 1)
     if len(l) != 0:
-        y[l[0]]=0.5*(2-x[l[0]])**2
+        y[l[0]]=0.5*(2-abs(x[l[0]]))**2
         
     l = np.where(abs(x) > 2)
     if len(l) != 0:
