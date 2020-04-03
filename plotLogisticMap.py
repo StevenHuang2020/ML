@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 # Logistic function implementation
 def logistic_eq(r,x):
-    return r*x*(1-x)
+    #return r*x*(1-x)
+    return r*x*(1-x)**2
 
 def showLogisticMap():
     # Show the logistic function
@@ -68,11 +69,11 @@ def bifurcation_diagram(seed, n_skip, n_iter, step=0.0001, r_min=0):
 def main():
     #logistic_equation_orbit(0.1, 3.05, 100)
     #logistic_equation_orbit(0.1, 3.9, 100)
-    #logistic_equation_orbit(0.1, 3.9, 100, 1000)
+    logistic_equation_orbit(0.2, 1, 100, 1000)
 
     #bifurcation_diagram(0.2, 100, 5)
     #bifurcation_diagram(0.2, 100, 10)
-    bifurcation_diagram(0.2, 100, 10, r_min=2.8)
+    #bifurcation_diagram(0.2, 100, 10, r_min=2.7)
     pass
 
 if __name__=='__main__':

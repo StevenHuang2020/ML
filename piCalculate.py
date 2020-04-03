@@ -70,6 +70,7 @@ def fillColor():
     plt.plot(x,y2,c='b',alpha=0.5)
     
     plt.fill_between(x,y1,y2,where=x<=1,facecolor='green')
+    #plt.axes(aspect='equal')#.set_aspect('equal')
     plt.axes().set_aspect('equal')
     #plt.grid(True)
     plt.show()

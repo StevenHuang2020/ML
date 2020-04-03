@@ -17,7 +17,8 @@ def plotXY(x,y):
     #plt.show()
 
 def getTreeBranch(startPt,slope,left=True):
-    x = np.linspace(startPt[0],startPt[0]+1,10)
+    drawLen = 1
+    x = np.linspace(startPt[0],startPt[0] + drawLen,10)
     b = startPt[1]-slope*startPt[0]
     y = slope*x + b
     ptLast = [x[-1],y[-1]]
@@ -40,7 +41,7 @@ def tree(N,startPt,slope):
         ptLeft = getTreeBranch(startPt, lSlope)
         tree(N-1,ptLeft,lSlope)
 
-        ptRight = getTreeBranch(startPt, rSlope,False)
+        ptRight = getTreeBranch(startPt, rSlope)
         tree(N-1,ptRight,rSlope)
     else:
         return

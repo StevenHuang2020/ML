@@ -257,6 +257,26 @@ def plotActivationFucBRelu():
     plotSub(y, BReLu(y), ax,label='BReLu-odd')
     plt.show()
     
+def plotActivationOneFun():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-20,20, 100)   
+    ax.set_title('Activation')
+    
+    #plotSub(x, softPlus(x), ax,label='softPlus')
+    plotSub(x, BentIdentity(x), ax,label='BentIdentity')
+    #plotSub(x, SoftClipping(x), ax,label='SoftClipping')
+    
+    #plotSub(x, SoftExponential(x), ax,label='SoftExponential')
+    #plotSub(x, Sinusoid(x), ax,label='Sinusoid')
+    #plotSub(x, Sinc(x), ax,label='Sinc')
+    #plotSub(x, Gaussian(x), ax,label='Gaussian')
+    
+    x = np.linspace(-5,5, 100)   
+    plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
+    
+    plt.show()
+    pass
+
 def plotActivationFunSoftE():
     ax = plt.subplot(1,1,1)
     x = np.linspace(-2,2, 50)   
@@ -293,6 +313,11 @@ def plotActivationFun():
     plotSub(x, GELu(x), ax,label='GELu')
     plotSub(x, ELu(x), ax,label='ELu')
     plotSub(x, SELu(x), ax,label='SELu')
+    
+    plotSub(x, BReLu(x), ax,label='BReLu-even')
+    y = np.linspace(-2,2, 51)   
+    plotSub(y, BReLu(y), ax,label='BReLu-odd')
+
     plotSub(x, softPlus(x), ax,label='softPlus')
     plotSub(x, BentIdentity(x), ax,label='BentIdentity')
     plotSub(x, SoftClipping(x), ax,label='SoftClipping')
@@ -303,9 +328,6 @@ def plotActivationFun():
     plotSub(x, Gaussian(x), ax,label='Gaussian')
     plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
     
-    plotSub(x, BReLu(x), ax,label='BReLu-even')
-    y = np.linspace(-2,2, 51)   
-    plotSub(y, BReLu(y), ax,label='BReLu-odd')
     
     plt.ylim(-2, 6)
     plt.legend(ncol=4,loc='upper left')    
@@ -360,7 +382,8 @@ def main():
     #plotSoftmax2()
     #plotActivationFun()
     #plotActivationFunSoftE()
-    plotActivationFucBRelu()
+    #plotActivationFucBRelu()
+    plotActivationOneFun()
     pass
 
 if __name__ == '__main__':
