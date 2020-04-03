@@ -48,6 +48,11 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <img src="images/plotFuc4.png" width="320" height="240">
 <img src="images/plotFuc7.png" width="320" height="240">
 <img src="images/plotFuc8.png" width="320" height="240">
+<img src="images/activationFuc1.png" width="320" height="240">
+<img src="images/activationFuc2.png" width="320" height="240">
+<img src="images/activationFucAll.png" width="320" height="240">
+<img src="images/activationFucSoftE.png" width="320" height="240">
+<img src="images/activationFuc.png" width="320" height="240">
 <br/>
 
 testLogisticMap(butterfly effect)
