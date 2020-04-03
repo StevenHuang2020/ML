@@ -4,7 +4,7 @@
 
 import numpy as np 
 import matplotlib.pyplot as plt
-
+from activationFunc import *
 
 def derivative(f,x,h=0.0001): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
@@ -248,6 +248,60 @@ def plotSoftmax2():
         plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[0,1]-'+str(i))
     plt.show()
     
+def plotActivationFunSoftE():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-2,2, 50)   
+    ax.set_title('Activation SoftExponential')
+    
+    alphas = np.linspace(-1,1, 9)
+    for i in alphas:
+        plotSub(x, SoftExponential(x,i), ax,label='SoftExponential_alpha('+str(i)+')')
+    plt.show()
+    
+def plotActivationFun():
+    ax = plt.subplot(1,1,1)
+    
+    x = np.linspace(-2,2, 50)   
+    ax.set_title('Activation Function')
+    
+    plotSub(x, Identity(x), ax,label='Identity')
+    plotSub(x, Binary_step(x), ax,label='Binary_step')
+    plotSub(x, sigmoid(x), ax,label='sigmoid')
+    plotSub(x, Tanh(x), ax,label='Tanh')
+    plotSub(x, SQNL(x), ax,label='SQNL')
+    plotSub(x, ArcTan(x), ax,label='ArcTan')
+    plotSub(x, ArcSinH(x), ax,label='ArcSinH')
+    
+    plotSub(x, Softsign(x), ax,label='Softsign')
+    plotSub(x, ISRu(x), ax,label='ISRu')
+    plotSub(x, ISRLu(x), ax,label='ISRLu')
+    plotSub(x, PLu(x), ax,label='PLu')
+    plotSub(x, Relu(x), ax,label='Relu')
+    
+    plotSub(x, BReLu(x), ax,label='BReLu-even')
+    y = np.linspace(-2,2, 51)   
+    plotSub(y, BReLu(y), ax,label='BReLu-odd')
+    
+    plotSub(x, LeakyRelu(x), ax,label='LeakyRelu')
+    plotSub(x, PRelu(x), ax,label='PRelu')
+    plotSub(x, RRelu(x), ax,label='RRelu')
+    plotSub(x, GELu(x), ax,label='GELu')
+    plotSub(x, ELu(x), ax,label='ELu')
+    plotSub(x, SELu(x), ax,label='SELu')
+    plotSub(x, softPlus(x), ax,label='softPlus')
+    plotSub(x, BentIdentity(x), ax,label='BentIdentity')
+    plotSub(x, SoftClipping(x), ax,label='SoftClipping')
+    
+    plotSub(x, SoftExponential(x), ax,label='SoftExponential')
+    plotSub(x, Sinusoid(x), ax,label='Sinusoid')
+    plotSub(x, Sinc(x), ax,label='Sinc')
+    plotSub(x, Gaussian(x), ax,label='Gaussian')
+    plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
+    
+    plt.ylim(-2, 6)
+    plt.legend(ncol=4,loc='upper left')    
+    plt.show()
+    
 def main():
     #return testLogisticMap2()
     
@@ -294,7 +348,9 @@ def main():
     #plotAllFuc()
     #plotPowerX()
     #plotSoftmax()
-    plotSoftmax2()
+    #plotSoftmax2()
+    #plotActivationFun()
+    plotActivationFunSoftE()
     pass
 
 if __name__ == '__main__':
