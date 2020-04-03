@@ -248,6 +248,15 @@ def plotSoftmax2():
         plotSub(x, softmaxFuc(x), ax,label='softmaxFuc[0,1]-'+str(i))
     plt.show()
     
+def plotActivationFucBRelu():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-0.5,0.5, 20)
+    ax.set_title('Activation BRelu')
+    plotSub(x, BReLu(x), ax,label='BReLu-even')
+    y = np.linspace(-0.5,0.5, 21)   
+    plotSub(y, BReLu(y), ax,label='BReLu-odd')
+    plt.show()
+    
 def plotActivationFunSoftE():
     ax = plt.subplot(1,1,1)
     x = np.linspace(-2,2, 50)   
@@ -278,10 +287,6 @@ def plotActivationFun():
     plotSub(x, PLu(x), ax,label='PLu')
     plotSub(x, Relu(x), ax,label='Relu')
     
-    plotSub(x, BReLu(x), ax,label='BReLu-even')
-    y = np.linspace(-2,2, 51)   
-    plotSub(y, BReLu(y), ax,label='BReLu-odd')
-    
     plotSub(x, LeakyRelu(x), ax,label='LeakyRelu')
     plotSub(x, PRelu(x), ax,label='PRelu')
     plotSub(x, RRelu(x), ax,label='RRelu')
@@ -297,6 +302,10 @@ def plotActivationFun():
     plotSub(x, Sinc(x), ax,label='Sinc')
     plotSub(x, Gaussian(x), ax,label='Gaussian')
     plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
+    
+    plotSub(x, BReLu(x), ax,label='BReLu-even')
+    y = np.linspace(-2,2, 51)   
+    plotSub(y, BReLu(y), ax,label='BReLu-odd')
     
     plt.ylim(-2, 6)
     plt.legend(ncol=4,loc='upper left')    
@@ -350,7 +359,8 @@ def main():
     #plotSoftmax()
     #plotSoftmax2()
     #plotActivationFun()
-    plotActivationFunSoftE()
+    #plotActivationFunSoftE()
+    plotActivationFucBRelu()
     pass
 
 if __name__ == '__main__':
