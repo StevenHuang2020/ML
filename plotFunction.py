@@ -47,6 +47,9 @@ def sawtoothWave(x): # y = t-floor(t) or y = t%1
 def powerX(x):
     return np.power(x,x)
 
+def powerAX(a,x):
+    return np.power(a,x)
+
 def logisticMap2(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
     maps=[]
     a = x0
@@ -263,7 +266,7 @@ def plotActivationOneFun():
     ax.set_title('Activation')
     
     #plotSub(x, softPlus(x), ax,label='softPlus')
-    plotSub(x, BentIdentity(x), ax,label='BentIdentity')
+    #plotSub(x, BentIdentity(x), ax,label='BentIdentity')
     #plotSub(x, SoftClipping(x), ax,label='SoftClipping')
     
     #plotSub(x, SoftExponential(x), ax,label='SoftExponential')
@@ -277,6 +280,14 @@ def plotActivationOneFun():
     plt.show()
     pass
 
+def plotEquationSlove():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-4,5, 100)   
+    ax.set_title('x^2 = 2^x, not just 2 and 4')
+    plotSub(x, x**2, ax,label='x^2')
+    plotSub(x, powerAX(2,x), ax,label='2^x')
+    plt.show()
+    
 def plotActivationFunSoftE():
     ax = plt.subplot(1,1,1)
     x = np.linspace(-2,2, 50)   
@@ -383,7 +394,8 @@ def main():
     #plotActivationFun()
     #plotActivationFunSoftE()
     #plotActivationFucBRelu()
-    plotActivationOneFun()
+    #plotActivationOneFun()
+    plotEquationSlove()
     pass
 
 if __name__ == '__main__':
