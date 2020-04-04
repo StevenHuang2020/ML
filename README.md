@@ -87,3 +87,8 @@ testLogisticMap(butterfly effect)
 <img src="images/Mandelbrot4.png" width="320" height="240">
 <br/>
 
+11)plotTriangle.py
+<br/>
+<img src="images/triangle1.png" width="320" height="240">
+<img src="images/triangle2.png" width="320" height="240">
+<br/>
