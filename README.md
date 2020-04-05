@@ -6,6 +6,7 @@ Monte Carlo method refer to:https://en.wikipedia.org/wiki/Monte_Carlo_method
 <img src="images/Calculate_Pi.png" width="320" height="240">
 <br/>
 IntegralCalculatePi
+<br/>
 <img src="images/Calculate_Pi2.png" width="320" height="240">
 
 2)coinDistrbution.py
