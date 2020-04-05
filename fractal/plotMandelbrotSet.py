@@ -1,8 +1,11 @@
 # Python3 steven
 #https://en.wikipedia.org/wiki/Mandelbrot_set
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 # MandelBrot eqaution： z:=z**2 + c
+
+Z0 = 0 + 0j #start value
 
 def mandelbrot(N=10):  #generate madenlbrot series
     sets=[]
@@ -21,7 +24,7 @@ def yieldMandelbrot(N):  #binay oper only yield >2.0
     yvalues = np.linspace(-2, 2, N)
     for u, x in enumerate(xvalues):
         for v, y in enumerate(yvalues):
-            z = 0 + 0j
+            z = Z0
             c = complex(x, y)
             for i in range(100):
                 z = z * z + c
@@ -34,7 +37,7 @@ def yieldMandelbrotAll(N):
     yvalues = np.linspace(-2, 2, N)
     for u, x in enumerate(xvalues):
         for v, y in enumerate(yvalues):
-            z = 0 + 0j
+            z = Z0
             c = complex(x, y)
             for i in range(100):
                 z = z * z + c
@@ -78,10 +81,18 @@ def genMandelbrot(N=1000):  #white&black two value[0,1] image
         return m
 
 def main():
+    N = 1000
+     
+    print('number of parameter:', len(sys.argv))
+    print('parameters:', str(sys.argv))
+    if len(sys.argv)>1:
+        N = int(sys.argv[1])
+  
     #mandelbrot()
-    #plt.imshow(genMandelbrot(),cmap='gray')
-    #plt.imshow(genMandelbrotGray(),cmap='gray')
-    plt.imshow(genMandelbrotColor(1000))
+    plt.imshow(genMandelbrot(N),cmap='gray')
+    #plt.imshow(genMandelbrotGray(N),cmap='gray')
+    #plt.imshow(genMandelbrotColor(N))
+    plt.title('Mandelbrot,N ='+str(N))
     plt.show()
     
 if __name__=='__main__':

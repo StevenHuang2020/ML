@@ -94,7 +94,7 @@ def getSequenceCirclePoints(r=1,Num=5):
     return pts
                     
 def triangleStart(N=3):    
-    pts = getSequenceCirclePoints(Num=4) #get start point list
+    pts = getSequenceCirclePoints(Num=5) #get start point list
     trianglePolygon(pts,N)
     
 def main():
