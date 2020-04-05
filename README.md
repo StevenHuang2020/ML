@@ -98,4 +98,6 @@ Random triangle and customized split ratio
 <br/>
 <img src="images/triangle3.png" width="320" height="240">
 <img src="images/triangle4.png" width="320" height="240">
+<img src="images/triangle6.png" width="320" height="240">
+<img src="images/triangle7.png" width="320" height="240">
 
