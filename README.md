@@ -89,6 +89,13 @@ testLogisticMap(butterfly effect)
 
 5)plotTriangle.py plotTriangle2,plotTriangle3
 <br/>
+Sierpiński triangle,reference:https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle
+<br/>
 <img src="images/triangle1.png" width="320" height="240">
 <img src="images/triangle2.png" width="320" height="240">
 <br/>
+Random tringle and customize split ratio
+<br/>
+<img src="images/triangle3.png" width="320" height="240">
+<img src="images/triangle4.png" width="320" height="240">
+
