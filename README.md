@@ -100,6 +100,9 @@ Random triangle and customized split ratio
 <img src="images/triangle4.png" width="320" height="240">
 <img src="images/triangle6.png" width="320" height="240">
 <img src="images/triangle7.png" width="320" height="240">
+<br/>
+6)plotTriangle4,plotTriangle5
+<br/>
 <img src="images/triangle9.png" width="320" height="240">
 <img src="images/triangle10.png" width="320" height="240">
 <img src="images/triangle11.png" width="320" height="240">
