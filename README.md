@@ -1,7 +1,7 @@
 # Python examples
 1)piCalculate.py
 <br/>
-Algorithm based on Monte Carlo method reference:https://en.wikipedia.org/wiki/Monte_Carlo_method
+Monte Carlo method refer to:https://en.wikipedia.org/wiki/Monte_Carlo_method
 <br/>
 <img src="images/Calculate_Pi.png" width="320" height="240">
 <br/>
