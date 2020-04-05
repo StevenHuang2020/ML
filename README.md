@@ -1,9 +1,8 @@
 # Python examples
 1)piCalculate.py
 <br/>
-(https://en.wikipedia.org/wiki/Monte_Carlo_method)<br/>
-Algorithm based on Monte Carlo method which demonstrated in this image.
-
+Algorithm based on Monte Carlo method reference:https://en.wikipedia.org/wiki/Monte_Carlo_method
+<br/>
 <img src="images/Calculate_Pi.png" width="320" height="240">
 <br/>
 IntegralCalculatePi
