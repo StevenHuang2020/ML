@@ -19,10 +19,8 @@ prob= 0.5 max frequency: 0.05622666666666667
 3)diceDistrbution.py
 <br/>
 <img src="images/Dice_Distribution.png" width="320" height="240">
-
 Result:
 prob= 0.17 max frequency: 0.10772
-
 
 4)fucIntegral.py
 <br/>
@@ -30,18 +28,12 @@ prob= 0.17 max frequency: 0.10772
 <br/>
 Integral alogrithm, which can calculate the area enclosed by any curve and x-axis.
 
-5)matplotTree.py,matplotTree2.py
-<br/>
-<img src="images/tree.png" width="320" height="240">
-<img src="images/tree2.png" width="320" height="240">
-<br/>
-
-6)gradientTest.py
+5)gradientTest.py
 <br/>
 <img src="images/gradient.png" width="320" height="240">
 <br/>
 
-7)plotFunction.py
+6)plotFunction.py
 <br/>
 <img src="images/plotFuc2.png" width="320" height="240">
 <img src="images/plotFuc3.png" width="320" height="240">
@@ -61,12 +53,19 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap1.png" width="320" height="240">
 <br/>
 
-8)plotLogisticMap.py
+## ./Fractal/
+1)matplotTree.py,matplotTree2.py
+<br/>
+<img src="images/tree.png" width="320" height="240">
+<img src="images/tree2.png" width="320" height="240">
+<br/>
+
+2)plotLogisticMap.py
 <br/>
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
 
-9)plotLogisticMap2.py
+3)plotLogisticMap2.py
 <br/>
 <img src="images/logisticMap_iter_n2.png" width="320" height="240">
 <img src="images/logisticMap_iter_n3.png" width="320" height="240">
@@ -80,7 +79,7 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
 
-10)plotMandelbrotSet.py
+4)plotMandelbrotSet.py
 <br/>
 <img src="images/MandelBrot.png" width="320" height="240">
 <img src="images/Mandelbrot2.png" width="320" height="240">
@@ -88,7 +87,7 @@ testLogisticMap(butterfly effect)
 <img src="images/Mandelbrot4.png" width="320" height="240">
 <br/>
 
-11)plotTriangle.py
+5)plotTriangle.py plotTriangle2,plotTriangle3
 <br/>
 <img src="images/triangle1.png" width="320" height="240">
 <img src="images/triangle2.png" width="320" height="240">
