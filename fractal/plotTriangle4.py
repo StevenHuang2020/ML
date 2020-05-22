@@ -6,11 +6,15 @@ import matplotlib.pyplot as plt
 import numpy as np 
 import math
 
-def plotXY(x,y):
-    plt.plot(x,y,color='k')
-    #plt.plot(x,y)
+def plotXY(x,y,color='k',ax=None):
+    c=color
+    if ax:
+        ax.plot(x,y,color=c)
+    else:
+        plt.plot(x,y,color=c)
+        #plt.plot(x,y)
     
-def DrawTriangleLineByPt(startPt,stopPt):
+def DrawTriangleLineByPt(startPt,stopPt,color='k',ax=None):
     if startPt[0]>stopPt[0]: #switch
         startPt = startPt + stopPt
         stopPt = startPt - stopPt
@@ -21,7 +25,7 @@ def DrawTriangleLineByPt(startPt,stopPt):
     slope = (stopPt[1]-startPt[1])/(stopPt[0]-startPt[0])
     b = startPt[1]-slope*startPt[0]
     y = slope*x + b
-    plotXY(x,y)
+    plotXY(x,y,color,ax)
 
 def drawPolygon(points): #point sequence
     for i in range(1,len(points)):
@@ -57,7 +61,7 @@ def trianglePolygon(points, N):
     else:
         return 
         
-def getRatioPoint(pt1,pt2,ratio=0.5):
+def getRatioPoint(pt1,pt2,ratio=0.35):
     #get point on the line of pt1 and pt2 acoording the ratio
     #when ratio=0.5, return the middle point
     #return np.mean( np.array([ pt1, pt2 ]), axis=0 )
@@ -82,9 +86,9 @@ def getRandomCirclePoint(r=1,positive=True):
         pt[1] = -1*circle(pt[0], r=r)
     return pt
     
-def getSequenceCirclePoints(r=1,Num=5):
+def getSequenceCirclePoints(r=1,Num=5,offset=0):
     pts = []
-    offset = math.pi/(Num+1)
+    #offset = math.pi/(Num+1)
     for i in range(Num):
         pt = np.array([0,0],dtype=np.float64)
         angle = (i+1)*math.pi*2/Num + offset
