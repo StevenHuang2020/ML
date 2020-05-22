@@ -10,8 +10,8 @@ when N= 10000000 pi= 3.1417028 <br/>
 <br/>
 IntegralCalculatePi
 <br/>
-<img src="images/Calculate_Pi2.png" width="320" height="240">
-S=(Pi*R^2)/4  => Pi=4*S/R^2
+<img src="images/Calculate_Pi2.png" width="320" height="240"><br/>
+S=(Pi*R^2)/4  => Pi=4*S/R^2<br/>
 when N= 100 s =  0.7901042579447618 pi =  3.160417031779047 <br/>
 when N= 10000 s =  0.7854478694028293 pi =  3.141791477611317 <br/>
 when N= 1000000 s =  0.7853986631034552 pi =  3.1415946524138207 <br/>
