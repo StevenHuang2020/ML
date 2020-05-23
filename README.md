@@ -59,6 +59,22 @@ testLogisticMap(butterfly effect)
 <img src="images/logisticMap1.png" width="320" height="240">
 <br/>
 
+7)BenfordLaw.py
+<br/>
+<img src="images/benfordLaw.png" width="320" height="240">
+
+8)probDistribution.py
+<br/>
+<img src="images/dsitribution1.png" width="320" height="240">
+<img src="images/dsitribution2.png" width="320" height="240">
+<img src="images/dsitribution3.png" width="320" height="240">
+<img src="images/dsitribution4.png" width="320" height="240">
+<img src="images/dsitribution5.png" width="320" height="240">
+<img src="images/dsitribution6.png" width="320" height="240">
+<img src="images/dsitribution7.png" width="320" height="240">
+<img src="images/dsitribution8.png" width="320" height="240">
+<br/>
+
 ## ./Fractal/
 1)matplotTree.py,matplotTree2.py
 <br/>
