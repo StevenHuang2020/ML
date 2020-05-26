@@ -21,7 +21,7 @@ when N= 1000000 s =  0.7853986631034552 pi =  3.1415946524138207 <br/>
 <img src="images/Coins_Distribution.png" width="320" height="240">
 
 Result:
-index= 12 prob= 0.16 max frequency: 0.1071
+index= 33 prob= 0.5 max frequency: 0.056
 
 3)diceDistrbution.py
 <br/>
