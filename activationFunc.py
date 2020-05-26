@@ -61,7 +61,7 @@ def PLu(x,alpha=0.1,c=1): #https://arxiv.org/pdf/1809.09534.pdf
     c = np.zeros((x.shape))+c    
     return np.maximum(alpha*(x+c)-c, np.minimum(alpha*(x-c)+c, x))
 
-def Relu(x): #https://dl.acm.org/doi/10.5555/3104322.3104425
+def Relu(x): #https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf
     return np.maximum(np.zeros((x.shape)),x)
 
 def BReLu(x):#https://arxiv.org/pdf/1709.04054.pdf
@@ -104,6 +104,11 @@ def SoftExponential(x,alpha=1.0): #https://arxiv.org/pdf/1602.01321.pdf
 
 def SoftClipping(x,alpha=1.0): #https://arxiv.org/pdf/1810.11509.pdf
     return (1/alpha)*np.log((1+np.exp(alpha*x))/(1+np.exp(alpha*(x-1))))
+
+def Squashing(x,alpha=0.5,lam=1.0,beta=1): #https://arxiv.org/pdf/1910.02486.pdf
+    z1 = np.exp(beta*(x-(alpha-lam*0.5)))
+    z2 = np.exp(beta*(x-(alpha+lam*0.5)))
+    return (1/(lam*beta))*np.log((1+z1)/(1+z2))
 
 def Sinusoid(x):
     return np.sin(x)

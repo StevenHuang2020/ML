@@ -300,11 +300,21 @@ def plotActivationFunSoftE():
     for i in alphas:
         plotSub(x, SoftExponential(x,i), ax,label='SoftExponential_alpha('+str(i)+')')
     plt.show()
+
+def plotActivationFunSquashing():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-2,2, 100)   
+    ax.set_title('Activation Squashing')
+    plotSub(x, Squashing(x,beta=1), ax,label='Squashing_beta=1')
+    plotSub(x, Squashing(x,beta=2), ax,label='Squashing_beta=2')
+    plotSub(x, Squashing(x,beta=5), ax,label='Squashing_beta=5')
+    plotSub(x, Squashing(x,beta=50), ax,label='Squashing_beta=50')
+    plt.show()
     
 def plotActivationFun():
     ax = plt.subplot(1,1,1)
     
-    x = np.linspace(-2,2, 50)   
+    x = np.linspace(-2,2, 80)   
     ax.set_title('Activation Function')
     
     plotSub(x, Identity(x), ax,label='Identity')
@@ -335,7 +345,7 @@ def plotActivationFun():
     plotSub(x, softPlus(x), ax,label='softPlus')
     plotSub(x, BentIdentity(x), ax,label='BentIdentity')
     plotSub(x, SoftClipping(x), ax,label='SoftClipping')
-    
+    plotSub(x, Squashing(x,beta=1), ax,label='Squashing_beta=1')
     plotSub(x, SoftExponential(x), ax,label='SoftExponential')
     plotSub(x, Sinusoid(x), ax,label='Sinusoid')
     plotSub(x, Sinc(x), ax,label='Sinc')
@@ -439,10 +449,11 @@ def main():
     #plotActivationFun()
     #plotActivationFunSoftE()
     #plotActivationFucBRelu()
+    #plotActivationFunSquashing()
     #plotActivationOneFun()
     #plotEquationSlove()
     #plotLogEntropy()
-    plot_gamma()
+    #plot_gamma()
     pass
 
 if __name__ == '__main__':
