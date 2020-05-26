@@ -8,10 +8,10 @@ from activationFunc import *
 import math
 from scipy.special import gamma,factorial,beta
 
-def derivative(f,x,h=0.0001): #one parameter fuction derivate
+def derivative(f,x,h=0.0001): #one parameter fuction derivative
     return (f(x+h)-f(x))/h
 
-def derivative2(f,x,h=0.001): #Second Derivative
+def derivative2(f,x,h=0.0001): #Second Derivative
     return (derivative(f,x+h,h) - derivative(f,x,h))/h
 
 def normalDistribution(x):
@@ -258,10 +258,10 @@ def plotSoftmax2():
     
 def plotActivationFucBRelu():
     ax = plt.subplot(1,1,1)
-    x = np.linspace(-0.5,0.5, 20)
+    x = np.linspace(-0.1,0.1, 40)
     ax.set_title('Activation BRelu')
     plotSub(x, BReLu(x), ax,label='BReLu-even')
-    y = np.linspace(-0.5,0.5, 21)   
+    y = np.linspace(-0.1,0.1, 41)
     plotSub(y, BReLu(y), ax,label='BReLu-odd')
     plt.show()
     

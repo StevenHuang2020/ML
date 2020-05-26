@@ -3,23 +3,13 @@
 import numpy as np 
 from coinDistrbution import calculateDistribution
 
-def randomSeriesInt(N):
-    """generate series dice number """
+def randomSeriesInt(N): #generate N times dice number 1~6
     return np.random.randint(1,7,N)
 
 def main():
     #experment start
-
-    #test 1
-    """
-    N = 20000   #coin test times erery batch
-    distributions = list(randomSeriesInt(N))
-    return calculateDistribution(distributions)
-    """
-
-    #test2
     T = 50000  #times of batch
-    N = 100    #coin test times erery batch
+    N = 100    #dice test times every batch
     
     distributions = []
     for _ in range(T):
@@ -27,7 +17,6 @@ def main():
         res = np.where(x == 1, 1, 0) #stand for number 1 of dice throwing
         prob = np.sum(res)*1.0/len(res)
         distributions.append(prob)
-        #print(x)
 
     #print(distributions)
     return calculateDistribution(distributions,'Dice Distribution')

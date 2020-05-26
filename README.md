@@ -21,12 +21,12 @@ when N= 1000000 s =  0.7853986631034552 pi =  3.1415946524138207 <br/>
 <img src="images/Coins_Distribution.png" width="320" height="240">
 
 Result:
-prob= 0.5 max frequency: 0.05622666666666667
+index= 12 prob= 0.16 max frequency: 0.1071
 
 3)diceDistrbution.py
 <br/>
 <img src="images/Dice_Distribution.png" width="320" height="240"><br/>
-Result: prob= 0.17 max frequency: 0.10772
+index= 12 prob= 0.16 max frequency: 0.1071
 
 4)fucIntegral.py
 <br/>
