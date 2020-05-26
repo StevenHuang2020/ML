@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+def entropy(x):
+    #print('x=', x)
+    #print(x*np.log(x))
+    return np.sum(x*np.log(x)) #x proability
+
 def Benford(N):
     return np.log10(1+1/N).round(4)
 
@@ -53,8 +58,8 @@ def main():
     print(prob)
     actBen = softMaxFuc(prob).round(4)
     
-    print('benford=', benford)
-    print('actBen=', actBen)
+    print('benford=', benford, 'entropy=', entropy(benford))
+    print('actBen=', actBen, 'entropy=', entropy(actBen))
     plotProb(benford,actBen)
     
 if __name__=='__main__':

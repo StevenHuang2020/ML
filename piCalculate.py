@@ -25,7 +25,7 @@ def plotXY(x,y):
 
     plt.show()
 
-def menteCarloMethod():
+def menteCarloMethod(plot=True):
     N = 10000  #samples
     x = randomSeries(N)
     y = randomSeries(N)
@@ -38,9 +38,10 @@ def menteCarloMethod():
     
     pi = np.sum(res)/len(res)*4.0
     #pi = np.mean(res == 1)*4.0
-    print('pi = ',pi)
+    print('when N=',N,'pi=',pi)
     
-    plotXY(x,y)
+    if plot:
+        plotXY(x,y) 
 
 def circleFun(x):
     return np.sqrt(1-x**2)
@@ -49,7 +50,7 @@ def IntegralCalculatePi():
     """calculate area form x = 0 to 1
     divide 0~1 to N shares,  erevy part considered as a rectangle.
     """
-    N = 100000
+    N = 10000
     s = 0
     for i in range(N):
         x = 1/N
@@ -57,7 +58,7 @@ def IntegralCalculatePi():
         s += x*y
     
     pi = s*4 
-    print('s = ',s,'pi = ',pi)
+    print('when N=',N,'s = ',s,'pi = ',pi)
     fillColor()
 
 def fillColor():
@@ -76,7 +77,7 @@ def fillColor():
     plt.show()
 
 def main():
-    #menteCarloMethod()
+    #menteCarloMethod(False)
     IntegralCalculatePi()
 
 if __name__ == "__main__":

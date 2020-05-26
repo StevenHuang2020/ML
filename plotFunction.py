@@ -5,6 +5,8 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 from activationFunc import *
+import math
+from scipy.special import gamma,factorial,beta
 
 def derivative(f,x,h=0.0001): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
@@ -27,6 +29,9 @@ def sigmoid(x):
 def log(x):
     return np.log(x)
 
+def entropy(x):
+    return x*np.log(x)
+    
 def exp(x):
     return np.exp(x)
     
@@ -45,7 +50,8 @@ def sawtoothWave(x): # y = t-floor(t) or y = t%1
     return 2*(x/a - np.floor(0.5+x/a))
 
 def powerX(x):
-    return np.power(x,x)
+    #return np.power(x,x)
+    return powerAX(x,x)
 
 def powerAX(a,x):
     return np.power(a,x)
@@ -90,9 +96,9 @@ def plotSub(x,y,ax=None, aspect=False, label=''):
         ax.set_aspect(1)
     ax.legend()
     
-def scatterSub(x,y,ax=None,name=''):
-    ax.scatter(x,y,linewidths=.1,color='r',marker=',')
-    ax.set_aspect(1)
+def scatterSub(x,y,ax=None,label='',marker=','):
+    ax.scatter(x,y,linewidths=.3,color='r',label=label,marker=marker)
+    #ax.set_aspect(1)
 
 def scatter(x,y,ratio=True):
     plt.scatter(x,y)
@@ -156,7 +162,6 @@ def testLogisticMap2():
     ax.set_title('Butterfly effects')
     ax.legend(loc='lower left')
     plt.show()
-
 
 def plotCircle(ax):
     x = np.linspace(-1.0, 1.0, 100)
@@ -276,9 +281,7 @@ def plotActivationOneFun():
     
     x = np.linspace(-5,5, 100)   
     plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
-    
     plt.show()
-    pass
 
 def plotEquationSlove():
     ax = plt.subplot(1,1,1)
@@ -339,11 +342,52 @@ def plotActivationFun():
     plotSub(x, Gaussian(x), ax,label='Gaussian')
     plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
     
-    
     plt.ylim(-2, 6)
     plt.legend(ncol=4,loc='upper left')    
     plt.show()
     
+def plotLogEntropy():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(0,4, 50)   
+    ax.set_title('LogEntropy Function')
+    
+    plotSub(x, log(x), ax,label='log')
+    plotSub(x, entropy(x), ax,label='entropy')
+    plt.legend()
+    plt.show()
+   
+def plot_gamma():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-3.5,5, 1000)   
+    ax.set_title('gamma Function')
+    plotSub(x, gamma(x), ax,label='gamma(x)')
+    
+    k = np.arange(1, 7)
+    scatterSub(k, factorial(k-1),ax, label='(x-1)!, x = 1, 2, ...', marker='*')
+    
+    plt.xlim(-3.5, 5.5)
+    plt.ylim(-10, 25)
+    plt.grid()
+    plt.xlabel('x')
+    plt.legend(loc='lower right')
+    plt.show()
+
+def plot_beta():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-3.5,5, 1000)   
+    ax.set_title('beta Function')
+    plotSub(x, gamma(x), ax,label='beta(x)')
+    
+    k = np.arange(1, 7)
+    scatterSub(k, factorial(k-1),ax, label='(x-1)!, x = 1, 2, ...', marker='*')
+    
+    plt.xlim(-3.5, 5.5)
+    plt.ylim(-10, 25)
+    plt.grid()
+    plt.xlabel('x')
+    plt.legend(loc='lower right')
+    plt.show()
+
 def main():
     #return testLogisticMap2()
     
@@ -395,7 +439,9 @@ def main():
     #plotActivationFunSoftE()
     #plotActivationFucBRelu()
     #plotActivationOneFun()
-    plotEquationSlove()
+    #plotEquationSlove()
+    #plotLogEntropy()
+    plot_gamma()
     pass
 
 if __name__ == '__main__':

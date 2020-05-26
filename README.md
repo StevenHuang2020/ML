@@ -46,12 +46,14 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <img src="images/plotFuc4.png" width="320" height="240">
 <img src="images/plotFuc7.png" width="320" height="240">
 <img src="images/plotFuc8.png" width="320" height="240">
+<img src="images/plotFuc9.png" width="320" height="240">
+<img src="images/plotFuc10.png" width="320" height="240">
 <img src="images/activationFuc1.png" width="320" height="240">
 <img src="images/activationFuc2.png" width="320" height="240">
 <img src="images/activationFucAll.png" width="320" height="240">
 <img src="images/activationFucSoftE.png" width="320" height="240">
 <img src="images/activationFuc.png" width="320" height="240">
-<img src="images/plotFuc9.png" width="320" height="240">
+
 <br/>
 
 testLogisticMap(butterfly effect)
@@ -65,6 +67,7 @@ testLogisticMap(butterfly effect)
 
 8)probDistribution.py
 <br/>
+<img src="images/dsitribution0.png" width="320" height="240">
 <img src="images/dsitribution1.png" width="320" height="240">
 <img src="images/dsitribution2.png" width="320" height="240">
 <img src="images/dsitribution3.png" width="320" height="240">
@@ -73,6 +76,11 @@ testLogisticMap(butterfly effect)
 <img src="images/dsitribution6.png" width="320" height="240">
 <img src="images/dsitribution7.png" width="320" height="240">
 <img src="images/dsitribution8.png" width="320" height="240">
+<img src="images/dsitribution9.png" width="320" height="240">
+<img src="images/dsitribution10.png" width="320" height="240">
+<img src="images/dsitribution11.png" width="320" height="240">
+<img src="images/dsitribution12.png" width="320" height="240">
+<img src="images/dsitribution13.png" width="320" height="240">
 <br/>
 
 ## ./Fractal/
