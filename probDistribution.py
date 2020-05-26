@@ -18,7 +18,7 @@ def NormalDistribution_pdf(x, delta=1, u=0): #https://en.wikipedia.org/wiki/Norm
     return (1/delta*np.sqrt(2*np.pi))*np.exp(-0.5*((x-u)/delta)**2)
   
 def Cauchy_pdf(x, x0=0, scaler=1):#https://en.wikipedia.org/wiki/Cauchy_distribution
-    return (1/np.pi*scaler)*(scaler**2/((x-x0)**2+scaler**2))
+    return (1/(np.pi*scaler))*(scaler**2/((x-x0)**2+scaler**2))
   
 def Generalized_logistic_distribution(x,alpha=1):#https://en.wikipedia.org/wiki/Generalized_logistic_distribution
     return alpha*np.exp(-1*x)/np.power(1+np.exp(-1*x),alpha+1)
@@ -39,7 +39,7 @@ def StudentT_distribution(x):#https://en.wikipedia.org/wiki/Student%27s_t-distri
 
 def Log_normal_distribution(x, delta=1, u=0):#https://en.wikipedia.org/wiki/Log-normal_distribution
     z = -1*(np.log(x)-u)**2/(2*delta**2)
-    return (1/x*delta*np.sqrt(2*np.pi)* np.exp(z))
+    return (1/(x*delta*np.sqrt(2*np.pi)))* np.exp(z)
 
 def Weibull_distribution(x,lamda=1,k=1): #https://en.wikipedia.org/wiki/Weibull_distribution
     y = np.zeros((len(x),))
@@ -150,13 +150,14 @@ def test():
     
 def main():
     # testNormalD()
-    # testCauchy()
+    #testCauchy()
     # testLaplace_distribution()
     # test()
     # testLogistic_distribution()
-    # testLog_normal_distribution()
+    #testLog_normal_distribution()
     # testWeibull_distribution()
-    testPareto_distribution()
+    #testPareto_distribution()
+    pass
     
 if __name__ == '__main__':
     main()
