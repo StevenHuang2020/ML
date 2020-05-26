@@ -343,6 +343,7 @@ def plotActivationFun():
     plotSub(x, SQ_RBF(x), ax,label='SQ_RBF')
     
     plt.ylim(-2, 6)
+    #plt.legend()
     plt.legend(ncol=4,loc='upper left')    
     plt.show()
     
