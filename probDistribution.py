@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from sympy import integrate
 import math
 from scipy.special import gamma,beta,factorial
+from permutationAndCom import permut,combinat
+
 #https://en.wikipedia.org/wiki/Gamma_function
 #https://en.wikipedia.org/wiki/Beta_function
 #https://en.wikipedia.org/wiki/Factorial
@@ -21,16 +23,36 @@ def plotSub(x,y,ax=None, aspect=False, label=''):
         ax.set_aspect(1)
     ax.legend()
 
-def scatterSub(x,y,ax=None,label='',marker=','):
-    ax.scatter(x,y,linewidths=.3,color='r',label=label,marker=marker)
-        
+def scatterSub(x,y,ax=None,label='',marker='.'):
+    ax.scatter(x,y,linewidths=.3, label=label, marker=marker)
+    ax.legend()
+    
 #'''''''''''''''''''''''''''''''''''distribution fuc'''''''''''''''''''''''''''''''''''''
 def Uniform_distribution(x,a=1,b=3): #https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
     return np.zeros(len(x)) + 1/(b-a)
 
 def Discrete_uniform_distribution(x,N=5):#https://en.wikipedia.org/wiki/Discrete_uniform_distribution
     return np.zeros(len(x)) + 1/N
-   
+
+def Binomial_distribution(N,p): #https://en.wikipedia.org/wiki/Binomial_distribution
+    assert(N>=1 and 0<=p<=1)
+    def Binomial(k):
+        return combinat(N,k)*np.power(p,k)*np.power(1-p,N-k)
+    
+    return list(map(Binomial, [i for i in range(N)]))
+    
+def Geometric_distribution(N,p):#https://en.wikipedia.org/wiki/Geometric_distribution
+    def Geometric(k):
+        return np.power(1-p,k)*p
+    
+    return list(map(Geometric, [i for i in range(N)]))
+
+def Hypergeometric_distribution(N,K,n): #https://en.wikipedia.org/wiki/Hypergeometric_distribution
+    def Hypergeometric(k):
+        return combinat(K,k)*combinat(N-K,n-k)/combinat(N,n)
+    
+    return list(map(Hypergeometric, [i for i in range(n)]))
+
 def NormalDistribution_pdf(x, delta=1, u=0): #https://en.wikipedia.org/wiki/Normal_distribution
     return (1/delta*np.sqrt(2*np.pi))*np.exp(-0.5*((x-u)/delta)**2)
   
@@ -95,6 +117,7 @@ def Rayleigh_distribution(x,delta=0.5):#https://en.wikipedia.org/wiki/Rayleigh_d
 def Beta_distribution(x,alpha=0.5,ba=0.5): #https://en.wikipedia.org/wiki/Beta_distribution
     return np.power(x, alpha-1)*np.power(1-x, ba-1)/beta(alpha,ba)
  
+ 
 #'''''''''''''''''''''''''''''''''''start plot distribution'''''''''''''''''''''''''''''''''''''
 imgSavePath=r'.\images\\'
 
@@ -117,13 +140,56 @@ def testUniform_distribution(i):
     plt.ylim(0.35, 0.6)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
+def testBinomial_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Binomial_distribution')
+    N = 15
+    plotSub(np.arange(N), Binomial_distribution(N=N,p=0.2), ax,label='N=15,p=0.2')
+    scatterSub(np.arange(N), Binomial_distribution(N=N,p=0.2), ax,label='N=15,p=0.2')
+    
+    plotSub(np.arange(N), Binomial_distribution(N=N,p=0.6), ax,label='N=15,p=0.6')
+    scatterSub(np.arange(N), Binomial_distribution(N=N,p=0.6), ax,label='N=15,p=0.6')
+    N = 20
+    plotSub(np.arange(N), Binomial_distribution(N=N,p=0.6), ax,label='N=20,p=0.6')
+    scatterSub(np.arange(N), Binomial_distribution(N=N,p=0.6), ax,label='N=20,p=0.6')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show() 
+    
+def testGeometric_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Geometric_distribution')
+    N = 15 
+    plotSub(np.arange(N), Geometric_distribution(N=N,p=0.2), ax,label='N=20,p=0.2')
+    scatterSub(np.arange(N), Geometric_distribution(N=N,p=0.2), ax,label='N=20,p=0.2')
+    
+    plotSub(np.arange(N), Geometric_distribution(N=N,p=0.5), ax,label='N=20,p=0.6')
+    scatterSub(np.arange(N), Geometric_distribution(N=N,p=0.5), ax,label='N=20,p=0.6')
+    
+    plotSub(np.arange(N), Geometric_distribution(N=N,p=0.8), ax,label='N=25,p=0.6')
+    scatterSub(np.arange(N), Geometric_distribution(N=N,p=0.8), ax,label='N=25,p=0.6')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show()
+   
+def testHypergeometric_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Hypergeometric_distribution')
+    N=25
+    K=10
+    n=5
+    plotSub(np.arange(n), Hypergeometric_distribution(N,K,n), ax,label='N=25,K=10,n=5')
+    scatterSub(np.arange(n), Hypergeometric_distribution(N,K,n), ax,label='N=25,K=10,n=5')
+    
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show()
+     
+    
 def testNormalD(i):
     x = np.linspace(-5.0, 5.0, 100)
     #y = NormalDistribution_pdf(x)
     #plot(x,y)
     
     ax = plt.subplot(1,1,1)
-    plt.title('NormalDistribution')
+    plt.title('Normal Distribution')
     plotSub(x, NormalDistribution_pdf(x), ax,label='Normal')
     plotSub(x, NormalDistribution_pdf(x,u=-1,delta=0.5), ax,label='u=-1,delta=0.5')
     plotSub(x, NormalDistribution_pdf(x,u=1,delta=2), ax,label='u=1,delta=2')
@@ -132,7 +198,7 @@ def testNormalD(i):
 def testCauchy(i):
     x = np.linspace(-5.0, 5.0, 100)  
     ax = plt.subplot(1,1,1)
-    plt.title('Cauchy')
+    plt.title('Cauchy Distribution')
     #plotSub(x, Cauchy_pdf(x), ax,label='Cauchy')
     plotSub(x, Cauchy_pdf(x,x0=0,scaler=0.75), ax,label='x0=0,scaler=1')
     plotSub(x, Cauchy_pdf(x,x0=0,scaler=1), ax,label='x0=0,scaler=1')
@@ -251,6 +317,12 @@ def main():
     i+=1
     testUniform_distribution(i)
     i+=1
+    testBinomial_distribution(i)
+    i+=1
+    testGeometric_distribution(i)
+    i+=1
+    testHypergeometric_distribution(i)
+    i+=1
     testNormalD(i)
     i+=1
     testCauchy(i)
@@ -275,7 +347,7 @@ def main():
     i+=1
     testBeta_distribution(i)
     i+=1
-    pass
+   
     
 if __name__ == '__main__':
     main()
