@@ -114,6 +114,35 @@ def testZipfsLaw(i):
     #plotSub(x, ZipfsLaw(N=20, s=2), ax,label='N=20, s=2')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show() 
         
+def testBeta_binomial_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Beta_binomial_distribution')
+    N=10
+    x = np.arange(N)
+    plotSub(x, Beta_binomial_distribution(), ax,label='alpha=0.2,bta=0.25')
+    scatterSub(x, Beta_binomial_distribution(), ax,label='alpha=0.2,bta=0.25')
+    plotSub(x, Beta_binomial_distribution(alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
+    scatterSub(x, Beta_binomial_distribution(alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
+    plotSub(x, Beta_binomial_distribution(alpha=2,bta=2), ax,label='alpha=2,bta=2')
+    scatterSub(x, Beta_binomial_distribution(alpha=2,bta=2), ax,label='alpha=2,bta=2')
+    plotSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
+    scatterSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
+    
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
+     
+def testLogarithmic_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Logarithmic_distribution')
+    N=10
+    x = np.arange(N)
+    plotSub(x, Logarithmic_distribution(N=N), ax,label='p=0.33')
+    scatterSub(x, Logarithmic_distribution(N=N), ax,label='p=0.33')
+    plotSub(x, Logarithmic_distribution(N=N,p=0.66), ax,label='p=0.66')
+    scatterSub(x, Logarithmic_distribution(N=N,p=0.66), ax,label='p=0.66')
+    plotSub(x, Logarithmic_distribution(N=N,p=0.99), ax,label='p=0.99')
+    scatterSub(x, Logarithmic_distribution(N=N,p=0.99), ax,label='p=0.99')    
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
+     
      
      
      
@@ -296,6 +325,15 @@ def testExponential_distribution(i):
     plotSub(x, Exponential_distribution(x,lam=1.5), ax,label='lam=1.5')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
     
+def testBoltzmann_distribution(i):
+    x = np.linspace(0, 20.0, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Boltzmann_distribution')
+    plotSub(x, Boltzmann_distribution(x), ax,label='a=1')
+    plotSub(x, Boltzmann_distribution(x,a=2), ax,label='a=2')
+    plotSub(x, Boltzmann_distribution(x,a=5), ax,label='a=5')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
+    
 def plotAllDistributions():
     ds = []
     ds.append(testDiscrete_uniform_distribution)    #Discrete distribution
@@ -304,6 +342,8 @@ def plotAllDistributions():
     ds.append(testGeometric_distribution)
     ds.append(testHypergeometric_distribution)
     ds.append(testZipfsLaw)
+    ds.append(testBeta_binomial_distribution)
+    ds.append(testLogarithmic_distribution)
     
     ds.append(testUniform_distribution) #Continuous distribution
     ds.append(testNormalDistribution)
@@ -321,13 +361,14 @@ def plotAllDistributions():
     ds.append(testBeta_distribution)
     ds.append(testChi_distribution)
     ds.append(testErlang_distribution)
+    ds.append(testBoltzmann_distribution)
     
     for i,f in enumerate(ds):
         f(i)
 
 def main():
-    #plotAllDistributions()
-    #testExponential_distribution(99)
+    plotAllDistributions()
+    #testLogarithmic_distribution(99)
     pass
 
 if __name__ == '__main__':

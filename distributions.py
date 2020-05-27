@@ -47,6 +47,30 @@ def ZipfsLaw(N=10, s=1):#https://en.wikipedia.org/wiki/Zipf%27s_law
     
     return list(map(ZipfLaw, [i+1 for i in range(N)]))
 
+def Beta_binomial_distribution(N=10,alpha=0.2,bta=0.25): #https://en.wikipedia.org/wiki/Beta-binomial_distribution
+    def Beta_binomial(k):
+        return combinat(N,k)*beta(k+alpha, N-k+bta)/beta(alpha,bta)
+    
+    return list(map(Beta_binomial, [i for i in range(N)]))
+
+def Logarithmic_distribution(N,p=0.33): #https://en.wikipedia.org/wiki/Logarithmic_distribution
+    def Logarithmic(k):
+        return -1*np.power(p,k)/(np.log(1-p)*k)
+    
+    return list(map(Logarithmic, [i+1 for i in range(N)]))
+
+def Conway_Maxwell_Poisson_distribution(): # https://en.wikipedia.org/wiki/Conway%E2%80%93Maxwell%E2%80%93Poisson_distribution
+    pass
+
+def Skellam_distribution(): #https://en.wikipedia.org/wiki/Skellam_distribution
+    pass
+
+def Yule_Simon_distribution(): #https://en.wikipedia.org/wiki/Yule%E2%80%93Simon_distribution
+    pass
+
+def Zeta_distribution(): #https://en.wikipedia.org/wiki/Zeta_distribution
+    pass
+
 #---------------------------Continuous distribution------------------------------#
 def Uniform_distribution(x,a=1,b=3): #https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
     return np.zeros(len(x)) + 1/(b-a)
@@ -126,6 +150,66 @@ def Exponential_distribution(x,lam=1): #https://en.wikipedia.org/wiki/Exponentia
 
 def Von_Mises_distribution(x): #https://en.wikipedia.org/wiki/Von_Mises_distribution
     pass
+
+def Boltzmann_distribution(x,a=1): #https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
+    return x**2*np.sqrt(2/np.pi)*np.exp(-0.5*x**2/a**2)/a**3
+
+def Logit_normal_distribution(): #https://en.wikipedia.org/wiki/Logit-normal_distribution
+    pass
+
+def Irwin_Hall_distribution(): #https://en.wikipedia.org/wiki/Irwin%E2%80%93Hall_distribution
+    pass
+
+def Bates_distribution(): #https://en.wikipedia.org/wiki/Bates_distribution
+    pass
+
+def Kumaraswamy_distribution(): #https://en.wikipedia.org/wiki/Kumaraswamy_distribution
+    pass
+
+def PERT_distribution(): #https://en.wikipedia.org/wiki/PERT_distribution
+    pass
+
+def Reciprocal_distribution(): #https://en.wikipedia.org/wiki/Reciprocal_distribution
+    pass
+
+def Triangular_distribution(): #https://en.wikipedia.org/wiki/Triangular_distribution
+    pass
+def Trapezoidal_distribution(): #https://en.wikipedia.org/wiki/Trapezoidal_distribution
+    pass
+def Truncated_normal_distribution(): #https://en.wikipedia.org/wiki/Truncated_normal_distribution
+    pass
+def Wigner_semicircle_distribution(): #https://en.wikipedia.org/wiki/Wigner_semicircle_distribution
+    pass
+def Dagum_distribution(): #https://en.wikipedia.org/wiki/Dagum_distribution
+    pass
+def F_distribution(): #https://en.wikipedia.org/wiki/F-distribution
+    pass
+def Folded_normal_distribution(): #https://en.wikipedia.org/wiki/Folded_normal_distribution
+    pass
+def Frechet_distribution(): #https://en.wikipedia.org/wiki/Fr%C3%A9chet_distribution
+    pass
+def Gompertz_distribution(): #https://en.wikipedia.org/wiki/Gompertz_distribution
+    pass
+def Half_normal_distribution(): #https://en.wikipedia.org/wiki/Half-normal_distribution
+    pass
+def Nakagami_distribution(): #https://en.wikipedia.org/wiki/Nakagami_distribution
+    pass
+def Levy_distribution(): #https://en.wikipedia.org/wiki/L%C3%A9vy_distribution
+    pass
+def Shifted_Gompertz_distribution(): #https://en.wikipedia.org/wiki/Shifted_Gompertz_distribution
+    pass
+def JohnsonSU_distribution(): #https://en.wikipedia.org/wiki/Johnson%27s_SU-distribution
+    pass
+def Landau_distribution(): #https://en.wikipedia.org/wiki/Landau_distribution
+    pass
+def Stable_distribution(): #https://en.wikipedia.org/wiki/Stable_distribution
+    pass
+def Skew_normal_distribution(): #https://en.wikipedia.org/wiki/Skew_normal_distribution
+    pass
+def Noncentral_t_distribution(): #https://en.wikipedia.org/wiki/Noncentral_t-distribution
+    pass
+
+
 
 #------------------------------------main----------------------------------#   
 def main():
