@@ -34,6 +34,12 @@ def Hypergeometric_distribution(N,K,n): #https://en.wikipedia.org/wiki/Hypergeom
     
     return list(map(Hypergeometric, [i for i in range(n)]))
 
+def Poisson_distribution(N=20, lam=1): #https://en.wikipedia.org/wiki/Poisson_distribution
+    def Poisson(k):
+        return np.power(lam,k)*np.power(np.e, -1*lam)/factorial(k)
+    
+    return list(map(Poisson, [i for i in range(N)]))
+
 def ZipfsLaw(N=10, s=1):#https://en.wikipedia.org/wiki/Zipf%27s_law
     v = np.sum(1/np.power([i+1 for i in range(N)],s))
     def ZipfLaw(k):
@@ -109,7 +115,18 @@ def Rayleigh_distribution(x,delta=0.5):#https://en.wikipedia.org/wiki/Rayleigh_d
 def Beta_distribution(x,alpha=0.5,ba=0.5): #https://en.wikipedia.org/wiki/Beta_distribution
     return np.power(x, alpha-1)*np.power(1-x, ba-1)/beta(alpha,ba)
  
- 
+def Chi_distribution(x,k=1): #https://en.wikipedia.org/wiki/Chi_distribution
+    return (2/ (np.power(2,k/2)* gamma(k/2)))*np.power(x,k-1)*np.exp(-0.5*x**2)
+
+def Erlang_distribution(x,k=1,u=2.0): #https://en.wikipedia.org/wiki/Erlang_distribution
+    return np.power(x,k-1)*np.exp(-1*x/u)/(np.power(u,k)*factorial(k-1))
+
+def Exponential_distribution(x,lam=1): #https://en.wikipedia.org/wiki/Exponential_distribution
+    return lam*np.exp(-1*lam*x)
+
+def Von_Mises_distribution(x): #https://en.wikipedia.org/wiki/Von_Mises_distribution
+    pass
+
 #------------------------------------main----------------------------------#   
 def main():
     pass 

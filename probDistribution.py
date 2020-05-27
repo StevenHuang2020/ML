@@ -53,6 +53,20 @@ def testBinomial_distribution(i):
     scatterSub(x, Binomial_distribution(N=N,p=0.6), ax,label='N=20,p=0.6')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
+def testPoisson_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Poisson_distribution')
+    N=20
+    x = np.arange(N)
+    plotSub(x, Poisson_distribution(N=N), ax,label='N=20,lam=1')
+    scatterSub(x, Poisson_distribution(N=N), ax,label='N=20,lam=1')
+    
+    plotSub(x, Poisson_distribution(N=N,lam=2), ax,label='N=20,lam=2')
+    scatterSub(x, Poisson_distribution(N=N,lam=2), ax,label='N=20,lam=2')
+    plotSub(x, Poisson_distribution(N=N,lam=4), ax,label='N=20,lam=4')
+    scatterSub(x, Poisson_distribution(N=N,lam=4), ax,label='N=20,lam=4')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
+    
 def testGeometric_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Geometric_distribution')
@@ -250,12 +264,43 @@ def testGumbel_distribution(i):
     plotSub(x, Gumbel_distribution(x,u=3.0,belta=4.0),ax,label='u=3.0,belta=4.0')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()    
 
-
+def testChi_distribution(i):
+    x = np.linspace(0, 4.0, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Chi_distribution')
+    plotSub(x, Chi_distribution(x), ax,label='k=1')
+    plotSub(x, Chi_distribution(x,k=2), ax,label='k=2')
+    plotSub(x, Chi_distribution(x,k=3),ax,label='k=3')
+    plotSub(x, Chi_distribution(x,k=4),ax,label='k=4')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
+    
+def testErlang_distribution(i):
+    x = np.linspace(0, 20.0, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Erlang_distribution')
+    plotSub(x, Erlang_distribution(x,k=1,u=2.0), ax,label='k=1,u=2.0')
+    plotSub(x, Erlang_distribution(x,k=2,u=2.0),ax,label='k=2,u=2.0')
+    plotSub(x, Erlang_distribution(x,k=3,u=2.0),ax,label='k=3,u=2.0')
+    plotSub(x, Erlang_distribution(x,k=5,u=1.0), ax,label='k=5,u=1.0')
+    plotSub(x, Erlang_distribution(x,k=7,u=0.5),ax,label='k=7,u=0.5')
+    plotSub(x, Erlang_distribution(x,k=9,u=1.0),ax,label='k=9,u=1.0')
+    plotSub(x, Erlang_distribution(x,k=1,u=1.0),ax,label='k=1,u=1.0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
+    
+def testExponential_distribution(i):
+    x = np.linspace(0, 4.0, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Exponential_distribution')
+    plotSub(x, Exponential_distribution(x), ax,label='lam=1')
+    plotSub(x, Exponential_distribution(x,lam=0.5), ax,label='lam=0.5')
+    plotSub(x, Exponential_distribution(x,lam=1.5), ax,label='lam=1.5')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
     
 def plotAllDistributions():
     ds = []
     ds.append(testDiscrete_uniform_distribution)    #Discrete distribution
     ds.append(testBinomial_distribution)
+    ds.append(testPoisson_distribution)
     ds.append(testGeometric_distribution)
     ds.append(testHypergeometric_distribution)
     ds.append(testZipfsLaw)
@@ -274,12 +319,15 @@ def plotAllDistributions():
     ds.append(testGamma_distribution)
     ds.append(testStudentT_distribution)
     ds.append(testBeta_distribution)
+    ds.append(testChi_distribution)
+    ds.append(testErlang_distribution)
     
     for i,f in enumerate(ds):
         f(i)
 
 def main():
-    plotAllDistributions()
+    #plotAllDistributions()
+    #testExponential_distribution(99)
     pass
 
 if __name__ == '__main__':
