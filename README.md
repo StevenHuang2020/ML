@@ -92,6 +92,11 @@ testLogisticMap(butterfly effect)
 <img src="images/dsitribution22.png" width="320" height="240">
 <img src="images/dsitribution23.png" width="320" height="240">
 <img src="images/dsitribution24.png" width="320" height="240">
+<img src="images/dsitribution25.png" width="320" height="240">
+<img src="images/dsitribution26.png" width="320" height="240">
+<img src="images/dsitribution27.png" width="320" height="240">
+<img src="images/dsitribution28.png" width="320" height="240">
+<img src="images/dsitribution29.png" width="320" height="240">
 <br/>
 
 ## ./Fractal/

@@ -2,14 +2,17 @@
 #calculate pi using random method. (Monte Carlo method)
 import numpy as np 
 import matplotlib.pyplot as plt
+import sympy #symbol integrate calculate
+from sympy import *
 
-def randomSeries(N):
-    """generate series number between 0~1"""
+def randomSeries(N):#generate series number between 0~1
     return np.random.rand(N)
    
-def distance(a, b):
-    """calculate the distance from point(a,b) to point(0,0)"""
+def distance(a, b):#euclidean distance from point(a,b) to point(0,0)"""
     return np.sqrt(a**2 + b**2)
+
+def circleFun(x):
+    return np.sqrt(1-x**2)
 
 def plotXY(x,y):
     plt.figure(num='Calculate Pi')
@@ -25,14 +28,10 @@ def plotXY(x,y):
 
     plt.show()
 
-def menteCarloMethod(plot=True):
-    N = 10000  #samples
+def menteCarloMethod(N=10000 ,plot=True):
     x = randomSeries(N)
     y = randomSeries(N)
 
-    #print(x)
-    #print(y)
-    #print(distance(x,y))
     res = np.where(distance(x,y) > 1, 0, 1)
     #print(res)
     
@@ -43,14 +42,10 @@ def menteCarloMethod(plot=True):
     if plot:
         plotXY(x,y) 
 
-def circleFun(x):
-    return np.sqrt(1-x**2)
-
-def IntegralCalculatePi():
+def IntegralCalculatePi(N=10000):
     """calculate area form x = 0 to 1
     divide 0~1 to N shares,  erevy part considered as a rectangle.
     """
-    N = 10000
     s = 0
     for i in range(N):
         x = 1/N
@@ -62,8 +57,7 @@ def IntegralCalculatePi():
     fillColor()
 
 def fillColor():
-    x = np.linspace(0,1, 100)
-    
+    x = np.linspace(0, 1, 100)
     y1 = np.zeros(len(x))
     y2 = circleFun(x)
 
@@ -76,9 +70,15 @@ def fillColor():
     #plt.grid(True)
     plt.show()
 
+def IntegralAccPi():
+    x = sympy.Symbol('x')
+    y = sqrt(1-x**2)
+    print(sympy.integrate(y, (x, 0, 1)))
+    
 def main():
-    #menteCarloMethod(False)
+    #menteCarloMethod(plot=False)
     IntegralCalculatePi()
+    #IntegralAccPi()
 
 if __name__ == "__main__":
     main()

@@ -59,17 +59,43 @@ def Logarithmic_distribution(N,p=0.33): #https://en.wikipedia.org/wiki/Logarithm
     
     return list(map(Logarithmic, [i+1 for i in range(N)]))
 
-def Conway_Maxwell_Poisson_distribution(): # https://en.wikipedia.org/wiki/Conway%E2%80%93Maxwell%E2%80%93Poisson_distribution
-    pass
+def Conway_Maxwell_Poisson_distribution(N=20,lam=1, v=1.5): # https://en.wikipedia.org/wiki/Conway%E2%80%93Maxwell%E2%80%93Poisson_distribution
+    def Conway(k):
+        return np.power(lam,k)/np.power(factorial(k),v)
+    
+    max = 10000
+    z = np.sum(list(map(Conway, [i for i in range(max)])))
+    res = list(map(Conway, [i for i in range(N)]))
+    return res/z
 
-def Skellam_distribution(): #https://en.wikipedia.org/wiki/Skellam_distribution
-    pass
+def Modified_Bessel_functions(x,alpha=0): #https://en.wikipedia.org/wiki/Bessel_function#Modified_Bessel_functions
+    def Bessel(k):
+        return 1/(factorial(k)*gamma(k+alpha+1))*np.power(0.2*x,2*k+alpha)
+    
+    max = 1000
+    return np.sum(list(map(Bessel, [i for i in range(max)])))
 
-def Yule_Simon_distribution(): #https://en.wikipedia.org/wiki/Yule%E2%80%93Simon_distribution
-    pass
+def Skellam_distribution(N=8,u1=1,u2=1): #https://en.wikipedia.org/wiki/Skellam_distribution
+    def Skellam(k):
+        return np.exp(-u1-u2)*np.power(u1/u2, 0.5*k)*Modified_Bessel_functions(x=2*np.sqrt(u1*u2),alpha=k)
+    return list(map(Skellam, [i-N/2 for i in range(N+1)]))
+    
+def Yule_Simon_distribution(N=20,ru=0.25): #https://en.wikipedia.org/wiki/Yule%E2%80%93Simon_distribution
+    def Yule_Simon(k):
+        return ru*beta(k,ru+1)
+    return list(map(Yule_Simon, [i+1 for i in range(N)]))
+    
+def Riemann_zeta_function(s=2):#https://en.wikipedia.org/wiki/Riemann_zeta_function
+    def Riemann_zeta(k):
+        return 1/np.power(k,s)
+    
+    max = 100
+    return np.sum(list(map(Riemann_zeta, [i+1 for i in range(max)])))
 
-def Zeta_distribution(): #https://en.wikipedia.org/wiki/Zeta_distribution
-    pass
+def Zeta_distribution(N=16,s=2): #https://en.wikipedia.org/wiki/Zeta_distribution
+    def Zeta(k):
+        return 1/(Riemann_zeta_function(s=s)*np.power(k,s))
+    return list(map(Zeta, [i+1 for i in range(N)]))
 
 #---------------------------Continuous distribution------------------------------#
 def Uniform_distribution(x,a=1,b=3): #https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
@@ -148,8 +174,8 @@ def Erlang_distribution(x,k=1,u=2.0): #https://en.wikipedia.org/wiki/Erlang_dist
 def Exponential_distribution(x,lam=1): #https://en.wikipedia.org/wiki/Exponential_distribution
     return lam*np.exp(-1*lam*x)
 
-def Von_Mises_distribution(x): #https://en.wikipedia.org/wiki/Von_Mises_distribution
-    pass
+def Von_Mises_distribution(x,u=0,k=0): #https://en.wikipedia.org/wiki/Von_Mises_distribution
+    return np.exp(k*np.cos(x-u))/(2*np.pi*Modified_Bessel_functions(alpha=0,x=k))
 
 def Boltzmann_distribution(x,a=1): #https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
     return x**2*np.sqrt(2/np.pi)*np.exp(-0.5*x**2/a**2)/a**3

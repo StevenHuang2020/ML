@@ -24,7 +24,8 @@ def scatterSub(x,y,ax=None,label='',marker='.'):
     ax.scatter(x,y,linewidths=.3, label=label, marker=marker)
     ax.legend()
  
-#'''''''''''''''''''''''''''''''''''start plot distribution''''''''''''''''''''''''''''''#
+#'''''''''''''''''''''''''''''''''''start plot distribution''''''''''''''''''''#
+#---------------------------Discrete distribution------------------------------#
 imgSavePath=r'.\images\\'
 
 def testDiscrete_uniform_distribution(i=0):
@@ -112,7 +113,9 @@ def testZipfsLaw(i):
     scatterSub(x, ZipfsLaw(N=10, s=4), ax,label='N=10, s=4')
     #N=20
     #plotSub(x, ZipfsLaw(N=20, s=2), ax,label='N=20, s=2')
-    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show() 
+    plt.yscale("log")
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show() 
         
 def testBeta_binomial_distribution(i):
     ax = plt.subplot(1,1,1)
@@ -127,7 +130,6 @@ def testBeta_binomial_distribution(i):
     scatterSub(x, Beta_binomial_distribution(alpha=2,bta=2), ax,label='alpha=2,bta=2')
     plotSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
     scatterSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
-    
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
 def testLogarithmic_distribution(i):
@@ -143,10 +145,72 @@ def testLogarithmic_distribution(i):
     scatterSub(x, Logarithmic_distribution(N=N,p=0.99), ax,label='p=0.99')    
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
+def testConway_Maxwell_Poisson_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Conway_Maxwell_Poisson_distribution')
+    N=20
+    x = np.arange(N)
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N), ax,label='lam=1, v=1.5')
+    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N), ax,label='lam=1, v=1.5')
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=3, v=1.1), ax,label='lam=3, v=1.1')
+    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=3, v=1.1), ax,label='lam=3, v=1.1')
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=5, v=0.7), ax,label='lam=5, v=0.7')
+    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=5, v=0.7), ax,label='lam=5, v=0.7')    
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
+def testSkellam_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Skellam_distribution')
+    N=16
+    x = np.arange(N+1)-N/2
+    plotSub(x, Skellam_distribution(N=N), ax,label='u1=1,u2=1')
+    scatterSub(x, Skellam_distribution(N=N), ax,label='u1=1,u2=1')
+    plotSub(x, Skellam_distribution(N=N,u1=2,u2=2), ax,label='u1=2,u2=2')
+    scatterSub(x, Skellam_distribution(N=N,u1=2,u2=2), ax,label='u1=2,u2=2')
+    plotSub(x, Skellam_distribution(N=N,u1=3,u2=3), ax,label='u1=3,u2=3')
+    scatterSub(x, Skellam_distribution(N=N,u1=3,u2=3), ax,label='u1=3,u2=3')
+    plotSub(x, Skellam_distribution(N=N,u1=1,u2=3), ax,label='u1=1,u2=3')
+    scatterSub(x, Skellam_distribution(N=N,u1=1,u2=3), ax,label='u1=1,u2=3') 
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
+
+def testYule_Simon_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Yule_Simon_distribution')
+    N=20
+    x = np.arange(N)+1
+    plotSub(x, Yule_Simon_distribution(N=N), ax,label='ru=0.25')
+    scatterSub(x, Yule_Simon_distribution(N=N), ax,label='ru=0.25')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=0.5), ax,label='ru=0.5')
+    scatterSub(x, Yule_Simon_distribution(N=N,ru=0.5), ax,label='ru=0.5')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=1), ax,label='ru=1')
+    scatterSub(x, Yule_Simon_distribution(N=N,ru=1), ax,label='ru=1') 
+    plotSub(x, Yule_Simon_distribution(N=N,ru=2), ax,label='ru=2')
+    scatterSub(x, Yule_Simon_distribution(N=N,ru=2), ax,label='ru=2') 
+    plotSub(x, Yule_Simon_distribution(N=N,ru=4), ax,label='ru=4')
+    scatterSub(x, Yule_Simon_distribution(N=N,ru=4), ax,label='ru=4') 
+
+    plt.yscale("log")
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show()
      
-     
-     
+def testZeta_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Zeta_distribution')
+    N=16
+    x = np.arange(N)+1
+    plotSub(x, Zeta_distribution(N=N), ax,label='s=2')
+    scatterSub(x, Zeta_distribution(N=N), ax,label='s=2')
+    plotSub(x, Zeta_distribution(N=N,s=3), ax,label='s=3')
+    scatterSub(x, Zeta_distribution(N=N,s=3), ax,label='s=3')
+    plotSub(x, Zeta_distribution(N=N,s=4), ax,label='s=4')
+    scatterSub(x, Zeta_distribution(N=N,s=4), ax,label='s=4')
+    plotSub(x, Zeta_distribution(N=N,s=5), ax,label='s=5')
+    scatterSub(x, Zeta_distribution(N=N,s=5), ax,label='s=5') 
+    plt.yscale("log")
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    plt.show()
+    
+#---------------------------Continuous distribution------------------------------#     
 def testUniform_distribution(i):
     x = np.linspace(1.0, 3.0, 50)
     ax = plt.subplot(1,1,1)
@@ -333,6 +397,22 @@ def testBoltzmann_distribution(i):
     plotSub(x, Boltzmann_distribution(x,a=2), ax,label='a=2')
     plotSub(x, Boltzmann_distribution(x,a=5), ax,label='a=5')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()   
+
+def testVon_Mises_distribution(i):
+    x = np.linspace(-np.pi, np.pi, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Von_Mises_distribution')
+    plotSub(x, Von_Mises_distribution(x), ax,label='u=0,k=0')
+    plotSub(x, Von_Mises_distribution(x,u=0,k=0.5), ax,label='u=0,k=0.5')
+    plotSub(x, Von_Mises_distribution(x,u=0,k=1), ax,label='u=0,k=1')
+    plotSub(x, Von_Mises_distribution(x,u=0,k=2), ax,label='u=0,k=2')
+    plotSub(x, Von_Mises_distribution(x,u=0,k=4), ax,label='u=0,k=4')
+    #plotSub(x, Von_Mises_distribution(x,u=1,k=8), ax,label='u=1,k=8')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(np.pi ))
+    ax.xaxis.set_minor_locator(plt.MultipleLocator(np.pi / 2))
+    ax.xaxis.set_major_formatter(plt.FuncFormatter(plt.FormatStrFormatter('%d $\pi$')))
+    plt.show()   
     
 def plotAllDistributions():
     ds = []
@@ -344,6 +424,10 @@ def plotAllDistributions():
     ds.append(testZipfsLaw)
     ds.append(testBeta_binomial_distribution)
     ds.append(testLogarithmic_distribution)
+    ds.append(testConway_Maxwell_Poisson_distribution)
+    ds.append(testSkellam_distribution)
+    ds.append(testYule_Simon_distribution)
+    ds.append(testZeta_distribution)
     
     ds.append(testUniform_distribution) #Continuous distribution
     ds.append(testNormalDistribution)
@@ -362,13 +446,14 @@ def plotAllDistributions():
     ds.append(testChi_distribution)
     ds.append(testErlang_distribution)
     ds.append(testBoltzmann_distribution)
+    ds.append(testVon_Mises_distribution)
     
     for i,f in enumerate(ds):
         f(i)
 
 def main():
     plotAllDistributions()
-    #testLogarithmic_distribution(99)
+    #testVon_Mises_distribution(99)
     pass
 
 if __name__ == '__main__':
