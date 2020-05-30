@@ -2,21 +2,16 @@
 #permutation and combination
 import numpy as np
 from itertools import combinations, permutations
+from scipy.special import perm,comb
 
 def permut(N, m): #A{N,m}
-    return len(list(permutations(range(N),m)))
+    #return len(list(permutations(range(N),m)))
+    return perm(N,m)
 
-    # l = len(array)
-    # p = list(permutations(range(l)))
-    # #p = np.array()
-    # # print('p=',p)
-    # # print(array[p,:])
-    # print('A_[{},{}]={}'.format(l, N, array[p, :]))
-    
 def combinat(N, m):
-    return len(list(combinations(range(N),m)))
-    #return combinations(range(N),m)
-
+    #return len(list(combinations(range(N),m)))
+    return comb(N,m)
+ 
 def main():    
     print('A_{4,3}=',list(permutations(range(4),3)))
     print('C_{4,3}=',list(combinations(range(4),3)))

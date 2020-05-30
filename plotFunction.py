@@ -369,15 +369,15 @@ def plotLogEntropy():
    
 def plot_gamma():
     ax = plt.subplot(1,1,1)
-    x = np.linspace(-3.5,5, 1000)   
+    x = np.linspace(-10,7, 1000)   
     ax.set_title('gamma Function')
     plotSub(x, gamma(x), ax,label='gamma(x)')
     
-    k = np.arange(1, 7)
+    k = np.arange(1, 8)
     scatterSub(k, factorial(k-1),ax, label='(x-1)!, x = 1, 2, ...', marker='*')
     
-    plt.xlim(-3.5, 5.5)
-    plt.ylim(-10, 25)
+    plt.xlim(-7.5, 8.5)
+    plt.ylim(-40, 160)
     plt.grid()
     plt.xlabel('x')
     plt.legend(loc='lower right')
@@ -453,7 +453,7 @@ def main():
     #plotActivationOneFun()
     #plotEquationSlove()
     #plotLogEntropy()
-    #plot_gamma()
+    plot_gamma()
     pass
 
 if __name__ == '__main__':

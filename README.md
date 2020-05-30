@@ -97,6 +97,28 @@ testLogisticMap(butterfly effect)
 <img src="images/dsitribution27.png" width="320" height="240">
 <img src="images/dsitribution28.png" width="320" height="240">
 <img src="images/dsitribution29.png" width="320" height="240">
+
+<img src="images/dsitribution30.png" width="320" height="240">
+<img src="images/dsitribution31.png" width="320" height="240">
+<img src="images/dsitribution32.png" width="320" height="240">
+<img src="images/dsitribution33.png" width="320" height="240">
+<img src="images/dsitribution34.png" width="320" height="240">
+<img src="images/dsitribution35.png" width="320" height="240">
+<img src="images/dsitribution36.png" width="320" height="240">
+<img src="images/dsitribution37.png" width="320" height="240">
+<img src="images/dsitribution38.png" width="320" height="240">
+<img src="images/dsitribution39.png" width="320" height="240">
+<img src="images/dsitribution40.png" width="320" height="240">
+<img src="images/dsitribution41.png" width="320" height="240">
+<img src="images/dsitribution42.png" width="320" height="240">
+<img src="images/dsitribution43.png" width="320" height="240">
+<img src="images/dsitribution44.png" width="320" height="240">
+<img src="images/dsitribution45.png" width="320" height="240">
+<img src="images/dsitribution46.png" width="320" height="240">
+<img src="images/dsitribution47.png" width="320" height="240">
+<img src="images/dsitribution48.png" width="320" height="240">
+<img src="images/dsitribution49.png" width="320" height="240">
+<img src="images/dsitribution50.png" width="320" height="240">
 <br/>
 
 ## ./Fractal/

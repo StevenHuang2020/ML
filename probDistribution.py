@@ -13,8 +13,8 @@ def plot(x,y):
     plt.plot(x,y)
     plt.show()
 
-def plotSub(x,y,ax=None, aspect=False, label=''):
-    ax.plot(x,y,label=label)
+def plotSub(x,y,ax=None, aspect=False, label='',linestyle='solid',marker=''):
+    ax.plot(x,y,label=label,marker=marker,linestyle=linestyle)
     #ax.title.set_text(name)
     if aspect:
         ax.set_aspect(1)
@@ -86,13 +86,22 @@ def testGeometric_distribution(i):
 def testHypergeometric_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Hypergeometric_distribution')
-    N=25
-    K=10
-    n=5
+
+    n = 100
     x = np.arange(n)
-    plotSub(x, Hypergeometric_distribution(N,K,n), ax,label='N=25,K=10,n=5')
-    scatterSub(x, Hypergeometric_distribution(N,K,n), ax,label='N=25,K=10,n=5')
+    plotSub(x, Hypergeometric_distribution(N=500,K=50,n=n), ax,label='N=500,K=50,n=100')
+    scatterSub(x, Hypergeometric_distribution(N=500,K=50,n=n), ax,label='N=500,K=50,n=100')
     
+    n = 200
+    x = np.arange(n)
+    plotSub(x, Hypergeometric_distribution(N=500,K=60,n=n), ax,label='N=500,K=60,n=200')
+    scatterSub(x, Hypergeometric_distribution(N=500,K=60,n=n), ax,label='N=500,K=60,n=200')
+    
+    n = 300
+    x = np.arange(n)
+    plotSub(x, Hypergeometric_distribution(N=500,K=70,n=n), ax,label='N=500,K=70,n=300')
+    scatterSub(x, Hypergeometric_distribution(N=500,K=70,n=n), ax,label='N=500,K=70,n=300')
+    plt.xlim(0, 65)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
 
 def testZipfsLaw(i):
@@ -120,16 +129,19 @@ def testZipfsLaw(i):
 def testBeta_binomial_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Beta_binomial_distribution')
-    N=10
+    N=20
     x = np.arange(N)
-    plotSub(x, Beta_binomial_distribution(), ax,label='alpha=0.2,bta=0.25')
-    scatterSub(x, Beta_binomial_distribution(), ax,label='alpha=0.2,bta=0.25')
-    plotSub(x, Beta_binomial_distribution(alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
-    scatterSub(x, Beta_binomial_distribution(alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
-    plotSub(x, Beta_binomial_distribution(alpha=2,bta=2), ax,label='alpha=2,bta=2')
-    scatterSub(x, Beta_binomial_distribution(alpha=2,bta=2), ax,label='alpha=2,bta=2')
-    plotSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
-    scatterSub(x, Beta_binomial_distribution(alpha=600,bta=400), ax,label='alpha=600,bta=400')
+    plotSub(x, Beta_binomial_distribution(N=N), ax,label='alpha=0.2,bta=0.25')
+    scatterSub(x, Beta_binomial_distribution(N=N), ax,label='alpha=0.2,bta=0.25')
+    
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
+    scatterSub(x, Beta_binomial_distribution(N=N,alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
+    
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=2,bta=2), ax,label='alpha=2,bta=2')
+    scatterSub(x, Beta_binomial_distribution(N=N,alpha=2,bta=2), ax,label='alpha=2,bta=2')
+    
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=600,bta=400), ax,label='alpha=600,bta=400')
+    scatterSub(x, Beta_binomial_distribution(N=N,alpha=600,bta=400), ax,label='alpha=600,bta=400')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
 def testLogarithmic_distribution(i):
@@ -222,14 +234,14 @@ def testUniform_distribution(i):
     
 def testNormalDistribution(i):
     x = np.linspace(-5.0, 5.0, 100)
-    #y = NormalDistribution_pdf(x)
+    #y = NormalDistribution(x)
     #plot(x,y)
     
     ax = plt.subplot(1,1,1)
     plt.title('Normal Distribution')
-    plotSub(x, NormalDistribution_pdf(x), ax,label='Normal')
-    plotSub(x, NormalDistribution_pdf(x,u=-1,delta=0.5), ax,label='u=-1,delta=0.5')
-    plotSub(x, NormalDistribution_pdf(x,u=1,delta=2), ax,label='u=1,delta=2')
+    plotSub(x, NormalDistribution(x), ax,label='u=0,delta=1')
+    plotSub(x, NormalDistribution(x,u=-1,delta=0.5), ax,label='u=-1,delta=0.5')
+    plotSub(x, NormalDistribution(x,u=1,delta=2), ax,label='u=1,delta=2')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
     
 def testCauchy(i):
@@ -239,7 +251,7 @@ def testCauchy(i):
     #plotSub(x, Cauchy_pdf(x), ax,label='Cauchy')
     plotSub(x, Cauchy_pdf(x,x0=0,scaler=0.75), ax,label='x0=0,scaler=1')
     plotSub(x, Cauchy_pdf(x,x0=0,scaler=1), ax,label='x0=0,scaler=1')
-    #plotSub(x, NormalDistribution_pdf(x), ax,label='Normal')
+    #plotSub(x, NormalDistribution(x), ax,label='Normal')
     plotSub(x, Cauchy_pdf(x,x0=0,scaler=2), ax,label='x0=0,scaler=2')
     plotSub(x, Cauchy_pdf(x,x0=-2,scaler=1), ax,label='x0=-2,scaler=1')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
@@ -414,6 +426,307 @@ def testVon_Mises_distribution(i):
     ax.xaxis.set_major_formatter(plt.FuncFormatter(plt.FormatStrFormatter('%d $\pi$')))
     plt.show()   
     
+def testLogit_normal_distribution(i):
+    x = np.linspace(0, 1.0, 100)  
+    ax = plt.subplot(1,1,1)
+    plt.title('Logit_normal_distribution')
+    plotSub(x, Logit_normal_distribution(x), ax,label='deta=0.2,u=0')
+    plotSub(x, Logit_normal_distribution(x,deta=0.3,u=0), ax,label='deta=0.3,u=0')
+    plotSub(x, Logit_normal_distribution(x,deta=0.5,u=0), ax,label='deta=0.5,u=0')
+    plotSub(x, Logit_normal_distribution(x,deta=1.0,u=0), ax,label='deta=1.0,u=0')
+    plotSub(x, Logit_normal_distribution(x,deta=1.5,u=0), ax,label='deta=1.5,u=0')
+    plotSub(x, Logit_normal_distribution(x,deta=3.0,u=0), ax,label='deta=3.0,u=0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testIrwin_Hall_distribution(i):
+    total=100
+    ax = plt.subplot(1,1,1)
+    plt.title('Irwin_Hall_distribution')
+    n=1
+    x = np.linspace(0, n, total)
+    plotSub(x, Irwin_Hall_distribution(x), ax,label='n=1')
+    n=2
+    x = np.linspace(0, n, total)
+    
+    #print('x=',x)
+    #print('res=',Irwin_Hall_distribution(x,n=2))
+    plotSub(x, Irwin_Hall_distribution(x,n=2), ax,label='n=2')
+    n=4
+    x = np.linspace(0, n, total)
+    plotSub(x, Irwin_Hall_distribution(x,n=4), ax,label='n=4')
+    n=8
+    x = np.linspace(0, n, total)
+    plotSub(x, Irwin_Hall_distribution(x,n=8), ax,label='n=8')
+    n=16
+    x = np.linspace(0, n, total)
+    plotSub(x, Irwin_Hall_distribution(x,n=16), ax,label='n=16')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+
+def testBates_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Bates_distribution')
+    x = np.linspace(0, 1, 100)
+    
+    plotSub(x, Bates_distribution(x), ax,label='n=1')
+    plotSub(x, Bates_distribution(x,n=2), ax,label='n=2')
+    plotSub(x, Bates_distribution(x,n=3), ax,label='n=3')
+    plotSub(x, Bates_distribution(x,n=10), ax,label='n=10')
+    plotSub(x, Bates_distribution(x,n=20), ax,label='n=20')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testKumaraswamy_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Kumaraswamy_distribution')
+    x = np.linspace(0, 1, 100)
+    
+    plotSub(x, Kumaraswamy_distribution(x), ax,label='a=0.5,b=0.5')
+    plotSub(x, Kumaraswamy_distribution(x,a=5.0,b=1.0), ax,label='a=5.0,b=1.0')
+    plotSub(x, Kumaraswamy_distribution(x,a=1.0,b=3.0), ax,label='a=1.0,b=3.0')
+    plotSub(x, Kumaraswamy_distribution(x,a=2.0,b=2.0), ax,label='a=2.0,b=2.0')
+    plotSub(x, Kumaraswamy_distribution(x,a=2.0,b=5.0), ax,label='a=2.0,b=5.0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testPERT_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('PERT_distribution')
+    
+    a=0
+    b=10
+    c=100
+    x = np.linspace(a, c, 100)
+    
+    plotSub(x, PERT_distribution(x), ax,label='a=0,b=10,c=100')
+    plotSub(x, PERT_distribution(x,a=0,b=50,c=100), ax,label='a=0,b=50,c=100')
+    plotSub(x, PERT_distribution(x,a=0,b=70,c=100), ax,label='a=0,b=70,c=100')
+    plotSub(x, PERT_distribution(x,a=0,b=90,c=100), ax,label='a=0,b=90,c=100')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testReciprocal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Reciprocal_distribution')
+    a=1
+    b=4
+    x = np.linspace(a, b, 100)    
+    plotSub(x, Reciprocal_distribution(x,a=a,b=b), ax,label='a=1,b=4')
+    a=2
+    b=6
+    x = np.linspace(a, b, 100)
+    plotSub(x, Reciprocal_distribution(x,a=a,b=b), ax,label='a=2,b=6')
+    a=1
+    b=5
+    x = np.linspace(a, b, 100)
+    plotSub(x, Reciprocal_distribution(x,a=a,b=b), ax,label='a=1,b=5')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testTriangular_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Triangular_distribution')
+    x = np.linspace(0, 5, 100)
+    plotSub(x, Triangular_distribution(x), ax,label='a=1,c=3,b=4')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testTrapezoidal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Trapezoidal_distribution')
+    a=-3
+    d=0
+    x = np.linspace(a, d, 100)
+    plotSub(x, Trapezoidal_distribution(x,a=a,b=-2,c=-1,d=d), ax,label='a=-3,b=-2,c=-1,d=0')
+    a=1
+    d=5
+    x = np.linspace(a, d, 100)
+    plotSub(x, Trapezoidal_distribution(x,a=a,b=2,c=4.5,d=d), ax,label='a=1,b=2,c=4.5,d=5')
+    a=-2
+    d=2
+    x = np.linspace(a, d, 100)
+    plotSub(x, Trapezoidal_distribution(x,a=-2,b=0,c=1,d=2), ax,label='a=-2,b=0,c=1,d=2')
+    
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testWigner_semicircle_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Wigner_semicircle_distribution')
+    r = 0.25
+    x = np.linspace(-r, r, 100)
+    plotSub(x, Wigner_semicircle_distribution(x,r=r), ax,label='r=0.25')
+    r = 0.5
+    x = np.linspace(-r, r, 100)
+    plotSub(x, Wigner_semicircle_distribution(x,r=r), ax,label='r=0.5')
+    r = 1.0
+    x = np.linspace(-r, r, 100)
+    plotSub(x, Wigner_semicircle_distribution(x,r=r), ax,label='r=1.0')
+    r = 2.0
+    x = np.linspace(-r, r, 100)
+    plotSub(x, Wigner_semicircle_distribution(x,r=r), ax,label='r=2.0')
+    r = 3.0
+    x = np.linspace(-r, r, 100)
+    plotSub(x, Wigner_semicircle_distribution(x,r=r), ax,label='r=3.0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testF_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('F_distribution')
+    x = np.linspace(0, 5, 100)
+    plotSub(x, F_distribution(x), ax,label='d1=1,d2=1')
+    plotSub(x, F_distribution(x,d1=2,d2=1), ax,label='d1=2,d2=1')
+    plotSub(x, F_distribution(x,d1=5,d2=2), ax,label='d1=5,d2=1')
+    plotSub(x, F_distribution(x,d1=10,d2=1), ax,label='d1=10,d2=1')
+    plotSub(x, F_distribution(x,d1=20,d2=20), ax,label='d1=20,d2=20')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testLandau_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Landau_distribution')
+    y=[]
+    x = np.linspace(-5, 15, 200)
+    for _ in x:
+        y.append(Landau_distribution(_,u=0,c=1))
+    
+    #print('y=',y)
+    plotSub(x, y, ax,label='u=0,c=1')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testJohnsonSU_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('JohnsonSU_distribution')
+    x = np.linspace(-6, 12, 100)
+    plotSub(x, JohnsonSU_distribution(x), ax,label='gama=-2,deta=2,xi=1.1,lam=1.5')
+    plotSub(x, JohnsonSU_distribution(x,gama=1,deta=2,xi=1.1,lam=1.5), ax,label='gama=1,deta=2,xi=1.1,lam=1.5')
+    plotSub(x, JohnsonSU_distribution(x,gama=3,deta=2,xi=1.1,lam=1.5), ax,label='gama=3,deta=2,xi=1.1,lam=1.5')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testShifted_Gompertz_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Shifted_Gompertz_distribution')
+    x = np.linspace(0, 15, 100)
+    plotSub(x, Shifted_Gompertz_distribution(x), ax,label='b=0.4,ni=0.01')
+    plotSub(x, Shifted_Gompertz_distribution(x,b=0.4,ni=0.10), ax,label='b=0.4,ni=0.10')
+    plotSub(x, Shifted_Gompertz_distribution(x,b=0.4,ni=0.50), ax,label='b=0.4,ni=0.50')
+    plotSub(x, Shifted_Gompertz_distribution(x,b=0.4,ni=1.00), ax,label='b=0.4,ni=1.00')
+    plotSub(x, Shifted_Gompertz_distribution(x,b=0.4,ni=10.0), ax,label='b=0.4,ni=10.0')
+    plotSub(x, Shifted_Gompertz_distribution(x,b=0.8,ni=10.0), ax,label='b=0.8,ni=10.0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testLevy_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Levy_distribution')
+    x = np.linspace(0, 3, 100)
+    plotSub(x, Levy_distribution(x), ax,label='u=0,c=0.5')
+    plotSub(x, Levy_distribution(x,u=0,c=1), ax,label='u=0,c=1')
+    plotSub(x, Levy_distribution(x,u=1,c=1), ax,label='u=1,c=1')
+    plotSub(x, Levy_distribution(x,u=0,c=2), ax,label='u=0,c=2')
+    plotSub(x, Levy_distribution(x,u=0,c=4), ax,label='u=0,c=4')
+    plotSub(x, Levy_distribution(x,u=0,c=8), ax,label='u=0,c=8')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testNakagami_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Nakagami_distribution')
+    x = np.linspace(0, 3, 100)
+    plotSub(x, Nakagami_distribution(x), ax,label='m=0.5,w=1')
+    plotSub(x, Nakagami_distribution(x,m=1,w=1), ax,label='m=1,w=1')
+    plotSub(x, Nakagami_distribution(x,m=1,w=2), ax,label='m=1,w=2')
+    plotSub(x, Nakagami_distribution(x,m=1,w=3), ax,label='m=1,w=3')
+    plotSub(x, Nakagami_distribution(x,m=2,w=1), ax,label='m=2,w=1')
+    plotSub(x, Nakagami_distribution(x,m=2,w=2), ax,label='m=2,w=2')
+    plotSub(x, Nakagami_distribution(x,m=5,w=1), ax,label='m=5,w=1')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testGompertz_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Gompertz_distribution')
+    x = np.linspace(0, 5, 100)
+    plotSub(x, Gompertz_distribution(x), ax,label='eta=0.1,b=1')
+    plotSub(x, Gompertz_distribution(x,eta=2.0,b=1), ax,label='eta=2.0,b=1')
+    plotSub(x, Gompertz_distribution(x,eta=3.0,b=1), ax,label='eta=3.0,b=1')
+    plotSub(x, Gompertz_distribution(x,eta=1.0,b=2), ax,label='eta=1.0,b=2')
+    plotSub(x, Gompertz_distribution(x,eta=1.0,b=3), ax,label='eta=1.0,b=3')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testFrechet_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Frechet_distribution')
+    x = np.linspace(0, 4, 100)
+    plotSub(x, Frechet_distribution(x), ax,label='alpha=1,s=1,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=1,s=1,m=0), ax,label='alpha=1,s=1,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=2,s=1,m=0), ax,label='alpha=2,s=1,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=3,s=1,m=0), ax,label='alpha=3,s=1,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=1,s=2,m=0), ax,label='alpha=1,s=2,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=2,s=2,m=0), ax,label='alpha=2,s=2,m=0')
+    plotSub(x, Frechet_distribution(x,alpha=3,s=2,m=0), ax,label='alpha=3,s=2,m=0')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testFolded_normal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Folded_normal_distribution')
+    x = np.linspace(0, 5, 100)
+    plotSub(x, Folded_normal_distribution(x), ax,label='Folded normal distribution')
+    x = np.linspace(-3, 5, 100)
+    plotSub(x, NormalDistribution(x,delta=1,u=1), ax,label='Normal distribution')
+    
+    y = np.linspace(0, 0.55, 30)
+    x = np.zeros((len(y),))
+    plotSub(x, y, ax,label='',linestyle='dotted')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+
+def testHalf_normal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Half_normal_distribution')
+    x = np.linspace(0, 5, 100)
+    plotSub(x, Half_normal_distribution(x), ax,label='Half normal distribution')
+    plotSub(x, Folded_normal_distribution(x), ax,label='Folded normal distribution')
+    
+    x = np.linspace(-3, 5, 100)
+    plotSub(x, NormalDistribution(x,delta=1,u=0), ax,label='Normal distribution')
+    
+    y = np.linspace(0, 0.9, 30)
+    x = np.zeros((len(y),))
+    plotSub(x, y, ax,label='',linestyle='dotted')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+      
+def testTruncated_normal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Truncated_normal_distribution')
+    x = np.linspace(-10, 10, 100)
+    plotSub(x, Truncated_normal_distribution(x), ax,label='u=-8,deta=2')
+    plotSub(x, Truncated_normal_distribution(x,a=-10,b=10,u=0,deta=2), ax,label='u=0,deta=2')
+    plotSub(x, Truncated_normal_distribution(x,a=-10,b=10,u=9,deta=9), ax,label='u=9,deta=9')
+    plotSub(x, Truncated_normal_distribution(x,a=-10,b=10,u=0,deta=9), ax,label='u=0,deta=9')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testDagum_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Dagum_distribution')
+    x = np.linspace(0, 3, 100)
+    plotSub(x, Dagum_distribution(x), ax,label='b=1,p=1,a=0.5')
+    plotSub(x, Dagum_distribution(x,b=1,p=1,a=1), ax,label='b=1,p=1,a=1')
+    plotSub(x, Dagum_distribution(x,b=1,p=1,a=2), ax,label='b=1,p=1,a=2')
+    plotSub(x, Dagum_distribution(x,b=1,p=1,a=3), ax,label='b=1,p=1,a=3')
+    plotSub(x, Dagum_distribution(x,b=1,p=1,a=4), ax,label='b=1,p=1,a=4')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testStable_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Stable_distribution')
+    x = np.linspace(-1, 1, 100)
+    plotSub(x, Stable_distribution(x), ax,label='beta=0,c=1,alpha=0.5')
+    plotSub(x, Stable_distribution(x,beta=0.25,c=1,alpha=0.5), ax,label='beta=0.25,c=1,alpha=0.5')
+    plotSub(x, Stable_distribution(x,beta=0.50,c=1,alpha=0.5), ax,label='beta=0.50,c=1,alpha=0.5')
+    plotSub(x, Stable_distribution(x,beta=0.75,c=1,alpha=0.5), ax,label='beta=0.75,c=1,alpha=0.5')
+    plotSub(x, Stable_distribution(x,beta=1.0,c=1,alpha=0.5), ax,label='beta=1.0,c=1,alpha=0.5')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
+def testSkew_normal_distribution(i):
+    ax = plt.subplot(1,1,1)
+    plt.title('Skew_normal_distribution')
+    x = np.linspace(-2, 2, 100)
+    plotSub(x, Skew_normal_distribution(x), ax,label='alpha=-4')
+    plotSub(x, Skew_normal_distribution(x,alpha=-1), ax,label='alpha=-1')
+    plotSub(x, Skew_normal_distribution(x,alpha=0), ax,label='alpha=0')
+    plotSub(x, Skew_normal_distribution(x,alpha=1), ax,label='alpha=1')
+    plotSub(x, Skew_normal_distribution(x,alpha=4), ax,label='alpha=4')
+    plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
+    
 def plotAllDistributions():
     ds = []
     ds.append(testDiscrete_uniform_distribution)    #Discrete distribution
@@ -447,13 +760,35 @@ def plotAllDistributions():
     ds.append(testErlang_distribution)
     ds.append(testBoltzmann_distribution)
     ds.append(testVon_Mises_distribution)
+    ds.append(testLogit_normal_distribution)
+    ds.append(testIrwin_Hall_distribution)
+    ds.append(testBates_distribution)
+    ds.append(testKumaraswamy_distribution)
+    ds.append(testReciprocal_distribution)
+    ds.append(testTriangular_distribution)
+    ds.append(testTrapezoidal_distribution)
+    ds.append(testWigner_semicircle_distribution)
+    ds.append(testF_distribution)
+    ds.append(testLandau_distribution)
+    ds.append(testJohnsonSU_distribution)
+    ds.append(testShifted_Gompertz_distribution)
+    ds.append(testLevy_distribution)
+    ds.append(testNakagami_distribution)
+    ds.append(testGompertz_distribution)
+    ds.append(testFrechet_distribution)
+    #ds.append(testFolded_normal_distribution)
+    ds.append(testHalf_normal_distribution)
+    ds.append(testTruncated_normal_distribution)
+    ds.append(testDagum_distribution)
+    ds.append(testStable_distribution)
+    ds.append(testSkew_normal_distribution)
     
     for i,f in enumerate(ds):
         f(i)
 
 def main():
     plotAllDistributions()
-    #testVon_Mises_distribution(99)
+    #testBeta_binomial_distribution(99)
     pass
 
 if __name__ == '__main__':
