@@ -97,7 +97,6 @@ testLogisticMap(butterfly effect)
 <img src="images/dsitribution27.png" width="320" height="240">
 <img src="images/dsitribution28.png" width="320" height="240">
 <img src="images/dsitribution29.png" width="320" height="240">
-
 <img src="images/dsitribution30.png" width="320" height="240">
 <img src="images/dsitribution31.png" width="320" height="240">
 <img src="images/dsitribution32.png" width="320" height="240">
