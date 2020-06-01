@@ -204,11 +204,12 @@ def sgn(x,k):
 def Irwin_Hall_distribution(x,n=1): #https://en.wikipedia.org/wiki/Irwin%E2%80%93Hall_distribution
     def Irwin_Hall(x):
         def f(k):
-            return 1/(factorial(n-1))*np.power(-1,k)*combinat(n,k)*np.power(x-k,n-1)
-            #return 1/(factorial(2*(n-1)))*np.power(-1,k)*combinat(n,k)*np.power(x-k,n-1)*sgn(x,k)
+            return np.power(-1,k)*combinat(n,k)*np.power(x-k,n-1)
         #print('x_=',np.floor(x))
         NN = int(np.floor(x))
-        return np.sum(list(map(f, [i for i in range(NN)])))
+        res = np.array(list(map(f, [i for i in range(NN+1)])))
+        res = np.sum(res)*(1/factorial(n-1))
+        return res
     
     return list(map(Irwin_Hall, [i for i in x]))
     

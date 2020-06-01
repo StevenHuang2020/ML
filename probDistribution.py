@@ -788,7 +788,7 @@ def plotAllDistributions():
 
 def main():
     #plotAllDistributions()
-    testBeta_distribution(32)
+    testIrwin_Hall_distribution(31)
     pass
 
 if __name__ == '__main__':
