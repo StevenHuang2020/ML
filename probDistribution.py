@@ -344,11 +344,11 @@ def testBeta_distribution(i):
     x = np.linspace(0, 1, 100)  
     ax = plt.subplot(1,1,1)
     plt.title('Beta_distribution')
-    plotSub(x, Beta_distribution(x), ax,label='alpha=0.5,ba=0.5')
-    plotSub(x, Beta_distribution(x,alpha=5,ba=1), ax,label='alpha=5,ba=1')
-    plotSub(x, Beta_distribution(x,alpha=1,ba=3), ax,label='alpha=1,ba=3')
-    plotSub(x, Beta_distribution(x,alpha=2,ba=2), ax,label='alpha=2,ba=2')
-    plotSub(x, Beta_distribution(x,alpha=2,ba=5), ax,label='alpha=2,ba=5')
+    plotSub(x, Beta_distribution(x), ax,label='alpha=0.5,bta=0.5')
+    plotSub(x, Beta_distribution(x,alpha=5,bta=1), ax,label='alpha=5,bta=1')
+    plotSub(x, Beta_distribution(x,alpha=1,bta=3), ax,label='alpha=1,bta=3')
+    plotSub(x, Beta_distribution(x,alpha=2,bta=2), ax,label='alpha=2,bta=2')
+    plotSub(x, Beta_distribution(x,alpha=2,bta=5), ax,label='alpha=2,bta=5')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
     
 def testGeneralized_logistic_distribution(i):
@@ -787,8 +787,8 @@ def plotAllDistributions():
         f(i)
 
 def main():
-    plotAllDistributions()
-    #testBeta_binomial_distribution(99)
+    #plotAllDistributions()
+    testBeta_distribution(32)
     pass
 
 if __name__ == '__main__':

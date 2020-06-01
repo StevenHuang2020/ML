@@ -73,7 +73,7 @@ def Modified_Bessel_functions(x,alpha=0): #https://en.wikipedia.org/wiki/Bessel_
     def Bessel(k):
         return 1/(factorial(k)*gamma(k+alpha+1))*np.power(0.2*x,2*k+alpha)
     
-    max = 1000
+    max = 10000
     return np.sum(list(map(Bessel, [i for i in range(max)])))
 
 def Skellam_distribution(N=8,u1=1,u2=1): #https://en.wikipedia.org/wiki/Skellam_distribution
@@ -168,8 +168,9 @@ def Rayleigh_distribution(x,delta=0.5):#https://en.wikipedia.org/wiki/Rayleigh_d
         y[l[0]] = (x/delta**2)*np.exp(-1*x**2/(2*delta**2))
     return y
     
-def Beta_distribution(x,alpha=0.5,ba=0.5): #https://en.wikipedia.org/wiki/Beta_distribution
-    return np.power(x, alpha-1)*np.power(1-x, ba-1)/beta(alpha,ba)
+def Beta_distribution(x,alpha=0.5,bta=0.5): #https://en.wikipedia.org/wiki/Beta_distribution
+    z = gamma(alpha)*gamma(bta)/gamma(alpha+bta)
+    return np.power(x, alpha-1)*np.power(1-x, bta-1)/z
  
 def Chi_distribution(x,k=1): #https://en.wikipedia.org/wiki/Chi_distribution
     return (2/ (np.power(2,k/2)* gamma(k/2)))*np.power(x,k-1)*np.exp(-0.5*x**2)
