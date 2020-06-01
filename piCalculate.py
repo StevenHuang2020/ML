@@ -2,8 +2,7 @@
 #calculate pi using random method. (Monte Carlo method)
 import numpy as np 
 import matplotlib.pyplot as plt
-import sympy #symbol integrate calculate
-from sympy import *
+from scipy import integrate
 
 def randomSeries(N):#generate series number between 0~1
     return np.random.rand(N)
@@ -70,15 +69,14 @@ def fillColor():
     #plt.grid(True)
     plt.show()
 
-def IntegralAccPi():
-    x = sympy.Symbol('x')
-    y = sqrt(1-x**2)
-    print(sympy.integrate(y, (x, 0, 1)))
+def IntegralAccPi():    
+    s = integrate.quad(circleFun, 0, 1)[0]
+    print('s = ',s,'pi = ',4*s)
     
 def main():
     #menteCarloMethod(plot=False)
-    IntegralCalculatePi()
-    #IntegralAccPi()
+    #IntegralCalculatePi()
+    IntegralAccPi()
 
 if __name__ == "__main__":
     main()
