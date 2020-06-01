@@ -16,7 +16,7 @@ when N= 100 s =  0.7901042579447618 pi =  3.160417031779047 <br/>
 when N= 10000 s =  0.7854478694028293 pi =  3.141791477611317 <br/>
 when N= 1000000 s =  0.7853986631034552 pi =  3.1415946524138207 <br/>
 Accurate integration using scipy：<br/>
-s =  0.785398163397448 pi =  3.141592653589792
+s =  0.785398163397448 pi =  3.141592653589792<br/>
 2)coinDistrbution.py
 <br/>
 <img src="images/Coins_Distribution.png" width="320" height="240">
