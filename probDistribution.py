@@ -736,7 +736,7 @@ def testStable_distribution(i):
 def testSkew_normal_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Skew_normal_distribution')
-    x = np.linspace(-2, 2, 100)
+    x = np.linspace(-6, 6, 100)
     plotSub(x, Skew_normal_distribution(x), ax,label='alpha=-4')
     plotSub(x, Skew_normal_distribution(x,alpha=-1), ax,label='alpha=-1')
     plotSub(x, Skew_normal_distribution(x,alpha=0), ax,label='alpha=0')
@@ -805,7 +805,7 @@ def plotAllDistributions():
 
 def main():
     #plotAllDistributions()
-    testLandau_distribution(39)
+    testSkew_normal_distribution(50)
     pass
 
 if __name__ == '__main__':
