@@ -577,13 +577,30 @@ def testF_distribution(i):
 def testLandau_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Landau_distribution')
-    y=[]
+    
     x = np.linspace(-5, 15, 200)
+    
+    y=[]
     for _ in x:
         y.append(Landau_distribution(_,u=0,c=1))
     
     #print('y=',y)
     plotSub(x, y, ax,label='u=0,c=1')
+    
+    y=[]
+    for _ in x:
+        y.append(Landau_distribution(_,u=0,c=2))
+    plotSub(x, y, ax,label='u=0,c=2')
+    
+    y=[]
+    for _ in x:
+        y.append(Landau_distribution(_,u=5,c=2))
+    plotSub(x, y, ax,label='u=5,c=2')
+    
+    y = np.linspace(0, 0.6, 30)
+    x = np.zeros((len(y),))
+    plotSub(x, y, ax,label='',linestyle='dotted')
+    
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
     
 def testJohnsonSU_distribution(i):
@@ -788,7 +805,7 @@ def plotAllDistributions():
 
 def main():
     #plotAllDistributions()
-    testIrwin_Hall_distribution(31)
+    testLandau_distribution(39)
     pass
 
 if __name__ == '__main__':
