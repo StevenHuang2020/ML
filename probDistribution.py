@@ -29,13 +29,21 @@ def scatterSub(x,y,ax=None,label='',marker='.'):
 imgSavePath=r'.\images\\'
 
 def testDiscrete_uniform_distribution(i=0):
-    N = 5
-    x = np.arange(1,N)
+    N = 4
+    x = np.arange(0,N)
     ax = plt.subplot(1,1,1)
     plt.title('Discrete_uniform_distribution')
-    scatterSub(x, Discrete_uniform_distribution(x,N=N), ax,label='Discrete_uniform_distribution')
-    plt.xlim(0, 5)
-    plt.ylim(0, 0.3)
+    scatterSub(x, Discrete_uniform_distribution(x,N=N), ax,label='N=4')
+    
+    N = 6
+    x = np.arange(0,N)
+    scatterSub(x, Discrete_uniform_distribution(x,N=N), ax,label='N=6')
+    N = 8
+    x = np.arange(0,N)
+    scatterSub(x, Discrete_uniform_distribution(x,N=N), ax,label='N=8')
+    
+    #plt.xlim(0, 6)
+    plt.ylim(0, 0.35)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
 def testBinomial_distribution(i):
@@ -227,9 +235,15 @@ def testUniform_distribution(i):
     x = np.linspace(1.0, 3.0, 50)
     ax = plt.subplot(1,1,1)
     plt.title('Uniform_distribution')
-    plotSub(x, Uniform_distribution(x), ax,label='Uniform_distribution')
-    plt.xlim(0, 4)
-    plt.ylim(0.35, 0.6)
+    plotSub(x, Uniform_distribution(x), ax,label='a=1,b=3')
+    
+    x = np.linspace(2.0, 3.0, 50)
+    plotSub(x, Uniform_distribution(x,a=2,b=3), ax,label='a=2,b=3')
+    
+    x = np.linspace(1.0, 4.0, 50)
+    plotSub(x, Uniform_distribution(x,a=1,b=4), ax,label='a=1,b=4')
+    #plt.xlim(0, 4)
+    plt.ylim(0, 1.2)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
 def testNormalDistribution(i):
@@ -352,11 +366,12 @@ def testBeta_distribution(i):
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
     
 def testGeneralized_logistic_distribution(i):
-    x = np.linspace(-5.0, 5.0, 100)  
+    x = np.linspace(-25.0, 8.0, 200)  
     ax = plt.subplot(1,1,1)
     plt.title('Generalized_logistic_distribution')
     plotSub(x, Generalized_logistic_distribution(x), ax,label='alpha=1.0')
     plotSub(x, Generalized_logistic_distribution(x,alpha=0.5), ax,label='alpha=0.5')
+    plotSub(x, Generalized_logistic_distribution(x,alpha=0.2), ax,label='alpha=0.2')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
 
 def testGumbel_distribution(i):
@@ -521,8 +536,9 @@ def testReciprocal_distribution(i):
 def testTriangular_distribution(i):
     ax = plt.subplot(1,1,1)
     plt.title('Triangular_distribution')
-    x = np.linspace(0, 5, 100)
+    x = np.linspace(0, 7, 200)
     plotSub(x, Triangular_distribution(x), ax,label='a=1,c=3,b=4')
+    plotSub(x, Triangular_distribution(x,a=1,c=3,b=6), ax,label='a=1,c=3,b=6')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)),plt.show()
     
 def testTrapezoidal_distribution(i):
@@ -805,7 +821,7 @@ def plotAllDistributions():
 
 def main():
     #plotAllDistributions()
-    testSkew_normal_distribution(50)
+    testTriangular_distribution(35)
     pass
 
 if __name__ == '__main__':

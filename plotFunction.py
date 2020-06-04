@@ -4,6 +4,7 @@
 
 import numpy as np 
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from activationFunc import *
 import math
 from scipy.special import gamma,factorial,beta
@@ -96,8 +97,8 @@ def plotSub(x,y,ax=None, aspect=False, label=''):
         ax.set_aspect(1)
     ax.legend()
     
-def scatterSub(x,y,ax=None,label='',marker=','):
-    ax.scatter(x,y,linewidths=.3,color='r',label=label,marker=marker)
+def scatterSub(x,y,ax=None,label='',marker=',',c='r'):
+    ax.scatter(x,y,linewidths=.3,c=c,label=label,marker=marker)
     #ax.set_aspect(1)
 
 def scatter(x,y,ratio=True):
@@ -383,18 +384,49 @@ def plot_gamma():
     plt.legend(loc='lower right')
     plt.show()
 
+def yieldBetaFuc(start,stop,N):  
+    xvalues = np.linspace(start,stop,N)
+    yvalues = np.linspace(start,stop,N)
+    for u, x in enumerate(xvalues):
+        for v, y in enumerate(yvalues):
+            #print('x,y=',x,y,beta(x,y))
+            yield u,v,beta(x,y)
+
+def getBetaFucImg(start,stop,N):
+    M = np.zeros([N, N,3], int) # + 255
+    for v,u,z in yieldBetaFuc(start,stop,N): #map z(0~2) to 0~255 pixsel value
+        value =  int(z*256/.2)
+        #print('z=',v,u,z,value)
+        #M[v, u, :] = value
+        #M[v, u, 0] = value #r channel     
+        M[v, u, 1] = value #g channel
+        #M[v, u, 2] = value #b channel             
+    return M
+
+def plotBetaFuc2():
+    start=1
+    stop =3
+    N=1000
+    x = np.linspace(start,stop, N)  
+    plt.imshow(getBetaFucImg(start,stop,N),cmap='gray')
+    plt.show()
+    
 def plot_beta():
     ax = plt.subplot(1,1,1)
-    x = np.linspace(-3.5,5, 1000)   
+    x = np.linspace(-3,3, 100)  
+    print(x.shape)
+    x,y = np.meshgrid(x,x)
+    v = beta(x,y).flatten()
+    print(v.shape)
+    print(x.shape)
+    print(y.shape)
+    #return
     ax.set_title('beta Function')
-    plotSub(x, gamma(x), ax,label='beta(x)')
+    #plotSub(x, y, ax,label='beta(x)')
+    #scatterSub(x,beta(x,y),ax, label='beta', marker='.')
+    scatterSub(x,y,ax, c=v)
     
-    k = np.arange(1, 7)
-    scatterSub(k, factorial(k-1),ax, label='(x-1)!, x = 1, 2, ...', marker='*')
-    
-    plt.xlim(-3.5, 5.5)
-    plt.ylim(-10, 25)
-    plt.grid()
+    #plt.grid()
     plt.xlabel('x')
     plt.legend(loc='lower right')
     plt.show()
@@ -453,7 +485,9 @@ def main():
     #plotActivationOneFun()
     #plotEquationSlove()
     #plotLogEntropy()
-    plot_gamma()
+    #plot_gamma()
+    #plot_beta()
+    #plotBetaFuc2()
     pass
 
 if __name__ == '__main__':
