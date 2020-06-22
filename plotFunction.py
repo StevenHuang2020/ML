@@ -83,6 +83,42 @@ def randomSymbol(length): #-1,1,1,-1,1,-1...
     f = np.zeros(length)+np.where(np.random.random(length)>0.5,1.0,-1.0)
     return f
 
+def Divisorfunction(param): #https://en.wikipedia.org/wiki/Divisor_function#Definition
+    def getDivsorList(N):
+        for i in range(1,N+1):
+            #print('i=',i)
+            if N%i == 0:
+                yield i
+            
+    N = param[0]
+    p = param[1]
+    def powerF(x):
+        #print('x=',x,np.power(x,p))
+        return np.power(x,p)
+    
+    l = list(map(powerF, [i for i in getDivsorList(N)]))
+    return np.sum(l)
+
+    
+def EulerTotients(N=10):#https://en.wikipedia.org/wiki/Euler%27s_totient_function
+    def gcd(p,q): # Create the gcd of two positive integers.
+        while q != 0:
+            p, q = q, p%q
+        return p
+
+    def is_coprime(x, y):
+        return gcd(x, y) == 1
+
+    def Totients(x):
+        if x == 1:
+            return 1
+        n = [y for y in range(1,x) if is_coprime(x,y)]
+        #print('n=',n)
+        return len(n)
+
+    return Totients(N)
+
+#------------------start plot------------------------------
 def plot(x,y=None):
     if y:
         plt.plot(x,y)
@@ -92,12 +128,12 @@ def plot(x,y=None):
 
 def plotSub(x,y,ax=None, aspect=False, label=''):
     ax.plot(x,y,label=label)
-    #ax.title.set_text(name)
+    #ax.title.set_text(title)
     if aspect:
         ax.set_aspect(1)
     ax.legend()
     
-def scatterSub(x,y,ax=None,label='',marker=',',c='r'):
+def scatterSub(x,y,ax=None,label='',marker='.',c='r'):
     ax.scatter(x,y,linewidths=.3,c=c,label=label,marker=marker)
     #ax.set_aspect(1)
 
@@ -133,6 +169,13 @@ def testLogisticMap2():
     #ls2 = logisticMap(r=rValue,x0=0.20000000001,N=100)
     #plot(ls2)
 
+    #x = np.linspace(-1,1, 10000)
+    #scatter(x,circle(x))
+    #scatter(x,heart(x))
+    #Num=100
+    #scatter(np.arange(Num),logisticMap(r=.5,x0=0.4,N=Num),False)
+    #plot(logisticMap(r=.5,x0=0.4,N=30))
+    
     '''
     N=9
     for i in range(N):
@@ -431,49 +474,52 @@ def plot_beta():
     plt.legend(loc='lower right')
     plt.show()
 
-def main():
-    #return testLogisticMap2()
-    
-    #x = np.linspace(-1,1, 10000)
-    #scatter(x,circle(x))
-    #scatter(x,heart(x))
-    #Num=100
-    #scatter(np.arange(Num),logisticMap(r=.5,x0=0.4,N=Num),False)
-    #plot(logisticMap(r=.5,x0=0.4,N=30))
-
-    '''
+def plotHeart():
     row = 2
     col = 2
     ax = plt.subplot(row, col, 1)
     x = np.linspace(-5,5, 10)
-    plotSub(x,sigmoid(x), ax,name='sigmod')
+    plotSub(x,sigmoid(x), ax,label='sigmod')
 
     ax = plt.subplot(row, col, 2)
     x = np.linspace(-5,0, 10)
-    plotSub(x,exp(x), ax,name='exp')
+    plotSub(x,exp(x), ax,label='exp')
 
     ax = plt.subplot(row, col, 3)
     x = np.linspace(-1,1, 1000)
-    scatterSub(x,circle(x), ax,name='circle')
+    scatterSub(x,circle(x), ax,label='circle')
 
     ax = plt.subplot(row, col, 4)
-    scatterSub(x,heart(x), ax,name='heart')
+    scatterSub(x,heart(x), ax,label='heart')
     plt.show()
-    '''
-
-    '''
-    x = np.linspace(0,1.5, 100)
+    
+def plotDivisorfunction(N=200):
     ax = plt.subplot(1,1,1)
-    #plotSub(x,sawtoothWave(x),ax,label='sawWave')
-    plotSub(x, powerX(x), ax,label='X^x')
-    plotSub(x, derivative(powerX, x), ax, label='X^x\'', aspect=False)
-    '''
+    ax.set_title('Divisor function')
     
-    #x = np.linspace(0,2, 100)
-    #plotSub(x, powerX(x), ax,label='powerX')
-    #plotSub(x, derivative(powerX, x), ax, label='powerX\'', aspect=False)
-    #plt.show()
+    x = np.arange(1,N)
+    y = list(map(Divisorfunction, [(i,0) for i in x]))
+    plotSub(x, y, ax,label='N=250,p=0')
     
+    y1 = list(map(Divisorfunction, [(i,1) for i in x]))
+    plotSub(x, y1, ax,label='N=250,p=1')
+    
+    #y2 = list(map(Divisorfunction, [(i,2) for i in x]))
+    #plotSub(x, y2, ax,label='N=250,p=2')
+    plt.show()
+    
+def plotEulerTotients():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Euler Totients')
+    N=500
+    x = np.arange(1,N)
+    y = list(map(EulerTotients, [i for i in x]))
+    #print('y=',y)
+    scatterSub(x,y,ax,label='totients')
+    plt.show()
+    
+def main():
+    #return testLogisticMap2()    
     #plotAllFuc()
     #plotPowerX()
     #plotSoftmax()
@@ -488,6 +534,9 @@ def main():
     #plot_gamma()
     #plot_beta()
     #plotBetaFuc2()
+    #plotDivisorfunction()
+    #plotHeart()
+    plotEulerTotients()
     pass
 
 if __name__ == '__main__':

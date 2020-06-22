@@ -51,15 +51,12 @@ def testBinomial_distribution(i):
     plt.title('Binomial_distribution')
     N = 15
     x = np.arange(N)
-    plotSub(x, Binomial_distribution(N=N,p=0.2), ax,label='N=15,p=0.2')
-    scatterSub(x, Binomial_distribution(N=N,p=0.2), ax,label='N=15,p=0.2')
+    plotSub(x, Binomial_distribution(N=N,p=0.2), ax, marker='.',label='N=15,p=0.2')
+    plotSub(x, Binomial_distribution(N=N,p=0.6), ax,marker='.',label='N=15,p=0.6')
     
-    plotSub(x, Binomial_distribution(N=N,p=0.6), ax,label='N=15,p=0.6')
-    scatterSub(x, Binomial_distribution(N=N,p=0.6), ax,label='N=15,p=0.6')
     N = 20
     x = np.arange(N)
-    plotSub(x, Binomial_distribution(N=N,p=0.6), ax,label='N=20,p=0.6')
-    scatterSub(x, Binomial_distribution(N=N,p=0.6), ax,label='N=20,p=0.6')
+    plotSub(x, Binomial_distribution(N=N,p=0.6), ax,marker='.',label='N=20,p=0.6')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
 def testPoisson_distribution(i):
@@ -67,13 +64,13 @@ def testPoisson_distribution(i):
     plt.title('Poisson_distribution')
     N=20
     x = np.arange(N)
-    plotSub(x, Poisson_distribution(N=N), ax,label='N=20,lam=1')
-    scatterSub(x, Poisson_distribution(N=N), ax,label='N=20,lam=1')
+    plotSub(x, Poisson_distribution(N=N), ax,marker='.',label='N=20,lam=1')
+    #scatterSub(x, Poisson_distribution(N=N), ax,label='N=20,lam=1')
     
-    plotSub(x, Poisson_distribution(N=N,lam=2), ax,label='N=20,lam=2')
-    scatterSub(x, Poisson_distribution(N=N,lam=2), ax,label='N=20,lam=2')
-    plotSub(x, Poisson_distribution(N=N,lam=4), ax,label='N=20,lam=4')
-    scatterSub(x, Poisson_distribution(N=N,lam=4), ax,label='N=20,lam=4')
+    plotSub(x, Poisson_distribution(N=N,lam=2), ax,marker='.',label='N=20,lam=2')
+    #scatterSub(x, Poisson_distribution(N=N,lam=2), ax,label='N=20,lam=2')
+    plotSub(x, Poisson_distribution(N=N,lam=4), ax,marker='.',label='N=20,lam=4')
+    #scatterSub(x, Poisson_distribution(N=N,lam=4), ax,label='N=20,lam=4')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
     
 def testGeometric_distribution(i):
@@ -81,14 +78,9 @@ def testGeometric_distribution(i):
     plt.title('Geometric_distribution')
     N = 15 
     x = np.arange(N)
-    plotSub(x, Geometric_distribution(N=N,p=0.2), ax,label='N=20,p=0.2')
-    scatterSub(x, Geometric_distribution(N=N,p=0.2), ax,label='N=20,p=0.2')
-    
-    plotSub(x, Geometric_distribution(N=N,p=0.5), ax,label='N=20,p=0.6')
-    scatterSub(x, Geometric_distribution(N=N,p=0.5), ax,label='N=20,p=0.6')
-    
-    plotSub(x, Geometric_distribution(N=N,p=0.8), ax,label='N=25,p=0.6')
-    scatterSub(x, Geometric_distribution(N=N,p=0.8), ax,label='N=25,p=0.6')
+    plotSub(x, Geometric_distribution(N=N,p=0.2), ax,marker='.',label='N=20,p=0.2')
+    plotSub(x, Geometric_distribution(N=N,p=0.5), ax,marker='.',label='N=20,p=0.6')
+    plotSub(x, Geometric_distribution(N=N,p=0.8), ax,marker='.',label='N=25,p=0.6')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
    
 def testHypergeometric_distribution(i):
@@ -97,18 +89,16 @@ def testHypergeometric_distribution(i):
 
     n = 100
     x = np.arange(n)
-    plotSub(x, Hypergeometric_distribution(N=500,K=50,n=n), ax,label='N=500,K=50,n=100')
-    scatterSub(x, Hypergeometric_distribution(N=500,K=50,n=n), ax,label='N=500,K=50,n=100')
-    
+    plotSub(x, Hypergeometric_distribution(N=500,K=50,n=n), ax,marker='.',label='N=500,K=50,n=100')
+        
     n = 200
     x = np.arange(n)
-    plotSub(x, Hypergeometric_distribution(N=500,K=60,n=n), ax,label='N=500,K=60,n=200')
-    scatterSub(x, Hypergeometric_distribution(N=500,K=60,n=n), ax,label='N=500,K=60,n=200')
-    
+    plotSub(x, Hypergeometric_distribution(N=500,K=60,n=n), ax,marker='.',label='N=500,K=60,n=200')
+       
     n = 300
     x = np.arange(n)
-    plotSub(x, Hypergeometric_distribution(N=500,K=70,n=n), ax,label='N=500,K=70,n=300')
-    scatterSub(x, Hypergeometric_distribution(N=500,K=70,n=n), ax,label='N=500,K=70,n=300')
+    plotSub(x, Hypergeometric_distribution(N=500,K=70,n=n), ax,marker='.',label='N=500,K=70,n=300')
+    
     plt.xlim(0, 65)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
 
@@ -117,17 +107,10 @@ def testZipfsLaw(i):
     plt.title('ZipfsLaw')
     N=10
     x = np.arange(N)
-    plotSub(x, ZipfsLaw(), ax,label='N=10, s=1')
-    scatterSub(x, ZipfsLaw(), ax,label='N=10, s=1')
-    
-    plotSub(x, ZipfsLaw(N=10, s=2), ax,label='N=10, s=2')
-    scatterSub(x, ZipfsLaw(N=10, s=2), ax,label='N=10, s=2')
-    
-    plotSub(x, ZipfsLaw(N=10, s=3), ax,label='N=10, s=3')
-    scatterSub(x, ZipfsLaw(N=10, s=3), ax,label='N=10, s=3')
-    
-    plotSub(x, ZipfsLaw(N=10, s=4), ax,label='N=10, s=4')
-    scatterSub(x, ZipfsLaw(N=10, s=4), ax,label='N=10, s=4')
+    plotSub(x, ZipfsLaw(), ax,marker='.',label='N=10, s=1')    
+    plotSub(x, ZipfsLaw(N=10, s=2), ax,marker='.',label='N=10, s=2')
+    plotSub(x, ZipfsLaw(N=10, s=3), ax,marker='.',label='N=10, s=3')    
+    plotSub(x, ZipfsLaw(N=10, s=4), ax,marker='.',label='N=10, s=4')
     #N=20
     #plotSub(x, ZipfsLaw(N=20, s=2), ax,label='N=20, s=2')
     plt.yscale("log")
@@ -139,17 +122,10 @@ def testBeta_binomial_distribution(i):
     plt.title('Beta_binomial_distribution')
     N=20
     x = np.arange(N)
-    plotSub(x, Beta_binomial_distribution(N=N), ax,label='alpha=0.2,bta=0.25')
-    scatterSub(x, Beta_binomial_distribution(N=N), ax,label='alpha=0.2,bta=0.25')
-    
-    plotSub(x, Beta_binomial_distribution(N=N,alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
-    scatterSub(x, Beta_binomial_distribution(N=N,alpha=0.7,bta=2), ax,label='alpha=0.7,bta=2')
-    
-    plotSub(x, Beta_binomial_distribution(N=N,alpha=2,bta=2), ax,label='alpha=2,bta=2')
-    scatterSub(x, Beta_binomial_distribution(N=N,alpha=2,bta=2), ax,label='alpha=2,bta=2')
-    
-    plotSub(x, Beta_binomial_distribution(N=N,alpha=600,bta=400), ax,label='alpha=600,bta=400')
-    scatterSub(x, Beta_binomial_distribution(N=N,alpha=600,bta=400), ax,label='alpha=600,bta=400')
+    plotSub(x, Beta_binomial_distribution(N=N), ax,marker='.',label='alpha=0.2,bta=0.25')
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=0.7,bta=2), ax,marker='.',label='alpha=0.7,bta=2')
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=2,bta=2), ax,marker='.',label='alpha=2,bta=2')    
+    plotSub(x, Beta_binomial_distribution(N=N,alpha=600,bta=400), ax,marker='.',label='alpha=600,bta=400')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
 def testLogarithmic_distribution(i):
@@ -157,12 +133,9 @@ def testLogarithmic_distribution(i):
     plt.title('Logarithmic_distribution')
     N=10
     x = np.arange(N)
-    plotSub(x, Logarithmic_distribution(N=N), ax,label='p=0.33')
-    scatterSub(x, Logarithmic_distribution(N=N), ax,label='p=0.33')
-    plotSub(x, Logarithmic_distribution(N=N,p=0.66), ax,label='p=0.66')
-    scatterSub(x, Logarithmic_distribution(N=N,p=0.66), ax,label='p=0.66')
-    plotSub(x, Logarithmic_distribution(N=N,p=0.99), ax,label='p=0.99')
-    scatterSub(x, Logarithmic_distribution(N=N,p=0.99), ax,label='p=0.99')    
+    plotSub(x, Logarithmic_distribution(N=N), ax,marker='.',label='p=0.33')
+    plotSub(x, Logarithmic_distribution(N=N,p=0.66), ax,marker='.',label='p=0.66')
+    plotSub(x, Logarithmic_distribution(N=N,p=0.99), ax,marker='.',label='p=0.99')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
 def testConway_Maxwell_Poisson_distribution(i):
@@ -170,12 +143,9 @@ def testConway_Maxwell_Poisson_distribution(i):
     plt.title('Conway_Maxwell_Poisson_distribution')
     N=20
     x = np.arange(N)
-    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N), ax,label='lam=1, v=1.5')
-    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N), ax,label='lam=1, v=1.5')
-    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=3, v=1.1), ax,label='lam=3, v=1.1')
-    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=3, v=1.1), ax,label='lam=3, v=1.1')
-    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=5, v=0.7), ax,label='lam=5, v=0.7')
-    scatterSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=5, v=0.7), ax,label='lam=5, v=0.7')    
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N), ax,marker='.',label='lam=1, v=1.5')
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=3, v=1.1), ax,marker='.',label='lam=3, v=1.1')
+    plotSub(x, Conway_Maxwell_Poisson_distribution(N=N,lam=5, v=0.7), ax,marker='.',label='lam=5, v=0.7')  
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
      
 def testSkellam_distribution(i):
@@ -183,14 +153,10 @@ def testSkellam_distribution(i):
     plt.title('Skellam_distribution')
     N=16
     x = np.arange(N+1)-N/2
-    plotSub(x, Skellam_distribution(N=N), ax,label='u1=1,u2=1')
-    scatterSub(x, Skellam_distribution(N=N), ax,label='u1=1,u2=1')
-    plotSub(x, Skellam_distribution(N=N,u1=2,u2=2), ax,label='u1=2,u2=2')
-    scatterSub(x, Skellam_distribution(N=N,u1=2,u2=2), ax,label='u1=2,u2=2')
-    plotSub(x, Skellam_distribution(N=N,u1=3,u2=3), ax,label='u1=3,u2=3')
-    scatterSub(x, Skellam_distribution(N=N,u1=3,u2=3), ax,label='u1=3,u2=3')
-    plotSub(x, Skellam_distribution(N=N,u1=1,u2=3), ax,label='u1=1,u2=3')
-    scatterSub(x, Skellam_distribution(N=N,u1=1,u2=3), ax,label='u1=1,u2=3') 
+    plotSub(x, Skellam_distribution(N=N), ax,marker='.',label='u1=1,u2=1')
+    plotSub(x, Skellam_distribution(N=N,u1=2,u2=2), ax,marker='.',label='u1=2,u2=2')
+    plotSub(x, Skellam_distribution(N=N,u1=3,u2=3), ax,marker='.',label='u1=3,u2=3')
+    plotSub(x, Skellam_distribution(N=N,u1=1,u2=3), ax,marker='.',label='u1=1,u2=3')
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show()
 
 def testYule_Simon_distribution(i):
@@ -198,16 +164,11 @@ def testYule_Simon_distribution(i):
     plt.title('Yule_Simon_distribution')
     N=20
     x = np.arange(N)+1
-    plotSub(x, Yule_Simon_distribution(N=N), ax,label='ru=0.25')
-    scatterSub(x, Yule_Simon_distribution(N=N), ax,label='ru=0.25')
-    plotSub(x, Yule_Simon_distribution(N=N,ru=0.5), ax,label='ru=0.5')
-    scatterSub(x, Yule_Simon_distribution(N=N,ru=0.5), ax,label='ru=0.5')
-    plotSub(x, Yule_Simon_distribution(N=N,ru=1), ax,label='ru=1')
-    scatterSub(x, Yule_Simon_distribution(N=N,ru=1), ax,label='ru=1') 
-    plotSub(x, Yule_Simon_distribution(N=N,ru=2), ax,label='ru=2')
-    scatterSub(x, Yule_Simon_distribution(N=N,ru=2), ax,label='ru=2') 
-    plotSub(x, Yule_Simon_distribution(N=N,ru=4), ax,label='ru=4')
-    scatterSub(x, Yule_Simon_distribution(N=N,ru=4), ax,label='ru=4') 
+    plotSub(x, Yule_Simon_distribution(N=N), ax,marker='.',label='ru=0.25')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=0.5), ax,marker='.',label='ru=0.5')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=1), ax,marker='.',label='ru=1')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=2), ax,marker='.',label='ru=2')
+    plotSub(x, Yule_Simon_distribution(N=N,ru=4), ax,marker='.',label='ru=4')
 
     plt.yscale("log")
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
@@ -218,39 +179,35 @@ def testZeta_distribution(i):
     plt.title('Zeta_distribution')
     N=16
     x = np.arange(N)+1
-    plotSub(x, Zeta_distribution(N=N), ax,label='s=2')
-    scatterSub(x, Zeta_distribution(N=N), ax,label='s=2')
-    plotSub(x, Zeta_distribution(N=N,s=3), ax,label='s=3')
-    scatterSub(x, Zeta_distribution(N=N,s=3), ax,label='s=3')
-    plotSub(x, Zeta_distribution(N=N,s=4), ax,label='s=4')
-    scatterSub(x, Zeta_distribution(N=N,s=4), ax,label='s=4')
-    plotSub(x, Zeta_distribution(N=N,s=5), ax,label='s=5')
-    scatterSub(x, Zeta_distribution(N=N,s=5), ax,label='s=5') 
+    plotSub(x, Zeta_distribution(N=N), ax,marker='.',label='s=2')
+    plotSub(x, Zeta_distribution(N=N,s=3), ax,marker='.',label='s=3')
+    plotSub(x, Zeta_distribution(N=N,s=4), ax,marker='.',label='s=4')
+    plotSub(x, Zeta_distribution(N=N,s=5), ax,marker='.',label='s=5')
+
     plt.yscale("log")
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i))
     plt.show()
     
 #---------------------------Continuous distribution------------------------------#     
 def testUniform_distribution(i):
-    x = np.linspace(1.0, 3.0, 50)
+    x = np.linspace(1.0, 3.0, 10)
     ax = plt.subplot(1,1,1)
     plt.title('Uniform_distribution')
     plotSub(x, Uniform_distribution(x), ax,label='a=1,b=3')
     
-    x = np.linspace(2.0, 3.0, 50)
+    x = np.linspace(2.0, 3.0, 10)
     plotSub(x, Uniform_distribution(x,a=2,b=3), ax,label='a=2,b=3')
     
-    x = np.linspace(1.0, 4.0, 50)
+    x = np.linspace(1.0, 4.0, 10)
     plotSub(x, Uniform_distribution(x,a=1,b=4), ax,label='a=1,b=4')
+    
     #plt.xlim(0, 4)
     plt.ylim(0, 1.2)
     plt.savefig(imgSavePath+'dsitribution{}.png'.format(i)), plt.show() 
     
 def testNormalDistribution(i):
-    x = np.linspace(-5.0, 5.0, 100)
-    #y = NormalDistribution(x)
-    #plot(x,y)
-    
+    x = np.linspace(-5.0, 5.0, 30)
+
     ax = plt.subplot(1,1,1)
     plt.title('Normal Distribution')
     plotSub(x, NormalDistribution(x), ax,label='u=0,delta=1')
@@ -821,7 +778,7 @@ def plotAllDistributions():
 
 def main():
     #plotAllDistributions()
-    testTriangular_distribution(35)
+    testUniform_distribution(99)
     pass
 
 if __name__ == '__main__':

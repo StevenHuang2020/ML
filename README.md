@@ -49,6 +49,8 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <img src="images/plotFuc8.png" width="320" height="240">
 <img src="images/plotFuc9.png" width="320" height="240">
 <img src="images/plotFuc10.png" width="320" height="240">
+<img src="images/plotFuc11.png" width="320" height="240">
+<img src="images/plotFuc12.png" width="320" height="240">
 <img src="images/activationFuc1.png" width="320" height="240">
 <img src="images/activationFuc2.png" width="320" height="240">
 <img src="images/activationFucAll.png" width="320" height="240">
