@@ -8,6 +8,7 @@ from matplotlib import cm
 from activationFunc import *
 import math
 from scipy.special import gamma,factorial,beta
+from scipy import integrate
 
 def derivative(f,x,h=0.0001): #one parameter fuction derivative
     return (f(x+h)-f(x))/h
@@ -117,6 +118,90 @@ def EulerTotients(N=10):#https://en.wikipedia.org/wiki/Euler%27s_totient_functio
         return len(n)
 
     return Totients(N)
+
+def PrimeNumbers(N=10): #https://en.wikipedia.org/wiki/Prime-counting_function
+    def isPrime(num):
+        if num>1:            
+            for n in range(2, num): 
+                if (num % n) == 0: 
+                    return False
+            return True
+        else:
+            return False
+                            
+    def getPrime():
+        for i in range(2,N+1):
+            if isPrime(i):
+                yield i
+            
+    l = [i for i in getPrime()]
+    print('l=',len(l),l)
+    return len(l)
+
+def Mobiusfunction(N=10): #https://en.wikipedia.org/wiki/M%C3%B6bius_function
+    def IsSquareFreeIntegers(x):
+        for n in range(2, int(np.sqrt(x)+1)): 
+            if (x % n**2) == 0: 
+                return False
+        return True
+        
+    def SquareFreeIntegers2():
+        squareFreeNumbers=[]
+        for val in range(1, N + 1):
+            if IsSquareFreeIntegers(val):
+                squareFreeNumbers.append(val)
+        return squareFreeNumbers
+            
+    def SquareFreeIntegers():        
+        bSqure=False
+        for val in range(1, N + 1): 
+            for n in range(2, int(np.sqrt(N)+1)): 
+                bSqure=False
+                if (val % n**2) == 0: 
+                    bSqure=True
+                    break
+            if not bSqure:
+                yield val
+                
+    def Mobius(x):
+        if IsSquareFreeIntegers(x):
+            nPrime = PrimeNumbers(x)
+            print('x,nPrime=',x,nPrime)
+            if nPrime % 2 ==0:
+                return 1
+            else:
+                return -1
+        else:
+            return 0
+        
+    #squareFreeNumbers = SquareFreeIntegers2() #[i for i in SquareFreeIntegers()]
+    #print('squareFreeNumbers=',len(squareFreeNumbers),squareFreeNumbers)
+    #l = list(map(Mobius, [i for i in range(N)]))
+    #print('l=',len(l),l)
+    return Mobius(N)
+     
+def LegendreFunction(x,n=0): #https://en.wikipedia.org/wiki/Legendre_function
+    if n == 0:
+        return 0.5*np.log((1+x)/(1-x))
+    elif n == 1:
+        return x*LegendreFunction(x,0) -1 #P1(x) = x
+    else:
+        return ((2*n-1)/n)*x*LegendreFunction(x,n-1) - ((n-1)/n)*LegendreFunction(x,n-2)
+    
+def ScorersFunctionGi(x): #https://en.wikipedia.org/wiki/Scorer%27s_function
+    def gi(t):
+        return (1/np.pi)*np.sin((1/3)*t**3 + x*t)
+    # return integrate.quad(gi, 0, 1)[0]
+    def hi(t):
+        return (1/np.pi)*np.exp((-1/3)*t**3 + x*t)
+    
+    # rGi = integrate.quad(gi, 0, np.inf,epsabs=1.49e-8, 
+    #                epsrel=1.49e-8, maxp1=50, limit=50)[0]
+    # rHi = integrate.quad(hi, 0, np.inf,epsabs=1.49e-8, 
+    #                epsrel=1.49e-8, maxp1=50, limit=50)[0]
+    # return rGi,rHi
+    return integrate.quad(gi, 0, np.inf)[0], integrate.quad(hi, 0, np.inf)[0]
+    
 
 #------------------start plot------------------------------
 def plot(x,y=None):
@@ -456,7 +541,7 @@ def plotBetaFuc2():
     
 def plot_beta():
     ax = plt.subplot(1,1,1)
-    x = np.linspace(-3,3, 100)  
+    x = np.linspace(-3,3, 200)  
     print(x.shape)
     x,y = np.meshgrid(x,x)
     v = beta(x,y).flatten()
@@ -518,6 +603,66 @@ def plotEulerTotients():
     scatterSub(x,y,ax,label='totients')
     plt.show()
     
+def plotPrimeNumbers():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Prime counter Function')
+    
+    N=60
+    x = np.arange(1,N)
+    y = list(map(PrimeNumbers, [i for i in x]))
+    scatterSub(x,y,ax,label='Prime counter')
+    
+    x = np.linspace(0,N, 100)
+    y = x/np.log(x)
+    plotSub(x, y, ax,label='x/ln(x)')
+    
+    ax.legend()
+    plt.show()
+    
+def plotMobiusfunction():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Mobius function')
+    
+    N=60
+    x = np.arange(1,N)
+    y = list(map(Mobiusfunction, [i for i in x]))
+    print(x)
+    print(y)
+    scatterSub(x,y,ax,label='Mobius')
+    plt.show()
+    
+def plotLegendreFunction():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Legendre Function')
+    
+    x = np.linspace(-1,1, 200)
+    plotSub(x, LegendreFunction(x), ax,label='Q0')
+    plotSub(x, LegendreFunction(x,n=1), ax,label='Q1')
+    plotSub(x, LegendreFunction(x,n=2), ax,label='Q2')
+    plotSub(x, LegendreFunction(x,n=3), ax,label='Q3')
+    plotSub(x, LegendreFunction(x,n=4), ax,label='Q4')
+    ax.legend()
+    plt.show()
+    
+def plotScorersFunction():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Scorers Function')
+    
+    x = np.linspace(-10,8, 50)
+    yGi=[]
+    yHi=[]
+    for _ in x:
+        gi,hi =ScorersFunctionGi(_)
+        yGi.append(gi)
+        yHi.append(hi)
+        
+    plotSub(x, yGi, ax,label='Gi')
+    plotSub(x, yHi, ax,label='Hi')
+    #plotSub(x, LegendreFunction(x,n=1), ax,label='Q1')
+    
+    ax.legend()
+    plt.show()
+    
 def main():
     #return testLogisticMap2()    
     #plotAllFuc()
@@ -536,7 +681,11 @@ def main():
     #plotBetaFuc2()
     #plotDivisorfunction()
     #plotHeart()
-    plotEulerTotients()
+    #plotEulerTotients()
+    #plotPrimeNumbers()
+    #plotMobiusfunction()
+    #plotLegendreFunction()
+    plotScorersFunction()
     pass
 
 if __name__ == '__main__':
