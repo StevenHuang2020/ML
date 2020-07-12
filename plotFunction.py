@@ -6,202 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from activationFunc import *
-import math
-from scipy.special import gamma,factorial,beta
-from scipy import integrate
-
-def derivative(f,x,h=0.0001): #one parameter fuction derivative
-    return (f(x+h)-f(x))/h
-
-def derivative2(f,x,h=0.0001): #Second Derivative
-    return (derivative(f,x+h,h) - derivative(f,x,h))/h
-
-def normalDistribution(x):
-    return 1/np.sqrt(2*np.pi) * np.exp(-0.5*x**2)
-    
-def softmaxFuc(x):
-    softmax = np.exp(x)/np.sum(np.exp(x))
-    #print(softmax)
-    #print(np.sum(softmax))
-    return softmax
-
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
-
-def log(x):
-    return np.log(x)
-
-def entropy(x):
-    return x*np.log(x)
-    
-def exp(x):
-    return np.exp(x)
-    
-def circle(x):
-    return np.sqrt(1-x**2)*randomSymbol(len(x))
-
-def heart(x): #heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = 1
-    a = np.sqrt(1-x**2)*randomSymbol(len(x)) + np.sqrt(abs(x))
-    return a*4/5 
-
-def sawtoothWave(x): # y = t-floor(t) or y = t%1
-    #return x%1
-    #return x%1 + x
-    #return x%1 + np.sin(x)*x
-    a = 10 #perid
-    return 2*(x/a - np.floor(0.5+x/a))
-
-def powerX(x):
-    #return np.power(x,x)
-    return powerAX(x,x)
-
-def powerAX(a,x):
-    return np.power(a,x)
-
-def logisticMap2(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
-    maps=[]
-    a = x0
-    while N>0:
-        #print(a,' ',end='')
-        maps.append(a)
-        a = r*a*(1-a)**3
-        N -= 1
-
-    return maps
-
-def logisticMap(r=1.5,x0=0.8,N=10): #x:= r*x(1-x)
-    maps=[]
-    a = x0
-    while N>0:
-        #print(a,' ',end='')
-        maps.append(a)
-        a = r*a*(1-a)
-        N -= 1
-
-    return maps
-
-def randomSymbol(length): #-1,1,1,-1,1,-1...
-    f = np.zeros(length)+np.where(np.random.random(length)>0.5,1.0,-1.0)
-    return f
-
-def Divisorfunction(param): #https://en.wikipedia.org/wiki/Divisor_function#Definition
-    def getDivsorList(N):
-        for i in range(1,N+1):
-            #print('i=',i)
-            if N%i == 0:
-                yield i
-            
-    N = param[0]
-    p = param[1]
-    def powerF(x):
-        #print('x=',x,np.power(x,p))
-        return np.power(x,p)
-    
-    l = list(map(powerF, [i for i in getDivsorList(N)]))
-    return np.sum(l)
-
-    
-def EulerTotients(N=10):#https://en.wikipedia.org/wiki/Euler%27s_totient_function
-    def gcd(p,q): # Create the gcd of two positive integers.
-        while q != 0:
-            p, q = q, p%q
-        return p
-
-    def is_coprime(x, y):
-        return gcd(x, y) == 1
-
-    def Totients(x):
-        if x == 1:
-            return 1
-        n = [y for y in range(1,x) if is_coprime(x,y)]
-        #print('n=',n)
-        return len(n)
-
-    return Totients(N)
-
-def PrimeNumbers(N=10): #https://en.wikipedia.org/wiki/Prime-counting_function
-    def isPrime(num):
-        if num>1:            
-            for n in range(2, num): 
-                if (num % n) == 0: 
-                    return False
-            return True
-        else:
-            return False
-                            
-    def getPrime():
-        for i in range(2,N+1):
-            if isPrime(i):
-                yield i
-            
-    l = [i for i in getPrime()]
-    print('l=',len(l),l)
-    return len(l)
-
-def Mobiusfunction(N=10): #https://en.wikipedia.org/wiki/M%C3%B6bius_function
-    def IsSquareFreeIntegers(x):
-        for n in range(2, int(np.sqrt(x)+1)): 
-            if (x % n**2) == 0: 
-                return False
-        return True
-        
-    def SquareFreeIntegers2():
-        squareFreeNumbers=[]
-        for val in range(1, N + 1):
-            if IsSquareFreeIntegers(val):
-                squareFreeNumbers.append(val)
-        return squareFreeNumbers
-            
-    def SquareFreeIntegers():        
-        bSqure=False
-        for val in range(1, N + 1): 
-            for n in range(2, int(np.sqrt(N)+1)): 
-                bSqure=False
-                if (val % n**2) == 0: 
-                    bSqure=True
-                    break
-            if not bSqure:
-                yield val
-                
-    def Mobius(x):
-        if IsSquareFreeIntegers(x):
-            nPrime = PrimeNumbers(x)
-            print('x,nPrime=',x,nPrime)
-            if nPrime % 2 ==0:
-                return 1
-            else:
-                return -1
-        else:
-            return 0
-        
-    #squareFreeNumbers = SquareFreeIntegers2() #[i for i in SquareFreeIntegers()]
-    #print('squareFreeNumbers=',len(squareFreeNumbers),squareFreeNumbers)
-    #l = list(map(Mobius, [i for i in range(N)]))
-    #print('l=',len(l),l)
-    return Mobius(N)
-     
-def LegendreFunction(x,n=0): #https://en.wikipedia.org/wiki/Legendre_function
-    if n == 0:
-        return 0.5*np.log((1+x)/(1-x))
-    elif n == 1:
-        return x*LegendreFunction(x,0) -1 #P1(x) = x
-    else:
-        return ((2*n-1)/n)*x*LegendreFunction(x,n-1) - ((n-1)/n)*LegendreFunction(x,n-2)
-    
-def ScorersFunctionGi(x): #https://en.wikipedia.org/wiki/Scorer%27s_function
-    def gi(t):
-        return (1/np.pi)*np.sin((1/3)*t**3 + x*t)
-    # return integrate.quad(gi, 0, 1)[0]
-    def hi(t):
-        return (1/np.pi)*np.exp((-1/3)*t**3 + x*t)
-    
-    # rGi = integrate.quad(gi, 0, np.inf,epsabs=1.49e-8, 
-    #                epsrel=1.49e-8, maxp1=50, limit=50)[0]
-    # rHi = integrate.quad(hi, 0, np.inf,epsabs=1.49e-8, 
-    #                epsrel=1.49e-8, maxp1=50, limit=50)[0]
-    # return rGi,rHi
-    return integrate.quad(gi, 0, np.inf)[0], integrate.quad(hi, 0, np.inf)[0]
-    
+from functions import *
 
 #------------------start plot------------------------------
 def plot(x,y=None):
@@ -486,16 +291,62 @@ def plotActivationFun():
     plt.legend(ncol=4,loc='upper left')    
     plt.show()
     
+def plotLogX():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(0,1, 50)   
+    ax.set_title('Log Function')
+    
+    plotSub(x, log(x), ax,label='log(x)')
+    plotSub(x, log(1-x), ax,label='log(1-x)')
+    plotSub(x, -1*log(1-x), ax,label='-log(1-x)')
+    
+    plt.legend()
+    plt.show()
+    
 def plotLogEntropy():
     ax = plt.subplot(1,1,1)
-    x = np.linspace(0,4, 50)   
+    x = np.linspace(-2,2, 50)   
     ax.set_title('LogEntropy Function')
     
-    plotSub(x, log(x), ax,label='log')
-    plotSub(x, entropy(x), ax,label='entropy')
+    #plotSub(x, log(x), ax,label='log')
+    #plotSub(x, normalDistribution(x), ax,label='normal')
+    p = normalDistribution(x)
+    plotSub(x, entropy(p), ax,label='entropy')
     plt.legend()
     plt.show()
    
+
+
+def plotKL_Divergences():
+    ax = plt.subplot(1,1,1)
+    x = np.linspace(-6,6, 100)   
+    ax.set_title('KL_Divergence')
+    
+    #plotSub(x, log(x), ax,label='log')
+    #plotSub(x, normalDistribution(x), ax,label='normal')
+    p = NormalDistribution(x)
+    q = NormalDistribution(x,u=1)
+    plotSub(x, p, ax,label='normal,u=0')
+    plotSub(x, q, ax,label='normal,u=1')
+    
+    print('kl_divergence=',KL_divergence(0))
+    y = list(map(KL_divergence, [i for i in x]))
+    #print('y=',y)
+    
+    ypq=[]
+    yqp=[]
+    for i in y:
+        ypq.append(i[0])
+        yqp.append(i[1])
+        
+    #print('yqp=',yqp)
+    plotSub(x, ypq, ax,label='kl_divergencePQ')
+    plotSub(x, yqp, ax,label='kl_divergenceQP')
+    plt.vlines(0, 0, 0.42,linestyles='dotted') #'solid', 'dashed', 'dashdot', 'dotted'
+    plt.hlines(0, -6, 6,linestyles='dotted')
+    plt.legend()
+    plt.show()
+    
 def plot_gamma():
     ax = plt.subplot(1,1,1)
     x = np.linspace(-10,7, 1000)   
@@ -662,6 +513,55 @@ def plotScorersFunction():
     
     ax.legend()
     plt.show()
+
+def plotLogarithmic_integral():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Logarithmic_integral Function')
+    
+    x1 = [] #np.linspace(0,1, 50)
+    y1=[]
+    #for _ in x1:
+        #y1.append(Logarithmic_integral(_))
+               
+    x2 = np.linspace(1,2, 50)
+    y2=[]
+    for _ in x2:
+        y2.append(Logarithmic_integral(_))
+        
+    x = np.concatenate((x1,x2),axis=0)
+    y = np.concatenate((y1,y2),axis=0)
+    plotSub(x, y, ax,label='Li')    
+    ax.legend()
+    plt.show()
+    
+def plotExponential_integral():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Exponential_integral Function')
+               
+    x = np.linspace(0,4, 50)
+    y=[]
+    for _ in x:
+        y.append(Exponential_integral(_))
+        
+    plotSub(x, y, ax,label='Exponential_integral ')
+    plt.show()
+    
+def plotTrigonometric_integral():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Trigonometric_integral Function')
+    
+    x = np.linspace(0,25, 200)
+    ySi=[]
+    yCi=[]
+    for _ in x:
+        si,ci =Trigonometric_integral(_)
+        ySi.append(si)
+        yCi.append(ci)
+        
+    plotSub(x, ySi, ax,label='Si')
+    plotSub(x, yCi, ax,label='Ci')
+    ax.legend()
+    plt.show()
     
 def main():
     #return testLogisticMap2()    
@@ -676,6 +576,7 @@ def main():
     #plotActivationOneFun()
     #plotEquationSlove()
     #plotLogEntropy()
+    #plotLogX()
     #plot_gamma()
     #plot_beta()
     #plotBetaFuc2()
@@ -685,7 +586,11 @@ def main():
     #plotPrimeNumbers()
     #plotMobiusfunction()
     #plotLegendreFunction()
-    plotScorersFunction()
+    #plotScorersFunction()
+    #plotLogarithmic_integral()
+    #plotExponential_integral()
+    #plotTrigonometric_integral()
+    plotKL_Divergences()
     pass
 
 if __name__ == '__main__':

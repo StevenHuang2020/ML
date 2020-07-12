@@ -16,7 +16,7 @@ from permutationAndCom import permut,combinat
 def Discrete_uniform_distribution(x,N=5):#https://en.wikipedia.org/wiki/Discrete_uniform_distribution
     return np.zeros(len(x)) + 1/N
 
-def Binomial_distribution(N,p): #https://en.wikipedia.org/wiki/Binomial_distribution
+def Binomial_distribution(N,p=1): #https://en.wikipedia.org/wiki/Binomial_distribution
     assert(N>=1 and 0<=p<=1)
     def Binomial(k):
         return combinat(N,k)*np.power(p,k)*np.power(1-p,N-k)
