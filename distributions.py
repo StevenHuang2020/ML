@@ -1,7 +1,6 @@
 #Python3 Steven
 #common proability distrubutions
 import numpy as np
-import matplotlib.pyplot as plt
 import math
 from scipy import integrate
 from scipy.special import gamma,beta,factorial

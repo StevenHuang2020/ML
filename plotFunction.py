@@ -7,32 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from activationFunc import *
 from functions import *
-
-#------------------start plot------------------------------
-def plot(x,y=None):
-    if y:
-        plt.plot(x,y)
-    else:
-        plt.plot(x)
-    plt.show()
-
-def plotSub(x,y,ax=None, aspect=False, label=''):
-    ax.plot(x,y,label=label)
-    #ax.title.set_text(title)
-    if aspect:
-        ax.set_aspect(1)
-    ax.legend()
-    
-def scatterSub(x,y,ax=None,label='',marker='.',c='r'):
-    ax.scatter(x,y,linewidths=.3,c=c,label=label,marker=marker)
-    #ax.set_aspect(1)
-
-def scatter(x,y,ratio=True):
-    plt.scatter(x,y)
-    if ratio:
-        ax = plt.gca()
-        ax.set_aspect(1)
-    plt.show()
+from plotCommon import *
 
 def testLogisticMap():
     rValue = 3.9

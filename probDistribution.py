@@ -7,23 +7,8 @@ import matplotlib.pyplot as plt
 # from scipy.special import gamma,beta,factorial
 # from permutationAndCom import permut,combinat
 from distributions import *
+from plotCommon import *
 
-#''''''''''''''''''''''''''''''''''''plot fuc''''''''''''''''''''''''''''''''''''''''''#
-def plot(x,y):
-    plt.plot(x,y)
-    plt.show()
-
-def plotSub(x,y,ax=None, aspect=False, label='',linestyle='solid',marker=''):
-    ax.plot(x,y,label=label,marker=marker,linestyle=linestyle)
-    #ax.title.set_text(name)
-    if aspect:
-        ax.set_aspect(1)
-    ax.legend()
-
-def scatterSub(x,y,ax=None,label='',marker='.'):
-    ax.scatter(x,y,linewidths=.3, label=label, marker=marker)
-    ax.legend()
- 
 #'''''''''''''''''''''''''''''''''''start plot distribution''''''''''''''''''''#
 #---------------------------Discrete distribution------------------------------#
 imgSavePath=r'.\images\\'

@@ -127,6 +127,19 @@ testLogisticMap(butterfly effect)
 <img src="images/dsitribution50.png" width="320" height="240">
 <br/>
 
+9)giniCoefficient.py
+<br/>
+<img src="images/Binomial_simulationIncome.png" width="320" height="240">
+<img src="images/Binomial_simulationGini.png" width="320" height="240">
+<img src="images/Poisson_simulationIncome.png" width="320" height="240">
+<img src="images/Poisson_simulationGini.png" width="320" height="240">
+<img src="images/Uniform_simulationIncome.png" width="320" height="240">
+<img src="images/Uniform_simulationGini.png" width="320" height="240">
+<img src="images/Exponential_simulationIncome.png" width="320" height="240">
+<img src="images/Exponential_simulationGini.png" width="320" height="240">
+<img src="images/Normal_simulationIncome.png" width="320" height="240">
+<img src="images/Normal_simulationGini.png" width="320" height="240">
+
 ## ./Fractal/
 1)matplotTree.py,matplotTree2.py
 <br/>
