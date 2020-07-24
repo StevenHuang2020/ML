@@ -98,8 +98,8 @@ def Zeta_distribution(N=16,s=2): #https://en.wikipedia.org/wiki/Zeta_distributio
     return list(map(Zeta, [i+1 for i in range(N)]))
 
 #---------------------------Continuous distribution------------------------------#
-def Uniform_distribution(x,a=1,b=3): #https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
-    return np.zeros(len(x)) + 1/(b-a)
+def Uniform_distribution(N,a=1,b=3): #https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
+    return np.zeros(N) + 1/(b-a)
 
 def Error_function(x): #https://en.wikipedia.org/wiki/Error_function
     def erf(t):

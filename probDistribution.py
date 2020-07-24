@@ -178,13 +178,13 @@ def testUniform_distribution(i):
     x = np.linspace(1.0, 3.0, 10)
     ax = plt.subplot(1,1,1)
     plt.title('Uniform_distribution')
-    plotSub(x, Uniform_distribution(x), ax,label='a=1,b=3')
+    plotSub(x, Uniform_distribution(len(x)), ax,label='a=1,b=3')
     
     x = np.linspace(2.0, 3.0, 10)
-    plotSub(x, Uniform_distribution(x,a=2,b=3), ax,label='a=2,b=3')
+    plotSub(x, Uniform_distribution(len(x),a=2,b=3), ax,label='a=2,b=3')
     
     x = np.linspace(1.0, 4.0, 10)
-    plotSub(x, Uniform_distribution(x,a=1,b=4), ax,label='a=1,b=4')
+    plotSub(x, Uniform_distribution(len(x),a=1,b=4), ax,label='a=1,b=4')
     
     #plt.xlim(0, 4)
     plt.ylim(0, 1.2)

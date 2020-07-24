@@ -22,6 +22,11 @@ def calDistribution(dis):
     slop,b = calLineSlopAndBias([0,cumDis[0]],[len(cumDis)-1,cumDis[len(cumDis)-1]])
     equalDis = [ slop*i+b for i in range(l)]
     
+    # print('dis=',dis)
+    # print('disOrdered=',disOrdered)
+    # print('cumDis=',cumDis)
+    # print('equalDis=',equalDis)
+    
     gini = (np.sum(equalDis)-np.sum(cumDis))/np.sum(equalDis)
     return dis,disOrdered,cumDis,equalDis,gini
 
@@ -31,7 +36,7 @@ def plotAll(dis,name=''):
     fmt = '{:24} | {:18}'
     print( fmt.format('Distribution:'+name,'Gini coefficient:' + str(round(gini,4))))
     
-    plotIncomeDistribution(name,dis,disOrdered)
+    #plotIncomeDistribution(name,dis,disOrdered)
     # plotLorenzCurve(cumDis,equalDis,gini)
     plotWhole(name,dis,disOrdered,cumDis,equalDis,gini)
    
@@ -57,7 +62,7 @@ def plotWhole(name,dis,disOrdered,cumDis,equalDis,gini):
     ax.set_title('Income Lorenz Curve,Gini='+str(round(gini,4)))
     ax.legend()
     
-    plt.subplots_adjust(left=0.05, bottom=0.07, right=0.97, top=0.90, wspace=None, hspace=None)
+    plt.subplots_adjust(left=0.07, bottom=0.07, right=0.97, top=0.90, wspace=None, hspace=None)
     plt.savefig(gSaveBasePath + name + '_simulationGini' + '.png')
     plt.show()
 
@@ -88,13 +93,12 @@ def plotLorenzCurve(cumDis,equalDis,gini): #https://en.wikipedia.org/wiki/Lorenz
     ax.legend()
     plt.show()
 
-    
-def main():
+def simulateDistribution():
     N=500
     start=0
     width=1
     dis = genUniform_distribution(N,start,width)
-    #dis = Uniform_distribution(range(N),0,1)
+    #dis = Uniform_distribution(N,0,1)
     #print(dis,'sum=',np.sum(dis))
     #plot(np.linspace(0,1,N), dis)
     #plot(range(N), dis)
@@ -119,6 +123,22 @@ def main():
     dis = genBernoulli_distribution(N)
     plotAll(dis,name='Bernoulli')
     
+def standardDistribution():
+    N=500
+    plotAll(Uniform_distribution(N,0,1), name='S_Uniform')
+    plotAll(Binomial_distribution(N, 0.8), name='S_Binomial')
+    plotAll(Poisson_distribution(N,0.2), name='S_Poisson')
+    plotAll(ZipfsLaw(N), name='S_ZipfsLaw')
+    plotAll(NormalDistribution(np.linspace(0, N, N), u=N//2,delta=10), name='S_Normal')
+    plotAll(Cauchy_pdf(np.linspace(0, N, N), x0=N//2, scaler=10), name='S_Cauchy')
+    plotAll(Gumbel_distribution(np.linspace(0, N, N), u=N//2, belta=10), name='S_Gumbel')
+    plotAll(Weibull_distribution(np.linspace(0, N, N),lamda=N//2,k=1.5), name='S_Weibull')
+    plotAll(Pareto_distribution(np.linspace(0, N, N),alpha=.5,Xm=2), name='S_Pareto')
+    plotAll(Logit_normal_distribution(np.linspace(0.001, 0.999, N), u=0,deta=1.5), name='S_Logit_normal')
+             
+def main():
+    #simulateDistribution()
+    standardDistribution()
     
 if __name__=='__main__':
     main()
