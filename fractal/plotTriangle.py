@@ -17,11 +17,13 @@ def DrawTriangleLineByPt(startPt,stopPt,slope):
         startPt = startPt + stopPt
         stopPt = startPt - stopPt
         startPt = startPt -stopPt
-        
-    x = np.linspace(startPt[0],stopPt[0],10)
-    b = startPt[1]-slope*startPt[0]
-    y = slope*x + b
-    plotXY(x,y)
+    if 1:
+        plt.plot([startPt[0],stopPt[0]],[startPt[1],stopPt[1]])
+    else:    
+        x = np.linspace(startPt[0],stopPt[0],10)
+        b = startPt[1]-slope*startPt[0]
+        y = slope*x + b
+        plotXY(x,y)
 
 def triangle(pt0, pt1,pt2,slopes):
     DrawTriangleLineByPt(pt0,pt1,slopes[0])
@@ -65,7 +67,7 @@ def triangleStart(startPt,lineLen,N):
 def main():
     startPt = np.array([0,0],dtype=np.float64)
     startLen=5
-    recurse = 8
+    recurse = 4#8
     triangleStart(startPt, startLen,recurse)
     plt.show()
     
