@@ -129,14 +129,6 @@ testLogisticMap(butterfly effect)
 
 9)giniCoefficient.py
 <br/>
-<img src="images/Binomial_simulationIncome.png" width="320" height="240">
-<img src="images/Binomial_simulationGini.png" width="320" height="240">
-<img src="images/Poisson_simulationIncome.png" width="320" height="240">
-<img src="images/Poisson_simulationGini.png" width="320" height="240">
-<img src="images/Uniform_simulationIncome.png" width="320" height="240">
-<img src="images/Uniform_simulationGini.png" width="320" height="240">
-<img src="images/Exponential_simulationIncome.png" width="320" height="240">
-<img src="images/Exponential_simulationGini.png" width="320" height="240">
 <img src="images/Normal_simulationIncome.png" width="320" height="240">
 <img src="images/Normal_simulationGini.png" width="320" height="240">
 
@@ -147,8 +139,6 @@ testLogisticMap(butterfly effect)
 <img src="images/m3.png" width="320" height="240">
 <img src="images/m4.png" width="320" height="240">
 <img src="images/m5.png" width="320" height="240">
-<img src="images/m6.png" width="320" height="240">
-<img src="images/m7.png" width="320" height="240">
 <img src="images/m8.png" width="320" height="240">
 
 10)simulation
@@ -175,14 +165,6 @@ testLogisticMap(butterfly effect)
 
 3)plotLogisticMap2.py
 <br/>
-<img src="images/logisticMap_iter_n2.png" width="320" height="240">
-<img src="images/logisticMap_iter_n3.png" width="320" height="240">
-<img src="images/logisticMap_Skips_n2.png" width="320" height="240">
-<img src="images/logisticMap_Skips_n3.png" width="320" height="240">
-<img src="images/logisticMap_n2.png" width="320" height="240">
-<img src="images/logisticMapE.png" width="320" height="240">
-<img src="images/logisticMap_n1.png" width="320" height="240">
-<img src="images/logisticMap_n3.png" width="320" height="240">
 <img src="images/logisticMap_n32.png" width="320" height="240">
 <img src="images/logisticMap2.png" width="320" height="240">
 <br/>
