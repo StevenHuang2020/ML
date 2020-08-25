@@ -157,6 +157,7 @@ testLogisticMap(butterfly effect)
 <img src="images/simulation0.png" width="320" height="240">
 <img src="images/art0.png" width="320" height="240">
 <img src="images/art1.png" width="320" height="240">
+<img src="images/art2.png" width="320" height="240">
 <img src="images/art3.png" width="320" height="240">
 <img src="images/art4.png" width="320" height="240">
 
