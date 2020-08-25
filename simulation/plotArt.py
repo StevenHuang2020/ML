@@ -19,7 +19,9 @@ def DrawPolygonByPt(pt1,pt2,pt3,pt4):
 
 def DrawCircleByPt(pt1,pt2,pt3,pt4):
     ax = plt.gca()
-    rect = patches.Circle([pt1,pt2,pt3,pt4],color=(random.random(), random.random(), random.random())) 
+    ptCenter = np.array([(pt1[0]+pt3[0])/2,(pt1[1]+pt3[1])/2])
+    r = abs(ptCenter[0]-pt1[0])
+    rect = patches.Circle(ptCenter,radius=r,color=(random.random(), random.random(), random.random())) 
     ax.add_patch(rect)
 
 def DrawRectangleByPt(startPt,stopPt):
@@ -123,6 +125,7 @@ def plotArt(startPt,stopPt,N,style):
 def plotRecursiveArt():
     H,W = 200,200
     for i in range(len(gStyles)):
+        plt.clf()
         plotArt(np.array([0,0]), np.array([W,H]), N=5, style=gStyles[i])
         plt.axis('square')
         plt.show()
