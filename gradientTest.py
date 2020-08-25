@@ -4,8 +4,9 @@
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+from plotCommon import *
 
-def difference_derivative(f,x,h): #one parameter fuction derivate
+def difference_derivative(f,x,h=0.00001): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
 
 def question_linearFuc(x):
@@ -64,8 +65,37 @@ def plotSeekPoint(seekList):
     ax.scatter(x, y, s=10, color='r', alpha=0.75) #plot seekpoint in the seeking process
     plt.show()
 
+def question_CurvePeakAndValley():
+    """seek x, findout all curve's peak and valleys, that is where the derivative equal to 0"""
+    def func(x):
+        #return x**4
+        #return  (x**3 + 3*x**2-6*x-8)/4
+        return x**5 + 2*x**4 + 3*x**3 + 8*x**2 + 10*x
+    
+    x = np.linspace(-1.25,-0.75, 100)
+    z0=[]
+    for i,xi in enumerate(x):
+        if i>=len(x)-1:
+            break
+        d1 = difference_derivative(func,x[i])
+        d2 = difference_derivative(func,x[i+1])
+        if d1*d2<=0:
+            print('x = ',x[i])
+            z0.append(x[i])
+        #print('d1,d2,* = ',d1,d2,d1*d2)
+            
+    ax = plt.subplot(1,1,1)
+    plotSub(x, func(x), ax, label='func')
+    for k in z0:
+        plt.vlines(k, np.min(func(x)), func(x[-1]),linestyles='dotted', color='r')
+    #plt.axis('square')
+    plt.legend()
+    plt.grid()
+    plt.show()
+    
 def main():
-    question_linearFucMin()
-
+    #question_linearFucMin()
+    question_CurvePeakAndValley()
+    
 if __name__ == '__main__':
     main()

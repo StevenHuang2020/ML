@@ -151,6 +151,11 @@ testLogisticMap(butterfly effect)
 <img src="images/m7.png" width="320" height="240">
 <img src="images/m8.png" width="320" height="240">
 
+10)simulation
+<br/>
+<img src="images/simulation1.png" width="320" height="240">
+<img src="images/simulation0.png" width="320" height="240">
+
 ## ./Fractal/
 1)matplotTree.py,matplotTree2.py
 <br/>
