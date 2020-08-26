@@ -198,3 +198,4 @@ Random triangle and customized split ratio
 <img src="images/triangle11.png" width="320" height="240">
 <img src="images/triangle12.png" width="320" height="240">
 
+<img src="images/example.svg" width="320" height="240">
