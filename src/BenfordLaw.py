@@ -22,7 +22,7 @@ def softMaxFuc(X):
     return X/np.sum(X)
 
 def getTestData():
-    f = r'.\db\coronavirous_2020-05-23.csv'
+    f = r'.\res\coronavirous_2020-05-23.csv'
     df = pd.read_csv(f)
     df.set_index(["Location"], inplace=True)
     #print(df.head())
