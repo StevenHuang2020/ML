@@ -1,7 +1,7 @@
 # Python examples [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Python Version](https://img.shields.io/badge/Python-v3-blue)
 1)piCalculate.py
 <br/>
-Monte Carlo method refer to:https://en.wikipedia.org/wiki/Monte_Carlo_method <br/>
+Monte Carlo method refer to: https://en.wikipedia.org/wiki/Monte_Carlo_method <br/>
 when N= 100 pi= 3.12 <br/>
 when N= 10000 pi= 3.1484 <br/>
 when N= 100000 pi= 3.1406 <br/>
@@ -17,6 +17,8 @@ when N= 10000 s =  0.7854478694028293 pi =  3.141791477611317 <br/>
 when N= 1000000 s =  0.7853986631034552 pi =  3.1415946524138207 <br/>
 Accurate integration using scipy：<br/>
 s =  0.785398163397448 pi =  3.141592653589792<br/>
+<br />
+
 2)coinDistrbution.py
 <br/>
 <img src="images/Coins_Distribution.png" width="320" height="240">
@@ -44,16 +46,10 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <br/>
 <img src="images/plotFuc2.png" width="320" height="240">
 <img src="images/plotFuc3.png" width="320" height="240">
-<img src="images/plotFuc4.png" width="320" height="240">
-<img src="images/plotFuc7.png" width="320" height="240">
-<img src="images/plotFuc8.png" width="320" height="240">
-<img src="images/plotFuc9.png" width="320" height="240">
 <img src="images/plotFuc10.png" width="320" height="240">
 <img src="images/plotFuc11.png" width="320" height="240">
 <img src="images/plotFuc12.png" width="320" height="240">
 <img src="images/plotFuc13.png" width="320" height="240">
-<img src="images/plotFuc14.png" width="320" height="240">
-<img src="images/plotFuc15.png" width="320" height="240">
 <img src="images/plotFuc16.png" width="320" height="240">
 <img src="images/activationFuc1.png" width="320" height="240">
 <img src="images/activationFuc2.png" width="320" height="240">
