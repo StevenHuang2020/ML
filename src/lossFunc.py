@@ -12,7 +12,7 @@ def Modified_LS(x):
         return (np.max(1-x, 0))**2
     return list(map(loss, [i for i in x]))
 
-def SVM_Loss(x):
+def SVM_Loss(x): #Hinge loss, SVM using
     def loss(x):
         return np.max(1-x, 0)
     return list(map(loss, [i for i in x]))
@@ -32,3 +32,18 @@ def zero_one(x):
     if len(l) != 0:
         y[l[0]]=1
     return y
+
+
+#Cross entropy loss L = -(y*log(y') + (1-y)*log(1-y'))
+def crossEntropy_GT01(y, yPred): # 0/1 classification, y:Ground truth: 0 or 1, yPred:0~1
+    if y == 0:
+        return -1*np.log(1-yPred)
+    else: #y=1
+        return -1*np.log(yPred)
+
+#Cross entropy loss L = log(1 + e^(-y*y')) , activefun=sigmoid()
+def crossEntropy_GT02(y, yPred): # +1/1 classification, y:Ground truth:-1 or +1, yPred:0~1
+    if y == 1:
+        return np.log(1 + np.exp(-1*yPred))
+    else: #y=-1
+        return np.log(1 + np.exp(yPred))

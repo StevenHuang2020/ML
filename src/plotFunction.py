@@ -541,7 +541,7 @@ def plot_LossFunctions():
     ax = plt.subplot(1,1,1)
     ax.set_title('Loss Functions')
     
-    x = np.linspace(-6,2, 100)        
+    x = np.linspace(-4,2, 100)        
     plotSub(x, Least_squares(x), ax, label='Least_squares')
     plotSub(x, Modified_LS(x), ax, label='Modified_LS', linestyle='dashed')
     plotSub(x, SVM_Loss(x), ax, label='SVM_Loss')
@@ -552,6 +552,28 @@ def plot_LossFunctions():
     
     ax.legend()
     plt.ylim(0, 4.5)
+    plt.show()
+    
+def plot_LossFunctions2(type=0):
+    ax = plt.subplot(1,1,1)
+    
+    if type==0:
+        x = np.linspace(0,1, 100)
+
+        title='Loss Functions Cross binary entropy 0/1'
+        ax.set_title(title)
+        plotSub(x, crossEntropy_GT01(0, x), ax, label="L=-(y*log(y')+(1-y)*log(1-y')) when y=0")
+        plotSub(x, crossEntropy_GT01(1, x), ax, label="L=-(y*log(y')+(1-y)*log(1-y')) when y=1")
+    else:
+        x = np.linspace(-1,1, 100)
+        
+        title='Loss Functions Cross binary entropy -1/1'
+        ax.set_title(title)
+        plotSub(x, crossEntropy_GT02(1, x), ax, label="L=log(1+e^(-y*y')) when y=1")
+        plotSub(x, crossEntropy_GT02(-1, x), ax, label="L=log(1+e^(-y*y')) when y=-1")
+    
+    ax.legend()
+    #plt.ylim(0, 4.5)
     plt.show()
     
 def main():
@@ -582,7 +604,8 @@ def main():
     #plotExponential_integral()
     #plotTrigonometric_integral()
     #plotKL_Divergences()
-    plot_LossFunctions()
+    #plot_LossFunctions()
+    plot_LossFunctions2(type=1)
     pass
 
 if __name__ == '__main__':
