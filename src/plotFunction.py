@@ -9,6 +9,8 @@ from activationFunc import *
 from lossFunc import *
 from functions import *
 from plotCommon import *
+from KL_divergence import get_klpq_div,get_klqp_div
+from distributions import Discrete_uniform_distribution,Binomial_distribution
 
 def testLogisticMap():
     rValue = 3.9
@@ -576,6 +578,46 @@ def plot_LossFunctions2(type=0):
     #plt.ylim(0, 4.5)
     plt.show()
     
+def plot_LossFocalLoss():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('Focal Loss Function')
+    
+    x = np.linspace(0.0001, 0.99999, 100)  
+    
+    plt.text(0.12, 4.5, r'$CE(p)=-\log(p)$')
+    plt.text(0.12, 4.2, r'$FC(p)=-(1-p)^\gamma\log(p)$')
+    
+    plotSub(x, FocalLosss(x), ax, label=r'Cross-Entropy, $\gamma=0$')
+    plotSub(x, FocalLosss(x,gamma=0.5), ax, label=r'$\gamma=0.5$', linestyle='dashed')
+    plotSub(x, FocalLosss(x,gamma=1), ax, label=r'$\gamma=1$')
+    plotSub(x, FocalLosss(x,gamma=2), ax, label=r'$\gamma=2$', linestyle='dotted') #dashdot
+    plotSub(x, FocalLosss(x,gamma=5), ax, label=r'$\gamma=5$')
+  
+    ax.legend()
+    plt.ylim(0, 5)
+    plt.show()
+    
+def plot_KLdivergence_Loss():
+    ax = plt.subplot(1,1,1)
+    ax.set_title('KLdivergence Loss')
+    
+    N=100
+    x = np.linspace(0.0001, 0.9999, N)  
+    target = Binomial_distribution(N,0.7) #Discrete_uniform_distribution(x,N)
+    #print(x.shape,target.shape)
+    #plt.text(0.12, 4.5, r'$CE(p)=-\log(p)$')
+    klpq = [get_klpq_div(Binomial_distribution(N,i),target) for i in x]
+    klqp = [get_klpq_div(target, Binomial_distribution(N,i)) for i in x]
+    
+    #y = [get_klpq_div(np.zeros_like(target)+i, target) for i in x]
+    #y = [get_klqp_div(np.zeros_like(target)+i, target) for i in x]
+    plotSub(x, klpq, ax, label=r'$KL(p,q)=p*\log(\frac{p}{q})$')
+    plotSub(x, klqp, ax, label=r'$KL(q,p)=q*\log(\frac{q}{p})$')
+     
+    ax.legend()
+    #plt.ylim(0, 5)
+    plt.show()
+    
 def main():
     #return testLogisticMap2()    
     #plotAllFuc()
@@ -605,7 +647,9 @@ def main():
     #plotTrigonometric_integral()
     #plotKL_Divergences()
     #plot_LossFunctions()
-    plot_LossFunctions2(type=1)
+    #plot_LossFunctions2(type=1)
+    #plot_KLdivergence_Loss()
+    plot_LossFocalLoss()
     pass
 
 if __name__ == '__main__':

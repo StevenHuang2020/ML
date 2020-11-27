@@ -1,4 +1,4 @@
-# Python examples [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Python Version](https://img.shields.io/badge/Python-v3-blue)
+# Python examples ![License: MIT](https://img.shields.io/badge/License-MIT-blue) ![Python Version](https://img.shields.io/badge/Python-v3-blue)
 1)piCalculate.py
 <br/>
 Monte Carlo method refer to: https://en.wikipedia.org/wiki/Monte_Carlo_method <br/>
@@ -59,6 +59,8 @@ Integral alogrithm, which can calculate the area enclosed by any curve and x-axi
 <img src="images/plotLossFuc.png" width="320" height="240">
 <img src="images/plotLossFuc2.png" width="320" height="240">
 <img src="images/plotLossFuc3.png" width="320" height="240">
+<img src="images/plotLossFuc4.png" width="320" height="240">
+<img src="images/plotLossFuc5.png" width="320" height="240">
 <br/>
 
 testLogisticMap(butterfly effect)
