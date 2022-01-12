@@ -17,7 +17,7 @@ def numFirstStr(value):
 
 def rangeIntN(N=100):
     return np.random.randint(100, size=N)
-    
+
 def softMaxFuc(X):
     return X/np.sum(X)
 
@@ -37,15 +37,15 @@ def plotProb(benford,prob):
     plt.plot(x,prob,label='Actual')
     plt.bar(x,height=prob,label='Actual')
     plt.scatter(x,benford,color='k',label='Benford')
-    
+
     plt.legend()
     plt.show()
-    
+
 def main():
     benford = list(map(Benford, [i+1 for i in range(9)]))
     #benford = Benford(np.arange(1,10))
     #print(benford)
-    
+
     prob = np.zeros((9,))
     series = getTestData()   #rangeIntN(N=10)
     series = series.flatten()
@@ -57,11 +57,10 @@ def main():
             prob[id-1] += 1
     print(prob)
     actBen = softMaxFuc(prob).round(4)
-    
+
     print('benford=', benford, 'entropy=', entropy(benford))
     print('actBen=', actBen, 'entropy=', entropy(actBen))
     plotProb(benford,actBen)
-    
+
 if __name__=='__main__':
     main()
-    

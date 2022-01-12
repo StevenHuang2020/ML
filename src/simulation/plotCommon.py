@@ -10,7 +10,7 @@ def plot(x,y):
 #     else:
 #         plt.plot(x)
 #     plt.show()
-    
+
 def plotSub(x,y,ax=None, aspect=False, legend=False, label='',linestyle='solid',marker=''):
     ax.plot(x,y,label=label,marker=marker,linestyle=linestyle)
     #ax.title.set_text(name)
@@ -22,5 +22,3 @@ def plotSub(x,y,ax=None, aspect=False, legend=False, label='',linestyle='solid',
 def scatterSub(x,y,ax=None,label='',marker='.'):
     ax.scatter(x,y,linewidths=.3, label=label, marker=marker)
     ax.legend()
-    
-

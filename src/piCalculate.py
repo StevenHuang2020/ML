@@ -1,12 +1,12 @@
 #steven 01/03/2020
 #calculate pi using random method. (Monte Carlo method)
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 
 def randomSeries(N):#generate series number between 0~1
     return np.random.rand(N)
-   
+
 def distance(a, b):#euclidean distance from point(a,b) to point(0,0)"""
     return np.sqrt(a**2 + b**2)
 
@@ -33,13 +33,13 @@ def menteCarloMethod(N=10000 ,plot=True):
 
     res = np.where(distance(x,y) > 1, 0, 1)
     #print(res)
-    
+
     pi = np.sum(res)/len(res)*4.0
     #pi = np.mean(res == 1)*4.0
     print('when N=',N,'pi=',pi)
-    
+
     if plot:
-        plotXY(x,y) 
+        plotXY(x,y)
 
 def IntegralCalculatePi(N=10000):
     """calculate area form x = 0 to 1
@@ -50,8 +50,8 @@ def IntegralCalculatePi(N=10000):
         x = 1/N
         y = circleFun(i/N)
         s += x*y
-    
-    pi = s*4 
+
+    pi = s*4
     print('when N=',N,'s = ',s,'pi = ',pi)
     fillColor()
 
@@ -62,17 +62,17 @@ def fillColor():
 
     plt.plot(x,y1,c='b',alpha=0.5)
     plt.plot(x,y2,c='b',alpha=0.5)
-    
+
     plt.fill_between(x,y1,y2,where=x<=1,facecolor='green')
     #plt.axes(aspect='equal')#.set_aspect('equal')
     plt.axes().set_aspect('equal')
     #plt.grid(True)
     plt.show()
 
-def IntegralAccPi():    
+def IntegralAccPi():
     s = integrate.quad(circleFun, 0, 1)[0]
     print('s = ',s,'pi = ',4*s)
-    
+
 def main():
     #menteCarloMethod(plot=False)
     #IntegralCalculatePi()

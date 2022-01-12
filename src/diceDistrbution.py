@@ -1,6 +1,6 @@
 #steven 01/03/2020
 #dice distribution testing
-import numpy as np 
+import numpy as np
 from coinDistrbution import calculateDistribution
 
 def randomSeriesInt(N): #generate N times dice number 1~6
@@ -10,7 +10,7 @@ def main():
     #experment start
     T = 50000  #times of batch
     N = 100    #dice test times every batch
-    
+
     distributions = []
     for _ in range(T):
         x = randomSeriesInt(N)

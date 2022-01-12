@@ -1,7 +1,7 @@
 #python3
 #steven 04/03/2020
 import matplotlib.pyplot as plt
-import numpy as np 
+import numpy as np
 
 gAlpha = 200
 
@@ -27,7 +27,7 @@ def getTreeBranchN(N,startPt,slope):
     plotXY(x,y)
     return ptLast
 
-def getTreeBranch(startPt,slope,left=True):
+def getTreeBranch(startPt,slope):
     drawLen = 1
     x = np.linspace(startPt[0],startPt[0] + drawLen,10)
     b = startPt[1]-slope*startPt[0]
@@ -42,7 +42,7 @@ def tree(N,startPt,slope):
         lSlope = slope+gAlpha #slope*(1+gAlpha)
         rSlope = slope-gAlpha #slope*(1-gAlpha)
         #print('slope=',slope,'lSlope=',lSlope,'rSlope=',rSlope,startPt)
-        
+
         ptLeft = getTreeBranchN(N-1,startPt, lSlope)
         tree(N-1,ptLeft,lSlope)
 

@@ -1,6 +1,6 @@
 #steven 02/03/2020
 #function integral to calculate area of curve and x axis
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 
 def softmaxFuc(x):
@@ -15,7 +15,7 @@ def plot(x,y):
     plt.show()
 
 def fun(x):
-    #return x 
+    #return x
     #return x**2
     #return np.sqrt(1-x**2)   #y=sqrt(1-x**2)  #circle equations calculate pi
     #return np.exp(x)
@@ -32,30 +32,30 @@ def IntegralFuc():
         x = 1/N
         y = fun(i/N)
         s += x*y
-    
+
     print(s)
-    #pi = s*4 #when fuc = np.sqrt(1-x**2) 
+    #pi = s*4 #when fuc = np.sqrt(1-x**2)
     #print(pi)
     return s
-	
+
 def fillColor():
     x = np.linspace(0,1.5, 100)
-    
+
     y1 = np.zeros(len(x))
     y2 = fun(x)
-    #new_ticks = np.linspace(0,2,5) 
+    #new_ticks = np.linspace(0,2,5)
     #print(new_ticks)
     #plt.xticks(new_ticks)
 
     plt.plot(x,y1,c='b',alpha=0.5)
     plt.plot(x,y2,c='b',alpha=0.5)
-    
+
     plt.fill_between(x,y1,y2,where=x<=1,facecolor='green')
     #plt.grid(True)
     plt.show()
 
 def main():
-    s = IntegralFuc()
+    IntegralFuc()
     fillColor()
 
     #x = np.linspace(-5,5, 50)

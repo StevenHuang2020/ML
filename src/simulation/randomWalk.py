@@ -1,5 +1,5 @@
 #python3 Steven
-import random 
+import random
 import numpy as np
 from plotCommon import *
 
@@ -31,7 +31,7 @@ def basic():
     for i in range(25):
         x,y = random_walk_2(10) #random_walk(10)
         print(x,y, "Distance from home = ", abs(x) + abs(y))
-    
+
 def monteCarloRandomWalk(N=30):
     number_of_wakls=100
     res=[]
@@ -42,25 +42,25 @@ def monteCarloRandomWalk(N=30):
             distance = abs(x) + abs(y)
             if distance <= 4:
                 no_transport += 1
-        no_transport_percentage = float(no_transport)/number_of_wakls  
+        no_transport_percentage = float(no_transport)/number_of_wakls
         res.append(no_transport_percentage)
         #print('Walk size = ',walk_length,'No transport percentage = ', 100*no_transport_percentage)
     return res
-     
+
 def plotRandomWalk(Time=100):
     N = 30
     ax = plt.subplot(1,1,1)
     plt.title('MonteCarlo Random walk')
-    x = np.arange(N)  
+    x = np.arange(N)
     for i in range(Time):
         y = monteCarloRandomWalk(N)
         plotSub(x,y,ax)
     plt.show()
-    
+
 def main():
     #basic()
     #monteCarloRandomWalk()
     plotRandomWalk()
-    
+
 if __name__=='__main__':
     main()

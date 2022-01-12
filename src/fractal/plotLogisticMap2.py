@@ -19,32 +19,32 @@ def logistic_equation_orbit(seed, r, n_iter, n_skip=0):
     X=[]
     T=[]
     t=0
-    x = seed;
+    x = seed
     # Iterate the logistic equation, printing only if n_skip steps have been skipped
     for i in range(n_iter + n_skip):
         if i >= n_skip:
             X.append(x)
             T.append(t)
             t+=1
-        x = logistic_eq(r,x);
+        x = logistic_eq(r,x)
 
     return T,X
 
 def bifurcation_diagram(seed, n_skip, n_iter, step=0.0001, r_min=0,r_max=4):
     print("Starting with x0 seed {0}, skip plotting first {1} iterations, then plot next {2} iterations.".format(seed, n_skip, n_iter))
-    
+
     R = []
     X = []
     r_range = np.linspace(r_min, r_max, int(1/step))
 
     for r in r_range:
-        x = seed;
+        x = seed
         # For each r, iterate the logistic function and collect datapoint if n_skip iterations have occurred
         for i in range(n_iter+n_skip+1):
             if i >= n_skip:
                 R.append(r)
                 X.append(x)
-                
+
             x = logistic_eq(r,x)
 
     return R,X
@@ -67,7 +67,7 @@ def plotBifurcation(R,X,r_min=0, r_max=4.0):
     plotBifurcationAx(R,X,r_min,r_max,ax)
     plt.show()
 
-def plotBifurcationAx(R,X,r_min=0, r_max=4.0,ax=None):   
+def plotBifurcationAx(R,X,r_min=0, r_max=4.0,ax=None):
     ax.plot(R, X, ls='', marker=',')
     ax.set_ylim(0, 1)
     ax.set_xlim(r_min, r_max)
@@ -96,7 +96,7 @@ def multBifurcation():
         ax.set_title('nSkips='+str(nSkips))
         plotBifurcationAx(R,X,rMin,rMax,ax)
     plt.show()
-    
+
     '''
     nIters=[1,5,10,20,50,100]
     plt.suptitle("LogisticMap:r*x*(1-x)**3")
@@ -137,7 +137,7 @@ def main():
     #plotBifurcation(R,X,r_min=rMin)
 
     #x:= r*x*(1-x)**2
-    
+
     multBifurcation()
 
 

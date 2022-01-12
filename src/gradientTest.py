@@ -1,10 +1,10 @@
 #gradient descent learning
 #steven 29/02/2020 Initial
 #11/03/2020  add plotSeekPoint to plot the seek process
-import random
+#import random
 import matplotlib.pyplot as plt
 import numpy as np
-from plotCommon import *
+from plotCommon import plotSub
 
 def difference_derivative(f,x,h=0.00001): #one parameter fuction derivate
     return (f(x+h)-f(x))/h
@@ -20,8 +20,8 @@ def question_linearFucMin():
     this fuction is always as the simplest(one feature data) cost fuction in machine learning
     """
 
-    tolerance = 0.0000000001  #1.0e-15  
-    max_iter = 10000
+    #tolerance = 0.0000000001  #1.0e-15
+    #max_iter = 10000
     iter = 0
     alpha = 0.001 #0.01 #learning rate
     seekList=[]
@@ -30,7 +30,7 @@ def question_linearFucMin():
     stepInter = 0
     while True:
         gradient = difference_derivative(question_linearFuc,x,h=0.0001)
-        
+
         x_next = x - alpha * gradient
 
         if iter % 20 == 0:
@@ -47,7 +47,7 @@ def question_linearFucMin():
 
         x = x_next
         iter += 1
-        
+
     print (iter,'result: x=',x, 'minValue:',question_linearFuc(x))
 
     plotSeekPoint(seekList)
@@ -71,10 +71,10 @@ def question_CurvePeakAndValley():
         #return x**4
         #return  (x**3 + 3*x**2-6*x-8)/4
         return x**5 + 2*x**4 + 3*x**3 + 8*x**2 + 10*x
-    
-    x = np.linspace(-1.25,-0.75, 100)
+
+    x = np.linspace(-1.25,-0.65, 100)
     z0=[]
-    for i,xi in enumerate(x):
+    for i, _ in enumerate(x):
         if i>=len(x)-1:
             break
         d1 = difference_derivative(func,x[i])
@@ -83,19 +83,19 @@ def question_CurvePeakAndValley():
             print('x = ',x[i])
             z0.append(x[i])
         #print('d1,d2,* = ',d1,d2,d1*d2)
-            
+
     ax = plt.subplot(1,1,1)
-    plotSub(x, func(x), ax, label='func')
+    plotSub(x, func(x), ax, label='func',color='b')
     for k in z0:
         plt.vlines(k, np.min(func(x)), func(x[-1]),linestyles='dotted', color='r')
     #plt.axis('square')
     plt.legend()
     plt.grid()
     plt.show()
-    
+
 def main():
     #question_linearFucMin()
     question_CurvePeakAndValley()
-    
+
 if __name__ == '__main__':
     main()

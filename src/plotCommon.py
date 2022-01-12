@@ -10,16 +10,15 @@ def plot(x,y):
 #     else:
 #         plt.plot(x)
 #     plt.show()
-    
-def plotSub(x,y,ax=None, aspect=False, label='',linestyle='solid',marker=''):
-    ax.plot(x,y,label=label,marker=marker,linestyle=linestyle)
+
+def plotSub(x, y, ax=None, aspect=False, label='', linestyle='solid', \
+    marker='', color=None):
+    ax.plot(x,y,label=label,marker=marker,linestyle=linestyle,color=color)
     #ax.title.set_text(name)
     if aspect:
         ax.set_aspect(1)
-    ax.legend()
+    #ax.legend()
 
-def scatterSub(x,y,ax=None,label='',marker='.'):
+def scatterSub(x, y, ax=None, label='', marker='.'):
     ax.scatter(x,y,linewidths=.3, label=label, marker=marker)
     ax.legend()
-    
-

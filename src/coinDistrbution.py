@@ -1,7 +1,7 @@
 #python3
 #steven 01/03/2020
 #coin distribution testing
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 
 def randomSeries(N): #generate series number between 0~1
@@ -11,7 +11,7 @@ def plotNormalDistribution():
     x = np.linspace(-1,1,50)
     y = 1/np.sqrt(2*np.pi) * np.exp(-0.5*x**2)
     plotDistribution(x,y,'Normal Distribution')
-    
+
 def plotDistribution(x,y,name):
     plt.title(name)
     plt.plot(x,y)
@@ -21,7 +21,7 @@ def plotDistribution(x,y,name):
 
 def calculateDistribution(distributions,name):
     #print(distributions)
-    distributions_set = list(set(distributions)) #remove repeat prob 
+    distributions_set = list(set(distributions)) #remove repeat prob
     distributions_set.sort()
     #print(distributions_set)
 
@@ -31,9 +31,9 @@ def calculateDistribution(distributions,name):
     #print(distributions_setCount)
 
     distributions_setProb = []  #calculate frequency prob
-    sum = np.sum(distributions_setCount)
+    s = np.sum(distributions_setCount)
     for i in distributions_setCount:
-        distributions_setProb.append(i/sum)
+        distributions_setProb.append(i/s)
     #print(distributions_setProb)
 
     maxFrequency = np.max(distributions_setProb)
@@ -48,14 +48,14 @@ def main():
     #experment start
     T = 300000  #times of batch
     N = 200     #coin test times every batch
-    
+
     distributions = []
     for _ in range(T):
         x = randomSeries(N)
         res = np.where(x > 0.5, 1, 0) #x>0.5 stand for upper side of coin throwing
         prob = np.sum(res)/len(res)
         distributions.append(prob)
-    
+
     return calculateDistribution(distributions,'Coins Distribution')
 
 if __name__ == "__main__":

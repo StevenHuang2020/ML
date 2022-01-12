@@ -12,12 +12,12 @@ def sigmoid(x): #aka Logistic
 def Binary_step(x):
     return np.where(x<0,0,1)
 
-def Tanh(x): 
+def Tanh(x):
     return np.tanh(x)
-    
+
 def SQNL(x): #https://ieeexplore.ieee.org/document/8489043
     y = np.zeros((len(x),))
-    
+
     l = np.where(x > 2.0)
     if len(l) != 0:
         y[l[0]]=1
@@ -30,12 +30,12 @@ def SQNL(x): #https://ieeexplore.ieee.org/document/8489043
     l = np.where(x<-2.0)
     if len(l) != 0:
         y[l[0]]=-1
-        
+
     return y
-    
+
 def ArcTan(x):
     return np.arctan(x)
-    
+
 def ArcSinH(x):
     return np.arcsinh(x)
 
@@ -50,15 +50,15 @@ def ISRLu(x,alpha=1.0):#https://arxiv.org/pdf/1710.09967.pdf
     l = np.where(x < 0)
     if len(l) != 0:
         y[l[0]]=ISRu(x[l[0]],alpha)
-        
+
     l = np.where(x >= 0)
     if len(l) != 0:
         y[l[0]]=x[l[0]]
-        
+
     return y
-    
+
 def PLu(x,alpha=0.1,c=1): #https://arxiv.org/pdf/1809.09534.pdf
-    c = np.zeros((x.shape))+c    
+    c = np.zeros((x.shape))+c
     return np.maximum(alpha*(x+c)-c, np.minimum(alpha*(x-c)+c, x))
 
 def Relu(x): #https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf
@@ -67,24 +67,23 @@ def Relu(x): #https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf
 def BReLu(x):#https://arxiv.org/pdf/1709.04054.pdf
     if len(x) % 2 ==0:
         return Relu(x)
-    else:
-        return -1*Relu(-1*x)
-    
+    return -1*Relu(-1*x)
+
 def LeakyRelu(x):#https://www.semanticscholar.org/paper/Rectifier-Nonlinearities-Improve-Neural-Network-Maas/367f2c63a6f6a10b3b64b8729d601e69337ee3cc
     return np.where(x<0,0.01*x,x)
-    
+
 def PRelu(x,alpha=.1): #https://arxiv.org/pdf/1502.01852.pdf
     return np.where(x<0,alpha*x,x)
-    
+
 def RRelu(x,alpha=.1): #https://arxiv.org/pdf/1505.00853.pdf
     return np.where(x<0,alpha*x,x)
-    
+
 def GELu(x):#https://arxiv.org/pdf/1606.08415.pdf   #https://github.com/hendrycks/GELUs
     return 0.5 * x * (1 + np.tanh(np.sqrt(2 / np.pi) * (x + 0.044715 * np.power(x, 3))))
 
 def ELu(x,alpha=1.0): #https://arxiv.org/pdf/1511.07289.pdf
     return np.where(x<0, alpha*(np.exp(x)-1), x)
-    
+
 def SELu(x,alpha=1.67326,la=1.0507): #https://arxiv.org/pdf/1706.02515.pdf
     return la*ELu(x,alpha)
 
@@ -124,13 +123,28 @@ def SQ_RBF(x):
     l = np.where(abs(x) <= 1)
     if len(l) != 0:
         y[l[0]]=1-0.5*x[l[0]]**2
-        
+
     l = np.where(abs(x) > 1)
     if len(l) != 0:
         y[l[0]]=0.5*(2-abs(x[l[0]]))**2
-        
+
     l = np.where(abs(x) > 2)
     if len(l) != 0:
         y[l[0]]=0
-        
+
     return y
+
+def swish(x):
+    return x*sigmoid(x)
+
+def ACON_A(x, beta=1): #ActivateOrNot (ACON) ,RelU:max(x, 0)
+    #https://arxiv.org/pdf/2009.04759.pdf
+    #return x*sigmoid(x*beta)
+    return ACON_B(x, 0, beta=beta)
+
+def ACON_B(x, p, beta=1): #PRelU:max(x, p*x)
+    #return (1-p)*x*sigmoid(beta*(1-p)*x) + p*x
+    return ACON_C(x, 1, p, beta=beta)
+
+def ACON_C(x, p1,p2, beta=1): #max(p1*x, p2*xx)
+    return (p1-p2)*x*sigmoid(beta*(p1-p2)*x) + p2*x

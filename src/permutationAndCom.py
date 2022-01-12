@@ -1,6 +1,6 @@
 #Python3 Steven
 #permutation and combination
-import numpy as np
+#import numpy as np
 from itertools import combinations, permutations
 from scipy.special import perm,comb
 
@@ -11,8 +11,8 @@ def permut(N, m): #A{N,m}
 def combinat(N, m):
     #return len(list(combinations(range(N),m)))
     return comb(N,m)
- 
-def main():    
+
+def main():
     print('A_{4,3}=',list(permutations(range(4),3)))
     print('C_{4,3}=',list(combinations(range(4),3)))
     print('A_{3,2}=',list(permutations([1, 2, 3], 2)))
@@ -20,14 +20,13 @@ def main():
 
     #A = np.array([[1, 2, 4]]) # np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
     #permut(A, 2)
-    
+
     print(permut(5,2))
     print(combinat(5,2))
-    
+
     N=25
     for i in range(N):
-        print('N,i,combinat=',N,i,combinat(N,i))
-    
+        print('N, i, combinat=', N, i, combinat(N,i))
+
 if __name__=='__main__':
     main()
-    
