@@ -11,9 +11,11 @@ from functions import *
 from plotCommon import *
 from KL_divergence import get_klpq_div,get_klqp_div
 from distributions import Discrete_uniform_distribution,Binomial_distribution
+import mpl_toolkits.axisartist as axisartist
 
 import matplotlib
 matplotlib.rcParams['savefig.dpi'] = 300
+
 
 def testLogisticMap():
     rValue = 3.9
@@ -32,6 +34,7 @@ def testLogisticMap():
     ax.set_title("An iota causes a big difference(butterfly effects)")
     ax.legend(loc='lower left')
     plt.show()
+
 
 def testLogisticMap2():
     #rValue = 9
@@ -232,7 +235,6 @@ def plotMyActivationFun():
     x = np.linspace(-2,2, 80)
     ax.set_title('') #Activation Function
 
-
     #plotSub(x, ISRu(x), ax,label='ISRu')
     #plotSub(x, ISRLu(x), ax,label='ISRLu')
     #plotSub(x, PLu(x), ax,label='PLu')
@@ -305,8 +307,9 @@ def plotActivationFun():
     plt.legend(ncol=4,loc='upper left')
     plt.show()
 
+
 def plotAxis():
-    import mpl_toolkits.axisartist as axisartist
+
     #创建画布
     fig = plt.figure(figsize=(8, 8))
     #使用axisartist.Subplot方法创建一个绘图区对象ax
@@ -324,16 +327,17 @@ def plotAxis():
     ax.axis["x"].set_axis_direction("top")
     ax.axis["y"].set_axis_direction("right")
 
-    # x = np.arange(-15,15,0.1)
-    # #生成sigmiod形式的y数据
-    # y=1/(1+np.exp(-x))
-    # #设置x、y坐标轴的范围
-    # plt.xlim(-12,12)
-    # plt.ylim(0, 1)
-    # #绘制图形
-    # plt.plot(x,y, c='b')
-    # plt.grid(linestyle='-.')
-    # plt.show()
+    x = np.arange(-15,15,0.1)
+    #生成sigmiod形式的y数据
+    y=1/(1+np.exp(-x))
+    #设置x、y坐标轴的范围
+    plt.xlim(-12,12)
+    plt.ylim(0, 1)
+    #绘制图形
+    plt.plot(x,y, c='b')
+    plt.grid(linestyle='-.')
+    plt.show()
+
 
 def plotCommonActivationFun():
     ax = plt.subplot(1,1,1)

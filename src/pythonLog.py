@@ -1,5 +1,10 @@
-"""python logging module testing
-"""
+# -*- encoding: utf-8 -*-
+# Date: 20/Mar/2023
+# Author: Steven Huang, Auckland, NZ
+# License: MIT License
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Description: logging module, logging to file
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 import logging
 
 # levels
@@ -10,22 +15,25 @@ import logging
 # DEBUG 10
 # NOTSET 0
 
-#create and configure logger
-LOG_FORMAT="%(asctime)s,%(msecs)d %(levelname)-5s [%(filename)s:%(lineno)d] %(message)s"
+# create and configure logger
+LOG_FORMAT = "%(asctime)s,%(msecs)d %(levelname)-5s [%(filename)s:%(lineno)d] %(message)s"
 #LOG_FORMAT="%(levelname)s %(asctime)s - %(message)s"
 logging.basicConfig(filename=r'./test.log',
                     level=logging.DEBUG,
                     format=LOG_FORMAT,
                     filemode='w')
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
-#test the logger
-log.info('hello')
-log.debug('here should be 1')
-log.warning('warning here')
-log.error('here 0 error')
+def main():
+    # test the logger
+    logger.info('hello')
+    logger.debug('here should be 1')
+    logger.warning('warning here')
+    logger.error('here 0 error')
+    print(logger.level, __name__)
 
 
-print(log.level, __name__)
+if __name__ == "__main__":
+    main()
